@@ -1,4 +1,4 @@
-﻿/* ==========================================================================
+/* ==========================================================================
    PORTFOLIO INTERACTIVE CONTROLLER
    Crafted for Syed Azhar Hussain A
    ========================================================================== */
@@ -576,50 +576,128 @@ function updateLuggageTagContent(data) {
 }
 
 /* ==========================================================================
-   5. SELECTED WORK: RETRO CRT MONITOR & TERMINAL
+   5. SELECTED WORK: RETRO CRT MONITOR & TERMINAL (5 Client Projects)
    ========================================================================== */
 const projectsData = [
   {
-    title: 'VeeduVadagaiku',
-    category: 'PROPERTY RENTAL & LISTING PLATFORM',
+    id: 'veedu',
+    title: 'Veedu Vadagaikku Chennai',
+    category: 'PROPERTY RENTAL & REAL ESTATE PLATFORM',
     bullets: [
-      '> Real estate listing & tenant discovery engine',
-      '> Landlord dashboard & property status management',
-      '> Subscription packages & listing validity controls',
-      '> Powered by Next.js, PostgreSQL & Supabase'
+      '> Zero brokerage direct tenant-to-landlord rental marketplace',
+      '> Multi-category listings: Houses, Hostels/PG, Shops & Commercial',
+      '> Tamil & English bilingual portal tailored for Chennai localities',
+      '> Powered by React (Vite), TanStack Query, Firebase & REST APIs'
     ],
-    image: 'assets/images/veedu_vadagaiku.jpg',
-    liveUrl: '#',
-    githubUrl: '#',
-    fullDesc: 'VeeduVadagaiku is a modern, high-performance property rental platform designed to streamline rental transactions in Indian metropolitan areas. Built with a responsive Next.js frontend and PostgreSQL/Supabase backend, it features automated listing validity tracking, owner verification, and instant tenant inquiries.'
+    image: 'assets/images/veedu_vadagaikku_live.png',
+    liveUrl: 'https://www.veeduvadagaikkuchennai.com/',
+    techStack: ['React (Vite)', 'TanStack Query', 'Firebase', 'Tailwind CSS', 'Swiper 11', 'REST APIs'],
+    shortDesc: "Chennai's dedicated property rental platform connecting tenants directly with verified landlords with zero brokerage, bilingual Tamil/English UI, and localized search across all Chennai zones.",
+    fullDesc: "Veedu Vadagaikku Chennai (வீடு வாடகைக்கு சென்னை) is a high-performance rental marketplace connecting tenants directly with property owners without intermediaries. The platform serves all major Chennai localities (Anna Nagar, T. Nagar, Velachery, OMR, Porur, etc.) with comprehensive listings across residential houses, PG accommodations, commercial buildings, marriage halls, and home services.",
+    keyFeatures: [
+      'Zero-Brokerage Direct Connect: Inquiring tenants directly initiate phone calls or WhatsApp chats with verified property owners.',
+      'Multi-Category Property System: Support for residential houses, single rooms, hostels/PGs, commercial spaces, and marriage halls.',
+      'Bilingual Architecture: Complete bilingual UI in English and Tamil with localized search terms for Chennai districts.',
+      'Owner Listing Packages: Self-service listing creation with photo galleries, amenities checklists, and promotional Deepavali/Festive discount tiers.',
+      'Client-Side Query Performance: Built on React (Vite) with TanStack Query caching for instant search and fluid filter responsiveness.'
+    ],
+    contribution: 'Frontend architecture, React UI components, TanStack Query integration, multilingual locale toggles, and responsive mobile-first views.'
   },
   {
-    title: "Aadhif's Oils",
-    category: 'ORGANIC E-COMMERCE STOREFRONT',
+    id: 'jpholidays',
+    title: 'JP Holidays',
+    category: 'GLOBAL TRAVEL & HOLIDAY TOUR OPERATOR',
     bullets: [
-      '> Artisanal wood-pressed oil product showcase',
-      '> Shopping cart persistence & checkout pipeline',
-      '> Integrated payment gateway & order management',
-      '> Built with React, Node.js & PostgreSQL'
+      '> International & domestic tour portal offering 3,000+ destinations',
+      '> Interactive search engine for honeymoon, luxury & group escapes',
+      '> Direct WhatsApp enquiry pipeline & custom itinerary planner',
+      '> Production SEO with Google Search Console Schema.org JSON-LD'
     ],
-    image: 'assets/images/aadhifs_oils.jpg',
-    liveUrl: '#',
-    githubUrl: '#',
-    fullDesc: "Aadhif's Wood Pressed Oils is a digital storefront designed to honor traditional oil craftsmanship. It features interactive bottle size selection, nutrition breakdown, secure online checkout, and an administrative fulfillment dashboard for inventory reconciliation."
+    image: 'assets/images/jpholidays_live.png',
+    liveUrl: 'https://jpholidays.co.in/',
+    techStack: ['JavaScript (ES6+)', 'HTML5 / Semantic CSS3', 'Font Awesome 6', 'Schema.org JSON-LD', 'WhatsApp API'],
+    shortDesc: "South India's premier travel agency website presenting 3,000+ domestic and international destinations, custom honeymoon specials, WhatsApp enquiry routing, and Google Search Console Schema.org JSON-LD.",
+    fullDesc: "JP Holidays is an award-winning travel agency web platform based in Chennai that serves over 45,000+ global travelers. The site showcases domestic and international holiday packages spanning Bali, Maldives, Dubai, Singapore, Europe, and South India with tailored itineraries for families, couples, and corporate groups.",
+    keyFeatures: [
+      'Comprehensive Package Catalog: Browse 3,000+ destinations with detailed day-wise itineraries, inclusion lists, and pricing.',
+      'Custom Itinerary Builder: Interactive trip search filtered by destination, tour category (Honeymoon, Group, Luxury), and duration.',
+      'One-Click Travel Inquiries: Integrated WhatsApp routing (+91 72006 69293) and instant callback request forms.',
+      'Search Engine Dominance: Full Google Search Central Schema.org JSON-LD structured data for WebSite, Organization, and Sitelinks Search Box.',
+      'High-Impact Visual Layout: Full-bleed hero visuals with crimson accent branding (#C8102E) and mobile-optimized touch controls.'
+    ],
+    contribution: 'Full-stack frontend development, responsive travel package grid, dynamic search parameter parsing, and structured data implementation.'
   },
   {
-    title: 'Cloud Full-Stack App',
-    category: 'TYPESCRIPT / SUPABASE / POSTGRESQL',
+    id: '77fitness',
+    title: '77 Fitness Studio',
+    category: 'PREMIUM FITNESS DESTINATION & LIFESTYLE',
     bullets: [
-      '> Enterprise-grade auth & session security (JWT)',
-      '> Relational database architecture with RLS policies',
-      '> Scalable REST API endpoints & real-time sync',
-      '> Production-ready developer tooling & metrics'
+      '> Modern fitness studio portal across Kodambakkam, Nungambakkam & Vadapalani',
+      '> Editorial dark-mode aesthetic with luxury gym experience branding',
+      '> Structured progression training programs & recovery floor walkthroughs',
+      '> Integrated Google Maps location finder & WhatsApp onboarding'
     ],
-    image: 'assets/images/fullstack_app.jpg',
-    liveUrl: '#',
-    githubUrl: '#',
-    fullDesc: 'A full-stack cloud application engineered with strict TypeScript typing, PostgreSQL relational tables, and Supabase database functions. Features granular role-based access control (RBAC), connection pooling, audit logging, and responsive dark-mode analytics dashboards.'
+    image: 'assets/images/77fitness_live.png',
+    liveUrl: 'https://77fitnessstudio.in/',
+    techStack: ['Vanilla CSS3', 'Modern JavaScript (ES6+)', 'Dark Mode System', 'Google Maps API', 'WhatsApp API'],
+    shortDesc: "A sleek, luxury-first fitness and wellness studio website for three premier locations across Chennai, blending high-end design with seamless member onboarding.",
+    fullDesc: "77 Fitness Studio represents a calm, luxury-first gym experience designed for modern Chennai. The website reflects this brand philosophy across three prime neighborhoods (Kodambakkam, Nungambakkam, and Vadapalani), presenting clean floor layouts, international-grade equipment, tailored training stages, and dedicated post-workout recovery spaces.",
+    keyFeatures: [
+      'Multi-Location Studio Directory: Interactive branch details for Kodambakkam, Nungambakkam, and Vadapalani with direct Google Maps routing.',
+      'Tailored Training Stage Programs: Structured guidance for strength, hypertrophy, functional conditioning, and cardiovascular health.',
+      'Luxury Dark-Mode Presentation: Deep-black interface with crimson contrast accents, fluid typography, and clean editorial spacing.',
+      'Instant WhatsApp Membership Connect: Direct links to studio managers (+91 78711 77779) for trial pass bookings and package consultation.',
+      'Community & Transformation Showcase: Member stories, gym atmosphere highlights, and social channels integration.'
+    ],
+    contribution: 'Visual design execution, responsive dark theme implementation, multi-branch location navigation, and mobile menu interactions.'
+  },
+  {
+    id: 'aadhifs',
+    title: "Aadhif's Wood Pressed Oils",
+    category: 'ARTISANAL ORGANIC E-COMMERCE STOREFRONT',
+    bullets: [
+      '> Traditional chekku cold-pressed oil catalog from Coimbatore',
+      '> Dynamic bottle size selector (250ml, 500ml, 1L) with live price updates',
+      '> Direct WhatsApp order routing & free shipping threshold notifications',
+      '> Admin dashboard integration with FSSAI & MSME compliance badges'
+    ],
+    image: 'assets/images/aadhifs_live.png',
+    liveUrl: 'https://aadhifshomemade.in/',
+    techStack: ['JavaScript (ES6+)', 'Node.js & Express', 'PostgreSQL Backend', 'Tailwind CSS', 'Admin Dashboard'],
+    shortDesc: "A complete artisanal food e-commerce platform for wood-pressed oils and ghee, featuring dynamic price calculations, WhatsApp checkout, and admin order controls.",
+    fullDesc: "Aadhif's Homemade specializes in 100% pure, slow-pressed wooden chekku oils (Groundnut, Sesame/Gingelly, Coconut) and Pure Desi Ghee crafted in Coimbatore. The web platform delivers a trusted direct-to-consumer shopping experience with wholesale inquiry support and doorstep delivery across Tamil Nadu.",
+    keyFeatures: [
+      'Interactive Product Configurator: Smooth bottle size selection (250ml, 500ml, 1 Litre) with instant pricing calculation and volume discounts.',
+      'WhatsApp URI Scheme Checkout: Generates pre-formatted order messages directly inside WhatsApp, eliminating checkout friction for Indian buyers.',
+      'Free Shipping Calculator: Real-time cart calculation alerting customers when their cart qualifies for free shipping (₹499+ across TN).',
+      'Regulatory Trust Badges: Verified FSSAI manufacturing license (12426003001014) and Govt. of India MSME registration displays.',
+      'Admin Management Portal: Dedicated /admin portal for stock level updates, wholesale quotation tracking, and delivery logistics.'
+    ],
+    contribution: 'Full-stack store implementation, product pricing matrix, WhatsApp messaging protocol, and backend order management routes.'
+  },
+  {
+    id: 'unihut',
+    title: 'UniHut Tax & Corpserv',
+    category: 'CORPORATE LEGAL & TAX COMPLIANCE PORTAL',
+    bullets: [
+      '> Corporate legal & taxation advisory portal ("All under One Hut")',
+      '> Multi-service catalog: Incorporation, GST, ITR, Trademark & Payroll',
+      '> Luxury corporate aesthetic with cream, deep-teal and gold accents',
+      '> WhatsApp Business advisory consultation & dynamic inquiry pipeline'
+    ],
+    image: 'assets/images/unihut_live.png',
+    liveUrl: 'https://www.unihut.in/',
+    techStack: ['HTML5 / Semantic CSS3', 'JavaScript (ES6+)', 'Cormorant Garamond Typography', 'WhatsApp Business API'],
+    shortDesc: "An authoritative corporate legal and taxation services portal presenting private limited company setup, GST filing, and financial compliance under one roof.",
+    fullDesc: "Unihut Tax & Corpserv Pvt. Ltd. is a comprehensive business support hub providing end-to-end corporate secretarial, direct/indirect tax planning, and statutory compliance. The platform presents business founders and SMEs with accessible legal services, from initial business incorporation to annual auditing and trademark protection.",
+    keyFeatures: [
+      'Comprehensive Services Catalog: Dedicated breakdown for Private Limited, LLP, Partnership registration, GST returns, and annual ROC filings.',
+      'Editorial Corporate Design: Harmonious color palette combining warm parchment cream (#f3e3c8), regal deep teal (#073a4f), and amber gold (#da9d23).',
+      'Founder Advisory Funnel: Streamlined client intake allowing entrepreneurs to schedule instant consultations via WhatsApp or callback.',
+      'Interactive Service Explorer: Multi-tab navigation with detailed compliance checklists, document requirements, and expected turnaround timelines.',
+      'Mobile-Optimized Experience: Fully responsive layout with custom Cormorant Garamond serif headers and accessible navigation.'
+    ],
+    contribution: 'Front-end development, service catalog styling, brand aesthetic implementation, and WhatsApp business consultation integration.'
   }
 ];
 
@@ -644,6 +722,8 @@ function initCrtTerminal() {
     const visitBtn = document.getElementById('crtVisitBtn');
     if (visitBtn) {
       visitBtn.setAttribute('href', proj.liveUrl);
+      visitBtn.setAttribute('target', '_blank');
+      visitBtn.setAttribute('rel', 'noopener');
     }
   };
 
@@ -674,7 +754,7 @@ function initCrtTerminal() {
     });
   }
 
-  // Project Details Modal
+  // Project Details Modal from CRT Terminal
   if (detailsBtn) {
     detailsBtn.addEventListener('click', () => {
       playClickSound();
@@ -686,12 +766,57 @@ function initCrtTerminal() {
 function openProjectModal(project) {
   const modal = document.getElementById('projectModal');
   if (!modal) return;
+
   document.getElementById('modalProjectTitle').textContent = project.title;
   document.getElementById('modalProjectCategory').textContent = project.category;
   document.getElementById('modalProjectDesc').textContent = project.fullDesc;
   document.getElementById('modalProjectImg').src = project.image;
+  document.getElementById('modalProjectImg').alt = `${project.title} live interface preview`;
+
+  const featuresContainer = document.getElementById('modalProjectFeatures');
+  if (featuresContainer && project.keyFeatures) {
+    featuresContainer.innerHTML = project.keyFeatures.map(feat => {
+      const parts = feat.split(': ');
+      if (parts.length > 1) {
+        return `<div style="display:flex; gap:10px; align-items:flex-start;">
+          <span style="color:var(--primary); font-weight:bold; flex-shrink:0;">✓</span>
+          <div><strong style="color:var(--chalk);">${parts[0]}:</strong> ${parts.slice(1).join(': ')}</div>
+        </div>`;
+      }
+      return `<div style="display:flex; gap:10px; align-items:flex-start;">
+        <span style="color:var(--primary); font-weight:bold; flex-shrink:0;">✓</span>
+        <div>${feat}</div>
+      </div>`;
+    }).join('');
+  }
+
+  const techContainer = document.getElementById('modalProjectTech');
+  if (techContainer && project.techStack) {
+    techContainer.innerHTML = project.techStack.map(t => 
+      `<span class="tag-tech-badge">${t}</span>`
+    ).join('');
+  }
+
+  const contributionEl = document.getElementById('modalProjectContribution');
+  if (contributionEl && project.contribution) {
+    contributionEl.textContent = project.contribution;
+  }
+
+  const liveBtn = document.getElementById('modalProjectLiveBtn');
+  if (liveBtn) {
+    liveBtn.setAttribute('href', project.liveUrl);
+  }
+
   modal.classList.add('active');
 }
+
+// Global modal launcher from grid card buttons
+window.openProjectModalByIndex = function(idx) {
+  playClickSound();
+  if (projectsData[idx]) {
+    openProjectModal(projectsData[idx]);
+  }
+};
 
 /* ==========================================================================
    6. SKILLS ROLODEX PUNCHED CARD
