@@ -1760,12 +1760,26 @@ function initMechaAssistant() {
   const promptButtons = document.querySelectorAll('.assistant-prompt-btn');
   const closeBtn = document.getElementById('closeChatBtn');
   const gotItBtn = document.getElementById('chatGotItBtn');
+  const backdrop = document.getElementById('chatBackdropOverlay');
+
+  /** Toggle backdrop overlay (visible only on mobile via CSS) */
+  function syncBackdrop(show) {
+    if (!backdrop) return;
+    if (show) {
+      backdrop.classList.add('active');
+    } else {
+      backdrop.classList.remove('active');
+    }
+  }
 
   if (avatarBtn && modal) {
     avatarBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       playRetroBeep(680, 0.08);
+      const willOpen = !modal.classList.contains('active');
       modal.classList.toggle('active');
+      modal.style.display = willOpen ? 'block' : 'none';
+      syncBackdrop(willOpen);
     });
   }
 
@@ -1774,6 +1788,8 @@ function initMechaAssistant() {
       e.stopPropagation();
       playClickSound();
       modal.classList.remove('active');
+      modal.style.display = 'none';
+      syncBackdrop(false);
     });
   }
 
@@ -1782,6 +1798,18 @@ function initMechaAssistant() {
       e.stopPropagation();
       playClickSound();
       modal.classList.remove('active');
+      modal.style.display = 'none';
+      syncBackdrop(false);
+    });
+  }
+
+  // Close via backdrop overlay tap (mobile)
+  if (backdrop && modal) {
+    backdrop.addEventListener('click', () => {
+      playClickSound();
+      modal.classList.remove('active');
+      modal.style.display = 'none';
+      syncBackdrop(false);
     });
   }
 
@@ -1790,6 +1818,8 @@ function initMechaAssistant() {
     if (modal && modal.classList.contains('active')) {
       if (!modal.contains(e.target) && e.target !== avatarBtn && !avatarBtn?.contains(e.target)) {
         modal.classList.remove('active');
+        modal.style.display = 'none';
+        syncBackdrop(false);
       }
     }
   });
@@ -2147,6 +2177,10 @@ function initThorChat() {
     chatWindow.classList.remove('open');
     toggleBtn.setAttribute('aria-expanded', 'false');
   }
+
+  // Expose global controller helpers
+  window.openThorChat = openChat;
+  window.closeThorChat = closeChat;
 
   /* -------- EVENT LISTENERS -------- */
   toggleBtn.addEventListener('click', () => {
