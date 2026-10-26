@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Syed Azhar Hussain A — Software Engineer & Full-Stack Developer</title>
-  <meta name="description" content="Portfolio of Syed Azhar Hussain A — Final-year Computer Science and Engineering student and Software Engineer in Chennai, India building modern full-stack web applications, TypeScript architectures, and intelligent agents.">
-  <meta name="keywords" content="Syed Azhar Hussain, Software Engineer Chennai, Full Stack Developer, TypeScript, React, Next.js, Node.js, PostgreSQL, Supabase, Agentic AI, VeeduVadagaiku">
-  <meta name="author" content="Syed Azhar Hussain A">
+  <title>Syed Azhar Hussain — Full Stack Developer | React.js, Python, Node.js, Firebase</title>
+  <meta name="description" content="Portfolio of Syed Azhar Hussain — Full Stack Developer & B.E. Computer Science student at The Meenakshi College of Engineering, Chennai. Experienced in delivering scalable web apps with React.js, Node.js, Python, Django, REST APIs, and Firebase.">
+  <meta name="keywords" content="Syed Azhar Hussain, Full Stack Developer, React.js, Python, Django, Node.js, Firebase, Firestore, REST APIs, Chennai, The Meenakshi College of Engineering, Trios Technologies, Cognifyz IT Solutions">
+  <meta name="author" content="Syed Azhar Hussain">
   <meta name="theme-color" content="#071616">
 
   <!-- OpenGraph / Social Metadata -->
-  <meta property="og:title" content="Syed Azhar Hussain A — Software Engineer & Full-Stack Developer">
-  <meta property="og:description" content="Engineering software with craftsmanship & precision — Full-stack architectures, modern web apps, and intelligent agents.">
+  <meta property="og:title" content="Syed Azhar Hussain — Full Stack Developer | React.js, Python, Node.js, Firebase">
+  <meta property="og:description" content="Engineering scalable, responsive web applications with React.js, Node.js, Python, Django, REST APIs, and Firebase.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_IN">
 
@@ -28,24 +28,40 @@
   {
     "@context": "https://schema.org",
     "@type": "Person",
-    "name": "Syed Azhar Hussain A",
-    "jobTitle": "Software Engineer & Full-Stack Developer",
+    "name": "Syed Azhar Hussain",
+    "jobTitle": "Full Stack Developer",
+    "email": "azhar12082006@gmail.com",
+    "url": "https://github.com/azhar2006-collab",
+    "sameAs": [
+      "https://linkedin.com/in/syed-azhar-hussain-a-a721b535a",
+      "https://github.com/azhar2006-collab"
+    ],
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Chennai",
       "addressRegion": "Tamil Nadu",
       "addressCountry": "IN"
     },
+    "alumniOf": {
+      "@type": "EducationalOrganization",
+      "name": "The Meenakshi College of Engineering, Chennai"
+    },
     "knowsAbout": [
-      "TypeScript",
-      "React",
-      "Next.js",
+      "React.js",
+      "Python",
       "Node.js",
-      "PostgreSQL",
-      "Supabase",
+      "Django",
+      "Flask",
+      "Express.js",
       "REST APIs",
-      "Agentic AI",
-      "Full-Stack Development"
+      "Firebase Authentication",
+      "Firebase Firestore",
+      "MySQL",
+      "PostgreSQL",
+      "MongoDB",
+      "Vercel",
+      "Render",
+      "Agile Workflows"
     ]
   }
   </script>
@@ -307,19 +323,46 @@
   <!-- Top-Right Floating Thor Winged Helmet Avatar Widget -->
   <div class="avatar-widget">
     <button type="button" id="mechaAvatarBtn" class="avatar-btn" aria-label="Talk to Syed's AI Assistant">
-      <!-- Thor Winged Helmet & Mjolnir SVG -->
-      <svg width="44" height="44" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="filter: drop-shadow(0 4px 12px rgba(0, 229, 201, 0.4));">
-        <path d="M 22 45 C 10 30, 15 10, 35 15 C 30 25, 32 35, 35 45 Z" fill="#cbd5e1" stroke="#00e5c9" stroke-width="2"/>
-        <path d="M 78 45 C 90 30, 85 10, 65 15 C 70 25, 68 35, 65 45 Z" fill="#cbd5e1" stroke="#00e5c9" stroke-width="2"/>
-        <path d="M 30 45 C 30 25, 70 25, 70 45 L 70 65 L 30 65 Z" fill="#132424" stroke="#00e5c9" stroke-width="2.5"/>
-        <path d="M 50 26 L 50 65" stroke="#fde047" stroke-width="2.5"/>
-        <rect x="36" y="52" width="28" height="6" rx="2" fill="#00e5c9"/>
-        <!-- Mjolnir Mini Hammer on side -->
-        <rect x="64" y="66" width="18" height="12" rx="2" fill="#94a3b8" stroke="#00e5c9" stroke-width="1.5"/>
-        <line x1="73" y1="78" x2="73" y2="92" stroke="#ca8a04" stroke-width="2.5"/>
-      </svg>
+      <!-- Thor Winged Helmet & Mjolnir Pixel Art Avatar Emoji -->
+      <img src="assets/images/thor-avatar.png" alt="Thor Avatar Emoji" class="thor-avatar-img">
       <span class="avatar-badge">Talk to Syed</span>
     </button>
+  </div>
+
+  <!-- Chat AI Speech Note Dialog ("Syed says:") -->
+  <div class="chat-ai-dialog" id="assistantModal" role="dialog" aria-modal="true" aria-labelledby="chatAiTitle">
+    <div class="chat-dialog-header">
+      <div class="chat-header-title-wrap">
+        <img src="assets/images/thor-avatar.png" alt="Thor Avatar Emoji" class="chat-thor-emoji">
+        <h3 id="chatAiTitle" class="chat-dialog-title">Syed says:</h3>
+      </div>
+      <button type="button" class="chat-dialog-close" id="closeChatBtn" aria-label="Close Chat AI">✕</button>
+    </div>
+
+    <div class="chat-dialog-body">
+      Welcome to the interactive studio. You can explore the project cards, flip through verified credentials, or play retro snake and memories in the console!
+    </div>
+
+    <div class="chat-dialog-note">
+      <em>Note: Built with passion for full stack web development, Python, React &amp; Agentic AI.</em>
+    </div>
+
+    <!-- Quick FAQ Interactive Prompts -->
+    <div class="chat-prompt-chips">
+      <button type="button" class="chat-chip-btn assistant-prompt-btn" data-qa="stack">💻 Stack</button>
+      <button type="button" class="chat-chip-btn assistant-prompt-btn" data-qa="projects">🚀 Projects</button>
+      <button type="button" class="chat-chip-btn assistant-prompt-btn" data-qa="education">🎓 Education</button>
+      <button type="button" class="chat-chip-btn assistant-prompt-btn" data-qa="contact">✉️ Contact</button>
+    </div>
+
+    <!-- Dynamic Answer Box with Typewriter Effect -->
+    <div class="chat-answer-box" id="assistantAnswerBox">
+      Click any prompt above to chat with Syed's digital assistant...
+    </div>
+
+    <div class="chat-dialog-actions">
+      <button type="button" class="chat-gotit-btn" id="chatGotItBtn">Got it</button>
+    </div>
   </div>
 
   <!-- ========================================================================
@@ -335,20 +378,20 @@
         <div class="hero-grid">
           <!-- Left: Identity & Headlines -->
           <div class="hero-text-col">
-            <h1 class="hero-name">Syed Azhar Hussain A</h1>
-            <div class="hero-role-badge">Software Engineer · Full-Stack Developer</div>
+            <h1 class="hero-name">Syed Azhar Hussain</h1>
+            <div class="hero-role-badge">Full Stack Developer · Python · React.js · Firebase</div>
 
             <h2 class="hero-headline">
-              Engineering software with <em>craftsmanship</em> &amp; precision
+              Engineering scalable software with <em>craftsmanship</em> &amp; precision
             </h2>
 
             <p class="hero-bio">
-              Final-year Computer Science and Engineering student building production-quality web applications, TypeScript architectures, robust database models, and intelligent AI agents — turning complex problems into elegant, real-world solutions.
+              Motivated Full Stack Developer with hands-on experience delivering scalable, responsive web applications using React.js, Node.js, Python, Django, REST APIs, and Firebase. Currently interning at Trios Technologies &amp; completing B.E. in Computer Science at The Meenakshi College of Engineering, Chennai.
             </p>
 
             <div class="hero-location">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-              <span>Chennai, India · GMT +5:30</span>
+              <span>Chennai, India · azhar12082006@gmail.com</span>
             </div>
 
             <div class="hero-cta-group">
@@ -375,24 +418,26 @@
       <!-- Horizontal Tech Strip Marquee -->
       <div class="tech-strip-container" aria-label="Technologies Marquee">
         <div class="tech-strip-track">
-          <span class="tech-pill"><span class="tech-pill-dot"></span> TypeScript</span>
-          <span class="tech-pill"><span class="tech-pill-dot"></span> React &amp; Next.js</span>
+          <span class="tech-pill"><span class="tech-pill-dot"></span> React.js</span>
+          <span class="tech-pill"><span class="tech-pill-dot"></span> Python</span>
           <span class="tech-pill"><span class="tech-pill-dot"></span> Node.js &amp; Express</span>
+          <span class="tech-pill"><span class="tech-pill-dot"></span> Django &amp; Flask</span>
+          <span class="tech-pill"><span class="tech-pill-dot"></span> Firebase &amp; Firestore</span>
+          <span class="tech-pill"><span class="tech-pill-dot"></span> RESTful APIs</span>
+          <span class="tech-pill"><span class="tech-pill-dot"></span> MongoDB &amp; MySQL</span>
           <span class="tech-pill"><span class="tech-pill-dot"></span> PostgreSQL</span>
-          <span class="tech-pill"><span class="tech-pill-dot"></span> Supabase</span>
-          <span class="tech-pill"><span class="tech-pill-dot"></span> REST APIs</span>
-          <span class="tech-pill"><span class="tech-pill-dot"></span> Agentic AI &amp; LLMs</span>
-          <span class="tech-pill"><span class="tech-pill-dot"></span> Tailwind CSS</span>
           <span class="tech-pill"><span class="tech-pill-dot"></span> Git &amp; GitHub</span>
-          <span class="tech-pill"><span class="tech-pill-dot"></span> Cloud &amp; AWS</span>
+          <span class="tech-pill"><span class="tech-pill-dot"></span> Vercel &amp; Render</span>
+          <span class="tech-pill"><span class="tech-pill-dot"></span> Docker (Basics)</span>
+          <span class="tech-pill"><span class="tech-pill-dot"></span> PowerBI Analytics</span>
           <!-- Duplicate for seamless scroll loop -->
-          <span class="tech-pill"><span class="tech-pill-dot"></span> TypeScript</span>
-          <span class="tech-pill"><span class="tech-pill-dot"></span> React &amp; Next.js</span>
+          <span class="tech-pill"><span class="tech-pill-dot"></span> React.js</span>
+          <span class="tech-pill"><span class="tech-pill-dot"></span> Python</span>
           <span class="tech-pill"><span class="tech-pill-dot"></span> Node.js &amp; Express</span>
-          <span class="tech-pill"><span class="tech-pill-dot"></span> PostgreSQL</span>
-          <span class="tech-pill"><span class="tech-pill-dot"></span> Supabase</span>
-          <span class="tech-pill"><span class="tech-pill-dot"></span> REST APIs</span>
-          <span class="tech-pill"><span class="tech-pill-dot"></span> Agentic AI &amp; LLMs</span>
+          <span class="tech-pill"><span class="tech-pill-dot"></span> Django &amp; Flask</span>
+          <span class="tech-pill"><span class="tech-pill-dot"></span> Firebase &amp; Firestore</span>
+          <span class="tech-pill"><span class="tech-pill-dot"></span> RESTful APIs</span>
+          <span class="tech-pill"><span class="tech-pill-dot"></span> MongoDB &amp; MySQL</span>
         </div>
       </div>
     </section>
@@ -440,14 +485,14 @@
           <div class="story-block">
             <h4 class="story-heading">Academic &amp; Engineering Foundation</h4>
             <p class="story-para">
-              As a final-year Computer Science and Engineering student in Chennai, I combine strong theoretical foundations in algorithms, data structures, and relational database systems with hands-on full-stack product development. I take immense joy in writing clean, self-documenting code and designing intuitive web architectures.
+              As a B.E. Computer Science and Engineering student (2023 – 2027) at The Meenakshi College of Engineering in Chennai, I combine strong theoretical foundations in algorithms, database design, and cloud architecture with hands-on full-stack product development. I take immense pride in writing clean, efficient code and delivering measurable results in collaborative team environments.
             </p>
           </div>
 
           <div class="story-block">
-            <h4 class="story-heading">Intelligent Systems &amp; Real-World Impact</h4>
+            <h4 class="story-heading">Production Experience &amp; Scalable Architectures</h4>
             <p class="story-para">
-              My engineering focuses on high-impact domains: scalable full-stack applications with PostgreSQL and Supabase, robust RESTful APIs, and intelligent AI agents that automate complex workflows. Whether building property management portals or e-commerce payment funnels, I prioritize speed, security, and delightful user experience.
+              My hands-on experience includes full-stack internships at Trios Technologies (contributing to production Python, Django/Flask, and React.js web apps serving real users) and Cognifyz IT Solutions (building 10+ reusable React UI components and REST APIs). I specialize in designing high-throughput REST APIs, Firebase serverless architectures, and responsive user experiences.
             </p>
           </div>
         </div>
@@ -472,13 +517,13 @@
           <!-- Front Face -->
           <div class="tag-card-face tag-front">
             <div class="tag-grommet"></div>
-            <span class="tag-badge-status" id="tagStatusBadge">ACTIVE PROJECT</span>
+            <span class="tag-badge-status" id="tagStatusBadge">CURRENT INTERNSHIP</span>
 
-            <h3 class="tag-company-pixel" id="tagCompanyPixel">VEEDUVADAGAIKU</h3>
-            <p class="tag-role-subhead" id="tagRoleSubhead">LEAD FULL-STACK ENGINEER · 2024 — PRESENT</p>
+            <h3 class="tag-company-pixel" id="tagCompanyPixel">TRIOS TECHNOLOGIES</h3>
+            <p class="tag-role-subhead" id="tagRoleSubhead">FULL STACK DEVELOPER INTERN (PYTHON) · 2026 — PRESENT</p>
 
             <p class="tag-body-text" id="tagBodyText">
-              Architected and built a comprehensive property rental and listing web application with real-time property management, landlord dashboards, and automated subscription validity.
+              Contributing to 2+ production-grade full-stack web applications using Python, Django/Flask, and React.js serving real end users. Designing and integrating 5+ RESTful APIs and optimizing database queries.
             </p>
 
             <div class="tag-flip-hint">TAP TO FLIP ↻</div>
@@ -510,28 +555,31 @@
                 <rect x="131" y="0" width="4" height="38"/>
                 <rect x="138" y="0" width="2" height="38"/>
               </svg>
-              <span class="barcode-num" id="tagBarcodeNum">VV2024PRSNT</span>
+              <span class="barcode-num" id="tagBarcodeNum">TRIOS2026INT</span>
             </div>
           </div>
 
           <!-- Back Face -->
           <div class="tag-card-face tag-back">
             <div class="tag-grommet"></div>
-            <h4 class="tag-back-title" id="tagBackTitle">VeeduVadagaiku — Impact</h4>
+            <h4 class="tag-back-title" id="tagBackTitle">Trios Technologies — Impact</h4>
 
             <ul class="tag-contributions-list" id="tagContributionsList">
-              <li>Designed relational schema on PostgreSQL with Supabase Auth, Row Level Security (RLS), and automated database triggers.</li>
-              <li>Developed property management workflow including multi-image uploads, location geo-tagging, and listing verification.</li>
-              <li>Implemented tier-based subscription packages with automatic expiration jobs and tenant inquiry notification workflows.</li>
-              <li>Optimized query performance and frontend hydration speeds to deliver sub-200ms page transitions.</li>
+              <li>Contributing to 2+ production-grade full-stack web applications using Python, Django/Flask, and React.js.</li>
+              <li>Designed and integrated 5+ RESTful APIs connecting React.js front-end with back-end databases.</li>
+              <li>Improved data retrieval efficiency by optimizing SQL and MongoDB queries, reducing response times.</li>
+              <li>Managed CI/CD deployment pipelines using Git and cloud hosting platforms including Vercel and Render.</li>
             </ul>
 
             <div class="tag-tech-pills" id="tagTechPills">
-              <span class="tag-tech-badge">Next.js</span>
-              <span class="tag-tech-badge">TypeScript</span>
-              <span class="tag-tech-badge">PostgreSQL</span>
-              <span class="tag-tech-badge">Supabase</span>
-              <span class="tag-tech-badge">Tailwind CSS</span>
+              <span class="tag-tech-badge">Python</span>
+              <span class="tag-tech-badge">Django</span>
+              <span class="tag-tech-badge">Flask</span>
+              <span class="tag-tech-badge">React.js</span>
+              <span class="tag-tech-badge">REST APIs</span>
+              <span class="tag-tech-badge">MongoDB</span>
+              <span class="tag-tech-badge">Render</span>
+              <span class="tag-tech-badge">Vercel</span>
             </div>
 
             <div class="tag-flip-hint" style="margin-top: 10px;">TAP TO RETURN ↺</div>
@@ -540,9 +588,9 @@
 
         <!-- Experience Nav Tabs -->
         <div class="exp-tabs-nav" role="tablist">
-          <button type="button" class="exp-tab-btn active" data-exp="veedu" role="tab">VeeduVadagaiku</button>
-          <button type="button" class="exp-tab-btn" data-exp="aadhifs" role="tab">Aadhif's Oils</button>
-          <button type="button" class="exp-tab-btn" data-exp="fullstack" role="tab">Full-Stack &amp; AI Builder</button>
+          <button type="button" class="exp-tab-btn active" data-exp="trios" role="tab">Trios Technologies</button>
+          <button type="button" class="exp-tab-btn" data-exp="cognifyz" role="tab">Cognifyz IT Solutions</button>
+          <button type="button" class="exp-tab-btn" data-exp="client" role="tab">Client Platforms (Veedu Vadagaikku)</button>
         </div>
       </div>
     </section>
@@ -561,7 +609,7 @@
         <div class="crt-monitor-chassis">
           <!-- Screen Bezel -->
           <div class="crt-screen-bezel">
-            <div class="crt-screen-content">
+            <div class="crt-screen-content" id="crtScreenContent">
               <div>
                 <h3 class="crt-project-title" id="crtProjectTitle">VeeduVadagaiku</h3>
                 <div class="crt-project-category" id="crtProjectCategory">PROPERTY RENTAL &amp; LISTING PLATFORM</div>
@@ -571,17 +619,23 @@
                   <p>&gt; Landlord dashboard &amp; property status management</p>
                   <p>&gt; Subscription packages &amp; listing validity controls</p>
                   <p>&gt; Powered by Next.js, PostgreSQL &amp; Supabase</p>
+                  <p class="crt-typing-cursor">&gt; _</p>
                 </div>
               </div>
 
               <div class="crt-screen-footer">
-                <div style="display: flex; gap: 10px; align-items: center;">
-                  <a href="#" id="crtVisitBtn" class="crt-btn-visit" target="_blank" rel="noopener">VISIT DEMO ↗</a>
-                  <button type="button" id="crtDetailsBtn" class="crt-btn-modal">SPECS &amp; ARCH 🔍</button>
-                </div>
-                <span class="crt-counter" id="crtCounter">01 / 03</span>
+                <button type="button" id="crtDetailsBtn" class="crt-btn-modal">SPECS &amp; ARCH 🔍</button>
+                <span class="crt-counter" id="crtCounter">01 / 06</span>
               </div>
             </div>
+
+            <!-- In-screen Next Arrow Button (matching reference) -->
+            <button type="button" id="crtScreenNextBtn" class="crt-next-btn" aria-label="Next project">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg>
+            </button>
           </div>
 
           <!-- Chassis Details -->
@@ -604,125 +658,58 @@
           </div>
         </div>
 
-        <!-- Terminal Nav Controls -->
-        <div class="crt-nav-controls">
-          <button type="button" id="crtPrevBtn" class="crt-arrow-btn">◀ PREV</button>
-          <button type="button" id="toggleGridBtn" class="btn-toggle-grid">▾ See All Projects (Grid)</button>
-          <button type="button" id="crtNextBtn" class="crt-arrow-btn">NEXT ▶</button>
+        <!-- Toggle Pill Button ("SEE ALL PROJECTS" / "HIDE ALL PROJECTS" - Screenshot 1) -->
+        <div class="work-toggle-container">
+          <button type="button" id="toggleGridBtn" class="work-toggle-pill" aria-expanded="false">
+            <span id="toggleGridText">SEE ALL PROJECTS</span>
+            <svg viewBox="0 0 40 26" id="toggleGridArrow" class="work-toggle-arrow" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 8c5 5 9 9 16 12 6-3 11-7 16-12"></path>
+              <path d="M5.5 6.6C10 11.4 14 15 20 18" opacity="0.5"></path>
+            </svg>
+          </button>
         </div>
 
-        <!-- Toggleable 5-Card Grid View -->
-        <div class="projects-grid-view" id="projectsGridView">
-          <!-- Project 1: Veedu Vadagaikku Chennai -->
-          <div class="project-card-grid">
-            <div class="project-card-img-wrap">
-              <img src="assets/images/veedu_vadagaikku_live.png" alt="Veedu Vadagaikku Chennai Live Platform" class="project-card-img" loading="lazy">
-              <span class="project-card-badge">REAL ESTATE &amp; RENTALS</span>
-            </div>
-            <div class="project-card-body">
-              <h3 class="project-grid-title">Veedu Vadagaikku Chennai</h3>
-              <p class="project-grid-desc">Chennai's dedicated rental marketplace connecting tenants directly with property owners with zero brokerage, Tamil/English bilingual UI, and verified multi-category listings (houses, PG, commercial, halls).</p>
-              <div class="tag-tech-pills">
-                <span class="tag-tech-badge">React (Vite)</span>
-                <span class="tag-tech-badge">TanStack Query</span>
-                <span class="tag-tech-badge">Firebase</span>
-                <span class="tag-tech-badge">Tailwind CSS</span>
-              </div>
-              <div class="project-card-actions">
-                <a href="https://www.veeduvadagaikkuchennai.com/" target="_blank" rel="noopener" class="btn-card-live">View Live Project ↗</a>
-                <button type="button" class="btn-card-details" onclick="openProjectModalByIndex(0)">Specs &amp; Arch 🔍</button>
-              </div>
-            </div>
-          </div>
+        <!-- 6-Card Paper Project Grid (Screenshot 1) -->
+        <div class="work-grid-open" id="projectsGridView">
+          <!-- Card 1: Veedu Vadagaikku Chennai -->
+          <article class="work-card-paper" style="transform: rotate(-1deg);" onclick="openProjectModalByIndex(0)" role="button" tabindex="0" title="Click to view specifications and architecture">
+            <h3 class="work-card-paper-title">Veedu Vadagaikku</h3>
+            <p class="work-card-paper-desc">Full property rental &amp; tenant direct-connect platform with payment workflow and admin dashboard.</p>
+          </article>
 
-          <!-- Project 2: JP Holidays -->
-          <div class="project-card-grid">
-            <div class="project-card-img-wrap">
-              <img src="assets/images/jpholidays_live.png" alt="JP Holidays Travel & Tour Portal" class="project-card-img" loading="lazy">
-              <span class="project-card-badge">TRAVEL &amp; HOLIDAYS</span>
-            </div>
-            <div class="project-card-body">
-              <h3 class="project-grid-title">JP Holidays</h3>
-              <p class="project-grid-desc">South India's premier travel agency website presenting 3,000+ domestic and international destinations, custom honeymoon specials, WhatsApp enquiry routing, and Google Search Console Schema.org JSON-LD.</p>
-              <div class="tag-tech-pills">
-                <span class="tag-tech-badge">JavaScript (ES6+)</span>
-                <span class="tag-tech-badge">HTML5 / CSS3</span>
-                <span class="tag-tech-badge">Schema.org SEO</span>
-                <span class="tag-tech-badge">WhatsApp API</span>
-              </div>
-              <div class="project-card-actions">
-                <a href="https://jpholidays.co.in/" target="_blank" rel="noopener" class="btn-card-live">View Live Project ↗</a>
-                <button type="button" class="btn-card-details" onclick="openProjectModalByIndex(1)">Specs &amp; Arch 🔍</button>
-              </div>
-            </div>
-          </div>
+          <!-- Card 2: JP Holidays -->
+          <article class="work-card-paper" style="transform: rotate(0deg);" onclick="openProjectModalByIndex(1)" role="button" tabindex="0" title="Click to view specifications and architecture">
+            <h3 class="work-card-paper-title">JP Holidays</h3>
+            <p class="work-card-paper-desc">Global travel portal presenting 3,000+ domestic and international destinations with WhatsApp enquiry routing.</p>
+          </article>
 
-          <!-- Project 3: 77 Fitness Studio -->
-          <div class="project-card-grid">
-            <div class="project-card-img-wrap">
-              <img src="assets/images/77fitness_live.png" alt="77 Fitness Studio Experience" class="project-card-img" loading="lazy">
-              <span class="project-card-badge">PREMIUM FITNESS</span>
-            </div>
-            <div class="project-card-body">
-              <h3 class="project-grid-title">77 Fitness Studio</h3>
-              <p class="project-grid-desc">A calm, luxury-first fitness and wellness studio brand across Kodambakkam, Nungambakkam &amp; Vadapalani featuring editorial dark aesthetics, structured training stages, Google Maps, and fast WhatsApp onboarding.</p>
-              <div class="tag-tech-pills">
-                <span class="tag-tech-badge">Vanilla CSS3</span>
-                <span class="tag-tech-badge">Modern JS</span>
-                <span class="tag-tech-badge">Dark Mode System</span>
-                <span class="tag-tech-badge">Google Maps API</span>
-              </div>
-              <div class="project-card-actions">
-                <a href="https://77fitnessstudio.in/" target="_blank" rel="noopener" class="btn-card-live">View Live Project ↗</a>
-                <button type="button" class="btn-card-details" onclick="openProjectModalByIndex(2)">Specs &amp; Arch 🔍</button>
-              </div>
-            </div>
-          </div>
+          <!-- Card 3: 77 Fitness Studio -->
+          <article class="work-card-paper" style="transform: rotate(1deg);" onclick="openProjectModalByIndex(2)" role="button" tabindex="0" title="Click to view specifications and architecture">
+            <h3 class="work-card-paper-title">77 Fitness Studio</h3>
+            <p class="work-card-paper-desc">Editorial dark-mode fitness studio web platform across 3 prime Chennai locations with map routing.</p>
+          </article>
 
-          <!-- Project 4: Aadhif's Wood Pressed Oils -->
-          <div class="project-card-grid">
-            <div class="project-card-img-wrap">
-              <img src="assets/images/aadhifs_live.png" alt="Aadhif's Homemade Organic Storefront" class="project-card-img" loading="lazy">
-              <span class="project-card-badge">ORGANIC E-COMMERCE</span>
-            </div>
-            <div class="project-card-body">
-              <h3 class="project-grid-title">Aadhif's Wood Pressed Oils</h3>
-              <p class="project-grid-desc">Traditional cold-pressed chekku oils and pure desi ghee from Coimbatore featuring multi-size pricing (250ml, 500ml, 1L), direct WhatsApp checkout routing, free shipping thresholds, and admin inventory dashboard.</p>
-              <div class="tag-tech-pills">
-                <span class="tag-tech-badge">JavaScript</span>
-                <span class="tag-tech-badge">Node.js &amp; Express</span>
-                <span class="tag-tech-badge">PostgreSQL</span>
-                <span class="tag-tech-badge">FSSAI / MSME</span>
-              </div>
-              <div class="project-card-actions">
-                <a href="https://aadhifshomemade.in/" target="_blank" rel="noopener" class="btn-card-live">View Live Project ↗</a>
-                <button type="button" class="btn-card-details" onclick="openProjectModalByIndex(3)">Specs &amp; Arch 🔍</button>
-              </div>
-            </div>
-          </div>
+          <!-- Card 4: Aadhif's Wood Pressed Oils -->
+          <article class="work-card-paper" style="transform: rotate(-1deg);" onclick="openProjectModalByIndex(3)" role="button" tabindex="0" title="Click to view specifications and architecture">
+            <h3 class="work-card-paper-title">Aadhif's Oils</h3>
+            <p class="work-card-paper-desc">Artisanal cold-pressed chekku oils e-commerce storefront with dynamic bottle sizing and WhatsApp checkout.</p>
+          </article>
 
-          <!-- Project 5: UniHut Tax & Corpserv -->
-          <div class="project-card-grid">
-            <div class="project-card-img-wrap">
-              <img src="assets/images/unihut_live.png" alt="UniHut Tax & Corpserv Portal" class="project-card-img" loading="lazy">
-              <span class="project-card-badge">LEGAL &amp; CORPORATE TAX</span>
-            </div>
-            <div class="project-card-body">
-              <h3 class="project-grid-title">UniHut Tax &amp; Corpserv</h3>
-              <p class="project-grid-desc">Comprehensive corporate legal, company registration, and direct/indirect taxation compliance portal ("All under One Hut") featuring Cormorant Garamond serif branding, interactive service checklists, and advisory consultations.</p>
-              <div class="tag-tech-pills">
-                <span class="tag-tech-badge">HTML5 / Semantic CSS3</span>
-                <span class="tag-tech-badge">JavaScript (ES6+)</span>
-                <span class="tag-tech-badge">Luxury Typography</span>
-                <span class="tag-tech-badge">Advisory Funnel</span>
-              </div>
-              <div class="project-card-actions">
-                <a href="https://www.unihut.in/" target="_blank" rel="noopener" class="btn-card-live">View Live Project ↗</a>
-                <button type="button" class="btn-card-details" onclick="openProjectModalByIndex(4)">Specs &amp; Arch 🔍</button>
-              </div>
-            </div>
-          </div>
+          <!-- Card 5: UniHut Tax & Corpserv -->
+          <article class="work-card-paper" style="transform: rotate(0.5deg);" onclick="openProjectModalByIndex(4)" role="button" tabindex="0" title="Click to view specifications and architecture">
+            <h3 class="work-card-paper-title">UniHut Tax</h3>
+            <p class="work-card-paper-desc">Corporate legal, company registration &amp; taxation compliance portal with interactive advisory checklists.</p>
+          </article>
+
+          <!-- Card 6: Ktech Solutions -->
+          <article class="work-card-paper" style="transform: rotate(1deg);" onclick="openProjectModalByIndex(5)" role="button" tabindex="0" title="Click to view specifications and architecture">
+            <h3 class="work-card-paper-title">Ktech Solutions</h3>
+            <p class="work-card-paper-desc">Enterprise software systems &amp; automated workflow pipelines with RESTful architecture and telemetry.</p>
+          </article>
         </div>
+
+        <!-- Handwritten Philosophy Quote (Screenshot 1) -->
+        <p class="work-quote-note">Ship it, measure it, then make it smaller.</p>
       </div>
     </section>
 
@@ -752,21 +739,21 @@
         <!-- Main Ticket Column -->
         <div class="pass-main-col">
           <div>
-            <div class="pass-admit-tag">ADMIT 1 · FINAL-YEAR STUDENT</div>
-            <h3 class="pass-degree-title">B.E. Computer Science and Engineering</h3>
-            <p class="pass-institution">Engineering Institution — Chennai, Tamil Nadu</p>
+            <div class="pass-admit-tag">ADMIT · COMPUTER SCIENCE &amp; ENGINEERING</div>
+            <h3 class="pass-degree-title">Bachelor of Engineering – Computer Science and Engineering</h3>
+            <p class="pass-institution">The Meenakshi College of Engineering — Chennai, India</p>
             <p style="font-family: var(--font-mono); font-size: 0.88rem; color: var(--chalk-dim); line-height: 1.6;">
-              Core coursework: Distributed Systems, Relational Database Management, Data Structures &amp; Algorithms, Software Architecture, and Cloud Engineering.
+              Core coursework: Database Management Systems (DBMS), Relational Databases, Data Structures &amp; Algorithms, Object-Oriented Programming, Operating Systems, Computer Networks, and Cloud Architecture.
             </p>
           </div>
 
           <div>
             <div class="pass-flight-meta">
-              FLIGHT: CSE-2026 · GATE: 05 · ROW: M0 · SEAT: U1 · CLASS: FIRST CLASS
+              FLIGHT: MCE-CSE · BATCH: 2023 — 2027 · LOCATION: CHENNAI · STATUS: FIRST CLASS
             </div>
             <div class="pass-big-acronym">
               <span>B.E. CSE</span>
-              <span class="pass-year">2022 — 2026</span>
+              <span class="pass-year">2023 — 2027</span>
             </div>
           </div>
         </div>
@@ -778,7 +765,7 @@
 
           <div class="stub-meta-vertical">
             PASSPORT STUB<br>
-            AZH2026GRAD
+            MCE2027CSE
           </div>
 
           <div class="stub-qr-box" title="Verification QR Code">
@@ -813,6 +800,107 @@
           </div>
 
           <div style="font-family: var(--font-pixel); font-size: 8px; color: #556b69;">VALIDATED</div>
+        </div>
+      </div>
+
+      <!-- Verified Credentials Index Console (Screenshot 2) -->
+      <div class="cert-section-wrapper" id="certifications">
+        <!-- Category Filter Tabs (Screenshot 2: ALL, SAP & ENTERPRISE, CLOUD, AI, DATA) -->
+        <div class="cert-tabs-bar" role="tablist">
+          <button type="button" class="cert-tab-btn cert-tab-all active" data-cert-cat="all">ALL</button>
+          <button type="button" class="cert-tab-btn cert-tab-sap" data-cert-cat="sap">SAP &amp; ENTERPRISE</button>
+          <button type="button" class="cert-tab-btn cert-tab-cloud" data-cert-cat="cloud">CLOUD &amp; AWS/AZURE</button>
+          <button type="button" class="cert-tab-btn cert-tab-ai" data-cert-cat="ai">AI &amp; ANTHROPIC</button>
+          <button type="button" class="cert-tab-btn cert-tab-data" data-cert-cat="data">DATA &amp; ANALYTICS</button>
+        </div>
+
+        <!-- Console Chassis -->
+        <div class="cert-console-frame">
+          <div class="cert-inner-recess">
+            <!-- Stack of Cards -->
+            <div class="cert-stack-stage">
+              <div class="cert-stack-back1"></div>
+              <div class="cert-stack-back2"></div>
+
+              <!-- Top Interactive Punchcard Ticket -->
+              <div class="cert-punchcard-ticket" id="certPunchcardTicket" title="Click to cycle next certification">
+                <div class="cert-punch-header">
+                  <span>1 &nbsp; 0 &nbsp; 000 &nbsp; 0 &nbsp; .01 &nbsp; 0 &nbsp; 000 &nbsp; 001</span>
+                  <span id="certCardNumber" style="font-family: var(--font-pixel); font-size: 11px; font-weight: bold; color: #201c16;">001</span>
+                </div>
+
+                <h3 class="cert-ticket-title" id="certTicketTitle">AWS SOLUTIONS ARCHITECT</h3>
+
+                <div class="cert-ticket-body">
+                  <div class="cert-ticket-fields">
+                    <div class="cert-field-row">
+                      <span class="cert-field-label">ISSUER</span>
+                      <span class="cert-field-val" id="certIssuer">: Amazon Web Services</span>
+                    </div>
+                    <div class="cert-field-row">
+                      <span class="cert-field-label">DOMAIN</span>
+                      <span class="cert-field-val" id="certDomain">: Cloud Architecture</span>
+                    </div>
+                    <div class="cert-field-row">
+                      <span class="cert-field-label">LEVEL</span>
+                      <span class="cert-field-val" id="certLevel">: Professional</span>
+                    </div>
+                    <div class="cert-field-row">
+                      <span class="cert-field-label">CREDENTIAL ID</span>
+                      <span class="cert-field-val" id="certCredId">: AWS-SAA-PRO-2023</span>
+                    </div>
+                    <div class="cert-field-row">
+                      <span class="cert-field-label">ISSUED ON</span>
+                      <span class="cert-field-val" id="certIssuedOn">: 12 NOV 2023</span>
+                    </div>
+                  </div>
+
+                  <div class="cert-stamp-col">
+                    <div class="cert-domain-icon" id="certDomainIcon">
+                      <!-- AWS Cloud Logo matching uploaded screenshot -->
+                      <svg viewBox="0 0 90 50" class="w-18 h-12" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 30 C22 23 27 18 35 18 C38 13 46 12 52 16 C58 14 66 18 67 24 C72 26 73 33 68 37 C64 40 28 40 22 30 Z" stroke-width="2" />
+                        <text x="35" y="28" font-family="monospace" font-size="11" font-weight="bold" fill="currentColor" stroke="none">AWS</text>
+                        <path d="M33 33 Q45 38 57 33" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M55 31 L58 33 L55 35" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </div>
+                    <div class="cert-stamp-verified">VERIFIED</div>
+                  </div>
+                </div>
+
+                <div class="cert-punch-bottom">
+                  <span>1 2 3 4 5 6 7 8 9 10 11 12 14 15 16 22 25 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45</span>
+                </div>
+              </div>
+
+              <!-- Taped Sticky Note on top right (Screenshot 2) -->
+              <div class="cert-sticky-note">
+                <span class="cert-sticky-tape"></span>
+                <p class="cert-sticky-text">Flip through cards to explore each certification. ⤵</p>
+              </div>
+            </div>
+
+            <!-- Console Footer Controls (Screenshot 2) -->
+            <div class="cert-console-footer">
+              <div class="cert-counter-display">
+                CARD <span class="cert-counter-val" id="certActiveIndex">1</span> OF <span class="cert-counter-val" id="certTotalCount">12</span>
+              </div>
+
+              <!-- Gold / Brass Metallic Plaque -->
+              <div class="cert-brass-plaque">
+                <span class="cert-plaque-rivet left"></span>
+                <span class="cert-plaque-rivet right"></span>
+                <h4 class="cert-plaque-title">CERTIFICATIONS INDEX</h4>
+                <p class="cert-plaque-sub">Verified. Trusted. Achieved.</p>
+              </div>
+
+              <div class="cert-nav-actions">
+                <button type="button" id="certPrevBtn" class="cert-nav-btn" aria-label="Previous certification">← PREV</button>
+                <button type="button" id="certNextBtn" class="cert-nav-btn" aria-label="Next certification">NEXT →</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -863,88 +951,238 @@
     <!-- --------------------------------------------------------------------
          RETRO HANDHELD GAME CONSOLE: Play Memories & Arcade
          -------------------------------------------------------------------- -->
+    <!-- --------------------------------------------------------------------
+         RETRO HANDHELD GAME CONSOLE: Play Memories (Screenshot 3)
+         -------------------------------------------------------------------- -->
     <section class="retro-console-section" id="arcade" aria-label="Retro Gaming & Memories Section">
       <div class="section-header-block" style="text-align: center;">
-        <h2 class="section-title">Retro Game Console</h2>
-        <p class="section-subtitle">Insert Cartridge · Play Memories &amp; Arcade</p>
+        <div class="arcade-header-plate">
+          <div class="arcade-torn-tag">
+            <h2 class="arcade-title-pixel">RETRO HANDHELD GAME CONSOLE</h2>
+            <p class="arcade-subtitle-cursive">Insert Cartridge. Play Memories.</p>
+          </div>
+        </div>
       </div>
 
-      <div class="gameboy-showcase-grid">
-        <!-- Game Boy Chassis -->
-        <div class="gameboy-body">
-          <div class="screw screw-tl">+</div>
-          <div class="screw screw-tr">+</div>
-          <div class="screw screw-bl">+</div>
-          <div class="screw screw-br">+</div>
+      <div class="retro-showcase-split">
+        <!-- Game Boy Handheld Console (Screenshot 3 - Left) -->
+        <div style="display: flex; flex-direction: column; align-items: center;">
+          <div class="gameboy-console-chassis">
+            <!-- 4 Corner Gold Screws -->
+            <span class="console-screw screw-top-left">+</span>
+            <span class="console-screw screw-top-right">+</span>
+            <span class="console-screw screw-bot-left">+</span>
+            <span class="console-screw screw-bot-right">+</span>
 
-          <!-- Screen Bezel -->
-          <div class="gameboy-screen-bezel">
-            <div class="gameboy-screen-header">
-              <div class="gameboy-power-led">
-                <span class="red-dot-ping"></span>
-                <span>POWER</span>
+            <!-- Bezel & Screen -->
+            <div class="console-bezel-recess">
+              <div class="console-power-header">
+                <div class="console-power-tag">
+                  <span class="power-led-ping">
+                    <span class="power-ping-ring"></span>
+                    <span class="power-ping-dot"></span>
+                  </span>
+                  <span class="power-text">POWER</span>
+                </div>
+                <span class="console-brand-text">TECHWAZZY LIFE WORLD</span>
               </div>
-              <span class="gameboy-brand-title">AZHAR DEV WORLD</span>
+
+              <!-- Screen Display: Playable Snake Canvas (Default) & Photo Display -->
+              <div class="console-screen-display" id="consoleScreenDisplay" title="Click screen to interact">
+                <!-- Playable Snake Arcade Canvas (Active First) -->
+                <canvas id="retroGameCanvas" class="console-screen-canvas" width="280" height="235"></canvas>
+                <!-- Real Photo Screen Display (for Memory ROMs) -->
+                <img id="consoleMemoryImg" src="assets/images/memories-train-commute.jpg" alt="Memory photograph" class="console-screen-img" style="display: none;">
+                <div class="console-scanlines-overlay"></div>
+                <div class="console-screen-caption" id="consoleScreenCaption">
+                  <div class="console-caption-inner">
+                    <div class="caption-title" id="consoleCaptionTitle">RETRO SNAKE ARCADE</div>
+                    <div class="caption-tagline" id="consoleCaptionTagline">D-PAD / ARROWS TO SLITHER · [A] RESTART</div>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <!-- LCD Screen Canvas -->
-            <div class="gameboy-lcd-screen">
-              <canvas id="gameboyCanvas" class="lcd-canvas"></canvas>
+            <!-- Controls: D-Pad & Glossy Red A/B Buttons -->
+            <div class="console-controls-area">
+              <!-- Directional Pad -->
+              <div class="dpad-cross" aria-label="Directional Pad">
+                <div class="dpad-bar-h"></div>
+                <div class="dpad-bar-v"></div>
+                <span class="dpad-arrow-icon left">◀</span>
+                <span class="dpad-arrow-icon right">▶</span>
+                <span class="dpad-arrow-icon top">▲</span>
+                <span class="dpad-arrow-icon bottom">▼</span>
+                <button type="button" id="dpadLeft" class="dpad-interactive-btn left" aria-label="Previous memory"></button>
+                <button type="button" id="dpadRight" class="dpad-interactive-btn right" aria-label="Next memory"></button>
+                <button type="button" id="dpadUp" class="dpad-interactive-btn top" aria-label="Next memory"></button>
+                <button type="button" id="dpadDown" class="dpad-interactive-btn bottom" aria-label="Previous memory"></button>
+                <div class="dpad-core"></div>
+              </div>
 
-              <div class="lcd-overlay-banner">
-                <div class="lcd-banner-title" id="lcdBannerTitle">MEMORY: LATE NIGHT CODE</div>
-                <div class="lcd-banner-sub" id="lcdBannerSub">Chennai · 01:47 AM · South Indian Filter Coffee</div>
+              <!-- Glossy Red A/B Action Buttons (Screenshot 3) -->
+              <div class="ab-cluster">
+                <div class="ab-btn-col">
+                  <button type="button" id="gameboyBtnB" class="action-glossy-btn" aria-label="Previous memory (Button B)">
+                    <span class="btn-specular-arc"></span>
+                    <span>B</span>
+                  </button>
+                  <span class="btn-sub-label">B</span>
+                </div>
+                <div class="ab-btn-col">
+                  <button type="button" id="gameboyBtnA" class="action-glossy-btn" aria-label="Next memory (Button A)">
+                    <span class="btn-specular-arc"></span>
+                    <span>A</span>
+                  </button>
+                  <span class="btn-sub-label">A</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Bottom Console Meta: Select, Start, Speaker Slits -->
+            <div class="console-bottom-meta">
+              <div class="select-start-pair">
+                <div class="pill-btn-col">
+                  <button type="button" id="consoleBtnSelect" class="pill-rubber-btn" aria-label="Select button"></button>
+                  <span class="pill-sub-label">SELECT</span>
+                </div>
+                <div class="pill-btn-col">
+                  <button type="button" id="consoleBtnStart" class="pill-rubber-btn" aria-label="Start button (toggle green power light)" title="Press START to toggle power light"></button>
+                  <span class="pill-sub-label">START</span>
+                </div>
+              </div>
+
+              <!-- 5 Angled Speaker Slits -->
+              <div class="speaker-slits-cluster">
+                <span class="speaker-slit"></span>
+                <span class="speaker-slit"></span>
+                <span class="speaker-slit"></span>
+                <span class="speaker-slit"></span>
+                <span class="speaker-slit"></span>
               </div>
             </div>
           </div>
 
-          <!-- Controls: D-Pad & A/B Buttons -->
-          <div class="gameboy-controls-row">
-            <!-- D-Pad -->
-            <div class="dpad-container" aria-label="Directional Pad">
-              <button type="button" id="dpadUp" class="dpad-btn dpad-up" aria-label="Up">▲</button>
-              <button type="button" id="dpadDown" class="dpad-btn dpad-down" aria-label="Down">▼</button>
-              <button type="button" id="dpadLeft" class="dpad-btn dpad-left" aria-label="Left">◀</button>
-              <button type="button" id="dpadRight" class="dpad-btn dpad-right" aria-label="Right">▶</button>
-              <div class="dpad-center"></div>
-            </div>
-
-            <!-- A and B Buttons -->
-            <div class="ab-buttons-container">
-              <div style="display: flex; flex-direction: column; align-items: center;">
-                <button type="button" id="gameboyBtnB" class="action-round-btn" aria-label="Button B">B</button>
-                <span style="font-family: var(--font-pixel); font-size: 8px; color: var(--chalk-dim); margin-top: 4px;">PAUSE</span>
-              </div>
-              <div style="display: flex; flex-direction: column; align-items: center;">
-                <button type="button" id="gameboyBtnA" class="action-round-btn" aria-label="Button A">A</button>
-                <span style="font-family: var(--font-pixel); font-size: 8px; color: var(--chalk-dim); margin-top: 4px;">START</span>
-              </div>
-            </div>
+          <!-- Pinned Sticky Note Below Console (Screenshot 3) -->
+          <div class="console-pinned-postit">
+            <span class="postit-red-pin"></span>
+            <p class="postit-note-text">Use [D-PAD] or Arrows to play Snake! [A] [B] swap ROMs!</p>
           </div>
         </div>
 
-        <!-- Cartridge Selector on Right -->
-        <div class="cartridge-selector-col">
-          <div class="cartridge-header-note">Choose your memory cartridge ⤵</div>
-
-          <div class="cartridge-item-card active" data-rom="code_coffee">
-            <h4 class="cartridge-rom-title">CODE.COFFEE.REPEAT.ROM</h4>
-            <p class="cartridge-rom-desc">Late-night flow, mechanical keyboard &amp; South Indian filter coffee in Chennai.</p>
+        <!-- Cartridge Selector on Right (Screenshot 3) -->
+        <div class="cartridge-rack-col">
+          <!-- Top Sticky Note -->
+          <div class="cartridge-top-note">
+            <p>Choose your memory cartridge ⤵</p>
           </div>
 
-          <div class="cartridge-item-card" data-rom="veedu">
-            <h4 class="cartridge-rom-title">VEEDUVADAGAIKU_DEV.ROM</h4>
-            <p class="cartridge-rom-desc">Real estate portal architecture, PostgreSQL tables &amp; Supabase triggers.</p>
+          <!-- Memory Cartridges Stack (Snake is ROM 0, followed by User's 4 Memories) -->
+          <div class="cartridges-stack">
+            <!-- ROM 0: Retro Snake Arcade (FIRST & ACTIVE) -->
+            <button type="button" class="rom-cartridge-btn active" data-rom-idx="0">
+              <div class="cartridge-glow-tab-left"></div>
+              <div class="cartridge-glow-tab-right"></div>
+              <div class="cartridge-side-grips left">
+                <span class="grip-slit"></span>
+                <span class="grip-slit"></span>
+                <span class="grip-slit"></span>
+              </div>
+              <div class="cartridge-side-grips right">
+                <span class="grip-slit"></span>
+                <span class="grip-slit"></span>
+                <span class="grip-slit"></span>
+              </div>
+              <div class="rom-label-recess">
+                <div class="rom-label-code">RETRO SNAKE ARCADE.ROM</div>
+                <div class="rom-label-sub">• PLAYABLE ARCADE</div>
+              </div>
+            </button>
+
+            <!-- ROM 1: Battlestation Rig -->
+            <button type="button" class="rom-cartridge-btn" data-rom-idx="1">
+              <div class="cartridge-glow-tab-left"></div>
+              <div class="cartridge-glow-tab-right"></div>
+              <div class="cartridge-side-grips left">
+                <span class="grip-slit"></span>
+                <span class="grip-slit"></span>
+                <span class="grip-slit"></span>
+              </div>
+              <div class="cartridge-side-grips right">
+                <span class="grip-slit"></span>
+                <span class="grip-slit"></span>
+                <span class="grip-slit"></span>
+              </div>
+              <div class="rom-label-recess">
+                <div class="rom-label-code">BATTLESTATION RIG.ROM</div>
+                <div class="rom-label-sub">• DEV &amp; GAMING RIG</div>
+              </div>
+            </button>
+
+            <!-- ROM 2: Misty Mountain Trails -->
+            <button type="button" class="rom-cartridge-btn" data-rom-idx="2">
+              <div class="cartridge-glow-tab-left"></div>
+              <div class="cartridge-glow-tab-right"></div>
+              <div class="cartridge-side-grips left">
+                <span class="grip-slit"></span>
+                <span class="grip-slit"></span>
+                <span class="grip-slit"></span>
+              </div>
+              <div class="cartridge-side-grips right">
+                <span class="grip-slit"></span>
+                <span class="grip-slit"></span>
+                <span class="grip-slit"></span>
+              </div>
+              <div class="rom-label-recess">
+                <div class="rom-label-code">MISTY MOUNTAIN TRAILS.ROM</div>
+                <div class="rom-label-sub">• MOUNTAIN ODYSSEY</div>
+              </div>
+            </button>
+
+            <!-- ROM 3: Golden Sunset Horizon -->
+            <button type="button" class="rom-cartridge-btn" data-rom-idx="3">
+              <div class="cartridge-glow-tab-left"></div>
+              <div class="cartridge-glow-tab-right"></div>
+              <div class="cartridge-side-grips left">
+                <span class="grip-slit"></span>
+                <span class="grip-slit"></span>
+                <span class="grip-slit"></span>
+              </div>
+              <div class="cartridge-side-grips right">
+                <span class="grip-slit"></span>
+                <span class="grip-slit"></span>
+                <span class="grip-slit"></span>
+              </div>
+              <div class="rom-label-recess">
+                <div class="rom-label-code">GOLDEN SUNSET HORIZON.ROM</div>
+                <div class="rom-label-sub">• COASTAL HORIZONS</div>
+              </div>
+            </button>
+
+            <!-- ROM 4: Feathers Night Retreat -->
+            <button type="button" class="rom-cartridge-btn" data-rom-idx="4">
+              <div class="cartridge-glow-tab-left"></div>
+              <div class="cartridge-glow-tab-right"></div>
+              <div class="cartridge-side-grips left">
+                <span class="grip-slit"></span>
+                <span class="grip-slit"></span>
+                <span class="grip-slit"></span>
+              </div>
+              <div class="cartridge-side-grips right">
+                <span class="grip-slit"></span>
+                <span class="grip-slit"></span>
+                <span class="grip-slit"></span>
+              </div>
+              <div class="rom-label-recess">
+                <div class="rom-label-code">FEATHERS NIGHT RETREAT.ROM</div>
+                <div class="rom-label-sub">• CHENNAI RETREAT</div>
+              </div>
+            </button>
           </div>
 
-          <div class="cartridge-item-card" data-rom="aadhifs">
-            <h4 class="cartridge-rom-title">AADHIFS_ECOMMERCE.ROM</h4>
-            <p class="cartridge-rom-desc">E-commerce storefront, organic oil catalog &amp; checkout pipeline.</p>
-          </div>
-
-          <div class="cartridge-item-card" data-rom="snake" style="border-color: rgba(0, 229, 201, 0.4);">
-            <h4 class="cartridge-rom-title" style="color: var(--primary);">PLAYABLE_SNAKE_RETRO.ROM 🎮</h4>
-            <p class="cartridge-rom-desc">Play classic Retro Snake directly on the Game Boy LCD screen using D-pad or keyboard arrows!</p>
+          <!-- Bottom Sticky Note (Screenshot 3) -->
+          <div class="cartridge-bottom-note">
+            <p>Press [A] in console to cycle memories →</p>
           </div>
         </div>
       </div>
@@ -968,19 +1206,19 @@
             <ul class="interactive-checklist">
               <li class="check-item">
                 <span class="custom-checkbox checked">✓</span>
-                <span>Impactful Full-Stack Engineering roles</span>
+                <span>Full-Stack Developer Roles (React, Node, Python, Django)</span>
               </li>
               <li class="check-item">
                 <span class="custom-checkbox checked">✓</span>
-                <span>Challenging backend &amp; database architectures</span>
+                <span>Scalable REST API &amp; Serverless Firebase Architectures</span>
               </li>
               <li class="check-item">
                 <span class="custom-checkbox checked">✓</span>
-                <span>Agentic AI &amp; LLM-powered product pipelines</span>
+                <span>High-performance Database &amp; Cloud Deployments (Vercel, Render)</span>
               </li>
               <li class="check-item">
                 <span class="custom-checkbox checked">✓</span>
-                <span>A curious, high-velocity engineering team</span>
+                <span>Agile, curious &amp; high-velocity engineering teams</span>
               </li>
               <li class="check-item" id="checkDownloadResume">
                 <span class="custom-checkbox"></span>
@@ -988,9 +1226,12 @@
               </li>
             </ul>
 
-            <div style="margin-top: 28px;">
-              <a href="mailto:azharhussain@example.com" class="btn-primary-dark">
-                let's chat directly! ✉️
+            <div style="margin-top: 28px; display: flex; flex-wrap: wrap; gap: 12px;">
+              <a href="mailto:azhar12082006@gmail.com" class="btn-primary-dark">
+                let's chat directly! ✉️ 
+              </a>
+              <a href="https://linkedin.com/in/syed-azhar-hussain-a-a721b535a" target="_blank" rel="noopener" class="btn-secondary-outline">
+                LinkedIn Profile 💼
               </a>
             </div>
           </div>
@@ -1001,15 +1242,15 @@
 
             <ul class="letterhead-social-links">
               <li>
-                <a href="mailto:azharhussain@example.com" class="contact-social-link">
+                <a href="mailto:azhar12082006@gmail.com" class="contact-social-link">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                  <span>azharhussain@example.com</span>
+                  <span>azhar12082006@gmail.com</span>
                 </a>
               </li>
               <li>
-                <a href="https://linkedin.com/in/syed-azhar-hussain" target="_blank" rel="noopener" class="contact-social-link">
+                <a href="https://linkedin.com/in/syed-azhar-hussain-a-a721b535a" target="_blank" rel="noopener" class="contact-social-link">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-                  <span>linkedin.com/in/syed-azhar-hussain</span>
+                  <span>linkedin.com/in/syed-azhar-hussain-a-a721b535a</span>
                 </a>
               </li>
               <li>
@@ -1066,14 +1307,15 @@
     <div class="footer-signature">Syed Azhar Hussain</div>
 
     <div class="footer-meta-links">
-      <span>© 2026 Syed Azhar Hussain A</span>
+      <span>© 2026 Syed Azhar Hussain</span>
       <span>•</span>
       <a href="#hero">Back to Top ↑</a>
       <span>•</span>
-      <a href="mailto:azharhussain@example.com">Email</a>
+      <a href="mailto:azhar12082006@gmail.com">Email</a>
+      <span>•</span>
+      <a href="https://linkedin.com/in/syed-azhar-hussain-a-a721b535a" target="_blank" rel="noopener">LinkedIn</a>
       <span>•</span>
       <a href="https://github.com/azhar2006-collab" target="_blank" rel="noopener">GitHub</a>
-    </div>
   </footer>
 
   <!-- ========================================================================
@@ -1159,11 +1401,8 @@
         </p>
       </div>
 
-      <div style="display: flex; gap: 14px; flex-wrap: wrap;">
-        <a id="modalProjectLiveBtn" href="#" target="_blank" rel="noopener" class="btn-primary-dark" style="flex: 1; text-align: center; text-decoration: none;">
-          View Live Website ↗
-        </a>
-        <button type="button" class="btn-secondary-outline" onclick="document.getElementById('projectModal').classList.remove('active');">
+      <div style="display: flex; justify-content: flex-end; gap: 14px; margin-top: 10px;">
+        <button type="button" class="btn-primary-dark" style="padding: 10px 24px;" onclick="document.getElementById('projectModal').classList.remove('active');">
           Close Inspector
         </button>
       </div>
@@ -1172,22 +1411,71 @@
 
   <!-- 3. Resume Viewer / Download Modal -->
   <div class="modal-backdrop" id="resumeModal" role="dialog" aria-modal="true" aria-labelledby="resumeModalTitle">
-    <div class="modal-window">
+    <div class="modal-window" style="max-width: 680px;">
       <button type="button" class="modal-close-btn" aria-label="Close Resume Modal">✕</button>
-      <h3 id="resumeModalTitle" class="font-serif" style="font-size: 2.2rem; color: var(--primary); margin-bottom: 8px;">Resume Summary</h3>
-      <p class="font-mono" style="font-size: 0.82rem; color: var(--chalk-dim); margin-bottom: 20px;">
-        SYED AZHAR HUSSAIN A · CHENNAI, INDIA
+      <h3 id="resumeModalTitle" class="font-serif" style="font-size: 2.2rem; color: var(--primary); margin-bottom: 6px;">Syed Azhar Hussain</h3>
+      <p class="font-mono" style="font-size: 0.82rem; color: var(--chalk-dim); margin-bottom: 18px;">
+        FULL STACK DEVELOPER · CHENNAI, INDIA · azhar12082006@gmail.com
       </p>
 
-      <div style="background: rgba(255,255,255,0.04); border-radius: 12px; padding: 20px; margin-bottom: 20px; font-family: var(--font-sans); font-size: 0.9rem; line-height: 1.6;">
-        <p style="margin-bottom: 10px;"><strong>Education:</strong> B.E. Computer Science &amp; Engineering (Final Year, 2026)</p>
-        <p style="margin-bottom: 10px;"><strong>Core Competencies:</strong> TypeScript, React, Next.js, Node.js, Express, PostgreSQL, Supabase, REST APIs, Git, Cloud.</p>
-        <p style="margin-bottom: 10px;"><strong>Key Work:</strong> VeeduVadagaiku (Lead Engineer), Aadhif's Wood Pressed Oils (Full-Stack Dev), Cloud-Native APIs.</p>
+      <div style="background: rgba(255,255,255,0.04); border-radius: 12px; padding: 20px; margin-bottom: 22px; font-family: var(--font-sans); font-size: 0.88rem; line-height: 1.6; max-height: 55vh; overflow-y: auto;">
+        <div style="margin-bottom: 14px;">
+          <h4 class="font-mono" style="color: var(--primary); font-size: 0.82rem; margin-bottom: 4px;">// PROFESSIONAL SUMMARY</h4>
+          <p style="margin: 0; color: var(--chalk);">
+            Motivated Full Stack Developer with hands-on experience delivering scalable, responsive web applications using React.js, Node.js, Python, Django, REST APIs, and Firebase. Contributed to 2 internship projects involving end-to-end development, API integration, and cloud deployment.
+          </p>
+        </div>
+
+        <div style="margin-bottom: 14px;">
+          <h4 class="font-mono" style="color: var(--primary); font-size: 0.82rem; margin-bottom: 4px;">// EDUCATION</h4>
+          <p style="margin: 0; color: var(--chalk);">
+            <strong>Bachelor of Engineering – Computer Science and Engineering</strong> (2023 – 2027)<br>
+            The Meenakshi College of Engineering, Chennai, India
+          </p>
+        </div>
+
+        <div style="margin-bottom: 14px;">
+          <h4 class="font-mono" style="color: var(--primary); font-size: 0.82rem; margin-bottom: 4px;">// PROFESSIONAL EXPERIENCE</h4>
+          <p style="margin-bottom: 6px; color: var(--chalk);">
+            <strong>Full Stack Developer Intern (Python)</strong> | Trios Technologies (2026 – Present)<br>
+            • Contributing to 2+ production-grade web apps using Python, Django/Flask &amp; React.js.<br>
+            • Designed and integrated 5+ RESTful APIs connecting React front-end with databases.<br>
+            • Optimized SQL &amp; MongoDB queries reducing query response times; managed CI/CD on Vercel &amp; Render.
+          </p>
+          <p style="margin: 0; color: var(--chalk);">
+            <strong>Full Stack Developer Intern</strong> | Cognifyz IT Solutions Pvt. Ltd. (June 2026 – July 2026)<br>
+            • Delivered 3+ full-stack features using React.js &amp; RESTful APIs, reducing data handling time by ~25%.<br>
+            • Built 10+ dynamic, reusable UI components; resolved 15+ bugs across front-end &amp; back-end.
+          </p>
+        </div>
+
+        <div style="margin-bottom: 14px;">
+          <h4 class="font-mono" style="color: var(--primary); font-size: 0.82rem; margin-bottom: 4px;">// CLIENT PROJECTS</h4>
+          <p style="margin: 0; color: var(--chalk);">
+            • <strong>Veedu Vadagaikku Chennai</strong> (Rental Platform): React (Vite), TanStack Query, Firebase, Firestore, REST APIs.<br>
+            • <strong>JP Holidays</strong>: 3,000+ tour package portal with WhatsApp enquiry routing and Schema.org SEO.<br>
+            • <strong>77 Fitness Studio</strong>: Multi-branch luxury fitness portal with Google Maps integration.<br>
+            • <strong>Aadhif's Wood Pressed Oils</strong>: Cold-pressed oil e-commerce with multi-size pricing and cart sync.<br>
+            • <strong>UniHut Tax &amp; Corpserv</strong>: Corporate legal, GST/ITR tax compliance portal.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="font-mono" style="color: var(--primary); font-size: 0.82rem; margin-bottom: 4px;">// TECHNICAL SKILLS</h4>
+          <p style="margin: 0; color: var(--chalk-dim);">
+            <strong>Front-End:</strong> React.js, HTML5, CSS3, JavaScript (ES6+), Responsive Web Design, DOM Manipulation<br>
+            <strong>Back-End:</strong> Python, Node.js, Django, Flask, Express.js, REST API Development<br>
+            <strong>Databases &amp; Cloud:</strong> MySQL, PostgreSQL, MongoDB, SQLite, Firebase Authentication, Firestore, Vercel, Render
+          </p>
+        </div>
       </div>
 
-      <div style="display: flex; gap: 12px;">
-        <a href="mailto:azharhussain@example.com?subject=Resume%20Request%20-%20Syed%20Azhar%20Hussain" class="btn-primary-dark">
-          Request PDF Resume 📄
+      <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+        <a href="assets/Syed_Azhar_Hussain_Resume.pdf" download="Syed_Azhar_Hussain_Resume.pdf" class="btn-primary-dark" style="flex: 1; text-align: center; text-decoration: none;">
+          Download PDF Resume 📄
+        </a>
+        <a href="mailto:azhar12082006@gmail.com" class="btn-secondary-outline" style="text-decoration: none;">
+          Email Me ✉️
         </a>
         <button type="button" class="btn-secondary-outline" onclick="document.getElementById('resumeModal').classList.remove('active');">
           Close
@@ -1223,6 +1511,65 @@
   <button type="button" id="backToTopBtn" class="back-to-top-btn" aria-label="Back to Top">
     ↑
   </button>
+
+  <!-- ⚡ THOR AI CHAT WIDGET -->
+  <div class="thor-chat-wrapper" id="thorChatWrapper" aria-live="polite">
+    <!-- Chat FAB Toggle Button -->
+    <button type="button" id="thorChatToggle" class="thor-chat-fab" aria-label="Chat with Thor AI Assistant" title="Ask Thor anything about Azhar!">
+      <img src="assets/images/thor-avatar.png" alt="Thor AI Avatar" class="thor-fab-avatar" />
+      <span class="thor-fab-ping"></span>
+    </button>
+
+    <!-- Chat Window -->
+    <div class="thor-chat-window" id="thorChatWindow" role="dialog" aria-modal="false" aria-label="Thor AI Chat">
+      <!-- Header -->
+      <div class="thor-chat-header">
+        <div class="thor-header-identity">
+          <div class="thor-header-avatar-wrap">
+            <img src="assets/images/thor-avatar.png" alt="Thor" class="thor-header-avatar" />
+            <span class="thor-status-dot"></span>
+          </div>
+          <div class="thor-header-info">
+            <div class="thor-header-name">⚡ THOR</div>
+            <div class="thor-header-role">Portfolio AI · Son of Odin</div>
+          </div>
+        </div>
+        <button type="button" id="thorChatClose" class="thor-chat-close-btn" aria-label="Close chat">✕</button>
+      </div>
+
+      <!-- Messages Feed -->
+      <div class="thor-messages-feed" id="thorMessagesFeed">
+        <!-- Initial greeting is injected by JS -->
+      </div>
+
+      <!-- Quick Suggestions -->
+      <div class="thor-quick-chips" id="thorQuickChips">
+        <button type="button" class="thor-chip" data-query="Who is Azhar?">👤 Who is Azhar?</button>
+        <button type="button" class="thor-chip" data-query="What projects did he build?">💼 Projects</button>
+        <button type="button" class="thor-chip" data-query="What skills does he have?">⚙️ Skills</button>
+        <button type="button" class="thor-chip" data-query="How can I contact Azhar?">📩 Contact</button>
+        <button type="button" class="thor-chip" data-query="What certifications does Azhar have?">🏆 Certs</button>
+        <button type="button" class="thor-chip" data-query="Where has Azhar worked?">🏢 Experience</button>
+      </div>
+
+      <!-- Input Row -->
+      <div class="thor-input-row">
+        <input
+          type="text"
+          id="thorChatInput"
+          class="thor-chat-input"
+          placeholder="Ask Thor anything about Azhar…"
+          autocomplete="off"
+          maxlength="200"
+          aria-label="Type your message"
+        />
+        <button type="button" id="thorChatSend" class="thor-send-btn" aria-label="Send message">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- END THOR CHAT WIDGET -->
 
   <!-- JavaScript Controller -->
   <script src="js/app.js"></script>

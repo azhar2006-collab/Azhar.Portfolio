@@ -11,11 +11,13 @@ document.addEventListener('DOMContentLoaded', () => {
   initHeroCanvas();
   initExperienceTag();
   initCrtTerminal();
+  initCertificationsConsole();
   initSkillsRolodex();
   initRetroConsole();
   initContactChecklistAndForm();
   initMechaAssistant();
   initStampInteractions();
+  initThorChat();
 });
 
 /* ==========================================================================
@@ -482,52 +484,53 @@ function initHeroCanvas() {
    ========================================================================== */
 const experiencesData = [
   {
-    id: 'veedu',
-    company: 'VeeduVadagaiku',
-    role: 'Lead Full-Stack Engineer',
-    period: '2024 â€” PRESENT',
-    status: 'ACTIVE PROJECT',
-    summary: 'Architected and built a comprehensive property rental and listing web application with real-time property management, landlord dashboards, and automated subscription validity.',
-    barcode: 'VV2024PRSNT',
+    id: 'trios',
+    company: 'Trios Technologies',
+    role: 'Full Stack Developer Intern (Python)',
+    period: '2026 — PRESENT',
+    status: 'CURRENT INTERNSHIP',
+    summary: 'Contributing to 2+ production-grade full-stack web applications using Python, Django/Flask, and React.js, serving real end users in Chennai.',
+    barcode: 'TRIOS2026INT',
     contributions: [
-      'Designed relational schema on PostgreSQL with Supabase Auth, Row Level Security (RLS), and automated database triggers.',
-      'Developed property management workflow including multi-image uploads, location geo-tagging, and listing verification.',
-      'Implemented tier-based subscription packages with automatic expiration jobs and tenant inquiry notification workflows.',
-      'Optimized query performance and frontend hydration speeds to deliver sub-200ms page transitions.'
+      'Contributing to 2+ production-grade full-stack web applications using Python, Django/Flask, and React.js, serving real end users.',
+      'Designed and integrated 5+ RESTful APIs connecting React.js front-end with back-end databases and third-party services.',
+      'Improved data retrieval efficiency by optimizing SQL and MongoDB queries, reducing average query response time.',
+      'Managed CI/CD deployment pipelines using Git and cloud hosting platforms including Vercel and Render.'
     ],
-    tech: ['Next.js', 'TypeScript', 'PostgreSQL', 'Supabase', 'Tailwind CSS', 'Node.js']
+    tech: ['Python', 'Django', 'Flask', 'React.js', 'REST APIs', 'MongoDB', 'SQL', 'Vercel', 'Render']
   },
   {
-    id: 'aadhifs',
-    company: "Aadhif's Oils",
-    role: 'Full-Stack Developer (Client Project)',
-    period: '2024',
-    status: 'SHIPPED',
-    summary: 'End-to-end engineered a production e-commerce storefront for traditional organic wood-pressed oils with seamless checkout, cart persistence, and order fulfillment.',
-    barcode: 'AOD2024SHPD',
+    id: 'cognifyz',
+    company: 'Cognifyz IT Solutions Pvt. Ltd.',
+    role: 'Full Stack Developer Intern',
+    period: 'June 2026 — July 2026',
+    status: 'COMPLETED INTERNSHIP',
+    summary: 'Developed and delivered 3+ full-stack web application features using React.js and RESTful APIs, reducing manual data handling time by approximately 25%.',
+    barcode: 'COG2026INT',
     contributions: [
-      'Engineered interactive product catalog, custom variation selectors (1L, 500ml), and local storage cart sync.',
-      'Integrated payment gateway workflows with webhook verification and transactional customer email alerts.',
-      'Built a dedicated administrative order dashboard to track shipping status, inventory deductions, and revenue metrics.',
-      'Delivered a mobile-first responsive shopping experience with 98+ Google Lighthouse performance score.'
+      'Developed and delivered 3+ full-stack web application features using React.js and RESTful APIs, reducing manual data handling time by ~25%.',
+      'Built 10+ dynamic, reusable UI components integrated with back-end APIs, improving overall application performance and user experience.',
+      'Collaborated with a team of 5 developers following Agile practices, completing sprint tasks consistently on schedule.',
+      'Maintained 100% code documentation standards through peer code reviews, improving codebase maintainability.',
+      'Resolved 15+ bugs and performance issues across front-end and back-end modules during the internship period.'
     ],
-    tech: ['React', 'Node.js', 'Express', 'PostgreSQL', 'Stripe/Razorpay', 'Tailwind']
+    tech: ['React.js', 'Node.js', 'RESTful APIs', 'JavaScript (ES6+)', 'Agile', 'Scrum', 'Git']
   },
   {
-    id: 'fullstack',
-    company: 'Cloud-Native Builder',
-    role: 'Software & AI Innovator',
-    period: '2023 â€” PRESENT',
-    status: 'ACTIVE',
-    summary: 'Building modern full-stack web applications, robust REST APIs, intelligent LLM agent workflows, and developer productivity tooling with scalable architectures.',
-    barcode: 'AZH2026DEV',
+    id: 'client',
+    company: 'Veedu Vadagaikku & Client Platforms',
+    role: 'Full-Stack Developer (Client Projects)',
+    period: '2024 — PRESENT',
+    status: 'DEPLOYED PRODUCTION',
+    summary: 'Designed and deployed real-world full-stack platforms including Veedu Vadagaikku Chennai (property rental platform with Firebase), Aadhif\'s Homemade e-commerce, and corporate client portals.',
+    barcode: 'VV2026CLNT',
     contributions: [
-      'Constructed scalable backend microservices utilizing TypeScript, JWT/OAuth2 authentication, and strict type safety.',
-      'Engineered intelligent agent integrations leveraging LLM APIs for automated workflow assistance and document extraction.',
-      'Implemented clean database migration scripts, connection pooling, and resilient API error-handling middleware.',
-      'Championed modern DevOps best practices with Git version control and automated cloud deployments.'
+      'Designed and developed a full-stack house rental web application for a client, enabling tenants to browse, search, and filter rental properties across Chennai with zero brokerage.',
+      'Built responsive listing and detail pages with role-based authentication and an admin panel for managing property listings, integrated through REST APIs.',
+      'Architected full-stack e-commerce platforms with product listings, shopping cart persistence, payment integration, and inventory management.',
+      'Configured cloud hosting and serverless Firebase architecture with Firestore database and real-time synchronization.'
     ],
-    tech: ['TypeScript', 'React', 'Node.js', 'Supabase', 'REST APIs', 'Agentic AI', 'Git']
+    tech: ['React.js', 'Node.js', 'Python', 'Firebase', 'Firestore', 'MongoDB', 'REST APIs', 'Tailwind CSS']
   }
 ];
 
@@ -576,7 +579,7 @@ function updateLuggageTagContent(data) {
 }
 
 /* ==========================================================================
-   5. SELECTED WORK: RETRO CRT MONITOR & TERMINAL (5 Client Projects)
+   5. SELECTED WORK: RETRO CRT MONITOR & TERMINAL (6 Client Projects)
    ========================================================================== */
 const projectsData = [
   {
@@ -590,7 +593,6 @@ const projectsData = [
       '> Powered by React (Vite), TanStack Query, Firebase & REST APIs'
     ],
     image: 'assets/images/veedu_vadagaikku_live.png',
-    liveUrl: 'https://www.veeduvadagaikkuchennai.com/',
     techStack: ['React (Vite)', 'TanStack Query', 'Firebase', 'Tailwind CSS', 'Swiper 11', 'REST APIs'],
     shortDesc: "Chennai's dedicated property rental platform connecting tenants directly with verified landlords with zero brokerage, bilingual Tamil/English UI, and localized search across all Chennai zones.",
     fullDesc: "Veedu Vadagaikku Chennai (வீடு வாடகைக்கு சென்னை) is a high-performance rental marketplace connecting tenants directly with property owners without intermediaries. The platform serves all major Chennai localities (Anna Nagar, T. Nagar, Velachery, OMR, Porur, etc.) with comprehensive listings across residential houses, PG accommodations, commercial buildings, marriage halls, and home services.",
@@ -614,14 +616,13 @@ const projectsData = [
       '> Production SEO with Google Search Console Schema.org JSON-LD'
     ],
     image: 'assets/images/jpholidays_live.png',
-    liveUrl: 'https://jpholidays.co.in/',
     techStack: ['JavaScript (ES6+)', 'HTML5 / Semantic CSS3', 'Font Awesome 6', 'Schema.org JSON-LD', 'WhatsApp API'],
     shortDesc: "South India's premier travel agency website presenting 3,000+ domestic and international destinations, custom honeymoon specials, WhatsApp enquiry routing, and Google Search Console Schema.org JSON-LD.",
     fullDesc: "JP Holidays is an award-winning travel agency web platform based in Chennai that serves over 45,000+ global travelers. The site showcases domestic and international holiday packages spanning Bali, Maldives, Dubai, Singapore, Europe, and South India with tailored itineraries for families, couples, and corporate groups.",
     keyFeatures: [
       'Comprehensive Package Catalog: Browse 3,000+ destinations with detailed day-wise itineraries, inclusion lists, and pricing.',
       'Custom Itinerary Builder: Interactive trip search filtered by destination, tour category (Honeymoon, Group, Luxury), and duration.',
-      'One-Click Travel Inquiries: Integrated WhatsApp routing (+91 72006 69293) and instant callback request forms.',
+      'One-Click Travel Inquiries: Integrated WhatsApp routing and instant callback request forms.',
       'Search Engine Dominance: Full Google Search Central Schema.org JSON-LD structured data for WebSite, Organization, and Sitelinks Search Box.',
       'High-Impact Visual Layout: Full-bleed hero visuals with crimson accent branding (#C8102E) and mobile-optimized touch controls.'
     ],
@@ -638,7 +639,6 @@ const projectsData = [
       '> Integrated Google Maps location finder & WhatsApp onboarding'
     ],
     image: 'assets/images/77fitness_live.png',
-    liveUrl: 'https://77fitnessstudio.in/',
     techStack: ['Vanilla CSS3', 'Modern JavaScript (ES6+)', 'Dark Mode System', 'Google Maps API', 'WhatsApp API'],
     shortDesc: "A sleek, luxury-first fitness and wellness studio website for three premier locations across Chennai, blending high-end design with seamless member onboarding.",
     fullDesc: "77 Fitness Studio represents a calm, luxury-first gym experience designed for modern Chennai. The website reflects this brand philosophy across three prime neighborhoods (Kodambakkam, Nungambakkam, and Vadapalani), presenting clean floor layouts, international-grade equipment, tailored training stages, and dedicated post-workout recovery spaces.",
@@ -646,7 +646,7 @@ const projectsData = [
       'Multi-Location Studio Directory: Interactive branch details for Kodambakkam, Nungambakkam, and Vadapalani with direct Google Maps routing.',
       'Tailored Training Stage Programs: Structured guidance for strength, hypertrophy, functional conditioning, and cardiovascular health.',
       'Luxury Dark-Mode Presentation: Deep-black interface with crimson contrast accents, fluid typography, and clean editorial spacing.',
-      'Instant WhatsApp Membership Connect: Direct links to studio managers (+91 78711 77779) for trial pass bookings and package consultation.',
+      'Instant WhatsApp Membership Connect: Direct links to studio managers for trial pass bookings and package consultation.',
       'Community & Transformation Showcase: Member stories, gym atmosphere highlights, and social channels integration.'
     ],
     contribution: 'Visual design execution, responsive dark theme implementation, multi-branch location navigation, and mobile menu interactions.'
@@ -662,7 +662,6 @@ const projectsData = [
       '> Admin dashboard integration with FSSAI & MSME compliance badges'
     ],
     image: 'assets/images/aadhifs_live.png',
-    liveUrl: 'https://aadhifshomemade.in/',
     techStack: ['JavaScript (ES6+)', 'Node.js & Express', 'PostgreSQL Backend', 'Tailwind CSS', 'Admin Dashboard'],
     shortDesc: "A complete artisanal food e-commerce platform for wood-pressed oils and ghee, featuring dynamic price calculations, WhatsApp checkout, and admin order controls.",
     fullDesc: "Aadhif's Homemade specializes in 100% pure, slow-pressed wooden chekku oils (Groundnut, Sesame/Gingelly, Coconut) and Pure Desi Ghee crafted in Coimbatore. The web platform delivers a trusted direct-to-consumer shopping experience with wholesale inquiry support and doorstep delivery across Tamil Nadu.",
@@ -670,7 +669,7 @@ const projectsData = [
       'Interactive Product Configurator: Smooth bottle size selection (250ml, 500ml, 1 Litre) with instant pricing calculation and volume discounts.',
       'WhatsApp URI Scheme Checkout: Generates pre-formatted order messages directly inside WhatsApp, eliminating checkout friction for Indian buyers.',
       'Free Shipping Calculator: Real-time cart calculation alerting customers when their cart qualifies for free shipping (₹499+ across TN).',
-      'Regulatory Trust Badges: Verified FSSAI manufacturing license (12426003001014) and Govt. of India MSME registration displays.',
+      'Regulatory Trust Badges: Verified FSSAI manufacturing license and Govt. of India MSME registration displays.',
       'Admin Management Portal: Dedicated /admin portal for stock level updates, wholesale quotation tracking, and delivery logistics.'
     ],
     contribution: 'Full-stack store implementation, product pricing matrix, WhatsApp messaging protocol, and backend order management routes.'
@@ -686,7 +685,6 @@ const projectsData = [
       '> WhatsApp Business advisory consultation & dynamic inquiry pipeline'
     ],
     image: 'assets/images/unihut_live.png',
-    liveUrl: 'https://www.unihut.in/',
     techStack: ['HTML5 / Semantic CSS3', 'JavaScript (ES6+)', 'Cormorant Garamond Typography', 'WhatsApp Business API'],
     shortDesc: "An authoritative corporate legal and taxation services portal presenting private limited company setup, GST filing, and financial compliance under one roof.",
     fullDesc: "Unihut Tax & Corpserv Pvt. Ltd. is a comprehensive business support hub providing end-to-end corporate secretarial, direct/indirect tax planning, and statutory compliance. The platform presents business founders and SMEs with accessible legal services, from initial business incorporation to annual auditing and trademark protection.",
@@ -698,6 +696,28 @@ const projectsData = [
       'Mobile-Optimized Experience: Fully responsive layout with custom Cormorant Garamond serif headers and accessible navigation.'
     ],
     contribution: 'Front-end development, service catalog styling, brand aesthetic implementation, and WhatsApp business consultation integration.'
+  },
+  {
+    id: 'ktech',
+    title: 'Ktech Solutions',
+    category: 'ENTERPRISE SOFTWARE & PIPELINE AUTOMATION',
+    bullets: [
+      '> Enterprise workflow automation & process orchestration system',
+      '> RESTful API telemetry & distributed microservices architecture',
+      '> Real-time system monitoring, error alerting & log analytics',
+      '> High-throughput transaction processing with enterprise security'
+    ],
+    image: 'assets/images/ktech.webp',
+    techStack: ['Node.js & Express', 'PostgreSQL', 'Docker', 'RESTful APIs', 'Telemetry & Logging'],
+    shortDesc: "Enterprise software systems & automated workflow pipelines with RESTful architecture and telemetry.",
+    fullDesc: "Ktech Solutions is an enterprise-scale software engineering platform architected to streamline mission-critical business automation, data transformation pipelines, and systems orchestration. Featuring robust service integrations, telemetry tracking, and fault-tolerant architecture.",
+    keyFeatures: [
+      'Automated Workflow Pipelines: Orchestrates data synchronization, approval chains, and external webhooks with zero human intervention.',
+      'RESTful Microservices Telemetry: Real-time service health monitoring, distributed request tracing, and latency logging.',
+      'Data Integrity & Reliability: ACID-compliant transactions with PostgreSQL and automated schema versioning.',
+      'High-Availability Architecture: Designed for low latency and continuous uptime across multi-tenant deployments.'
+    ],
+    contribution: 'Backend service architecture, database design, API telemetry pipelines, and performance profiling.'
   }
 ];
 
@@ -706,51 +726,73 @@ let currentProjectIndex = 0;
 function initCrtTerminal() {
   const prevBtn = document.getElementById('crtPrevBtn');
   const nextBtn = document.getElementById('crtNextBtn');
+  const screenNextBtn = document.getElementById('crtScreenNextBtn');
   const toggleGridBtn = document.getElementById('toggleGridBtn');
+  const toggleGridText = document.getElementById('toggleGridText');
+  const toggleGridArrow = document.getElementById('toggleGridArrow');
   const gridView = document.getElementById('projectsGridView');
   const detailsBtn = document.getElementById('crtDetailsBtn');
+  const screenContent = document.getElementById('crtScreenContent');
 
   const renderProject = (idx) => {
     const proj = projectsData[idx];
-    document.getElementById('crtProjectTitle').textContent = proj.title;
-    document.getElementById('crtProjectCategory').textContent = proj.category;
-    document.getElementById('crtCounter').textContent = `0${idx + 1} / 0${projectsData.length}`;
-
+    if (!proj) return;
+    
+    const titleEl = document.getElementById('crtProjectTitle');
+    const catEl = document.getElementById('crtProjectCategory');
+    const counterEl = document.getElementById('crtCounter');
     const bulletsContainer = document.getElementById('crtProjectBullets');
-    bulletsContainer.innerHTML = proj.bullets.map(b => `<p>${b}</p>`).join('');
 
-    const visitBtn = document.getElementById('crtVisitBtn');
-    if (visitBtn) {
-      visitBtn.setAttribute('href', proj.liveUrl);
-      visitBtn.setAttribute('target', '_blank');
-      visitBtn.setAttribute('rel', 'noopener');
+    if (titleEl) titleEl.textContent = proj.title;
+    if (catEl) catEl.textContent = proj.category;
+    if (counterEl) counterEl.textContent = `0${idx + 1} / 0${projectsData.length}`;
+
+    if (bulletsContainer) {
+      bulletsContainer.innerHTML = proj.bullets.map(b => `<p>${b}</p>`).join('');
+    }
+  };
+
+  const changeProject = (delta) => {
+    playRetroBeep(delta > 0 ? 650 : 450, 0.08);
+    if (screenContent) {
+      screenContent.classList.add('is-glitching');
+      setTimeout(() => {
+        currentProjectIndex = (currentProjectIndex + delta + projectsData.length) % projectsData.length;
+        renderProject(currentProjectIndex);
+        screenContent.classList.remove('is-glitching');
+      }, 120);
+    } else {
+      currentProjectIndex = (currentProjectIndex + delta + projectsData.length) % projectsData.length;
+      renderProject(currentProjectIndex);
     }
   };
 
   renderProject(0);
 
   if (prevBtn) {
-    prevBtn.addEventListener('click', () => {
-      playRetroBeep(450, 0.06);
-      currentProjectIndex = (currentProjectIndex - 1 + projectsData.length) % projectsData.length;
-      renderProject(currentProjectIndex);
-    });
+    prevBtn.addEventListener('click', () => changeProject(-1));
   }
 
   if (nextBtn) {
-    nextBtn.addEventListener('click', () => {
-      playRetroBeep(650, 0.06);
-      currentProjectIndex = (currentProjectIndex + 1) % projectsData.length;
-      renderProject(currentProjectIndex);
-    });
+    nextBtn.addEventListener('click', () => changeProject(1));
   }
 
-  // Toggle Grid View
+  if (screenNextBtn) {
+    screenNextBtn.addEventListener('click', () => changeProject(1));
+  }
+
+  // Toggle Grid View Pill Button (Screenshot 1)
   if (toggleGridBtn && gridView) {
     toggleGridBtn.addEventListener('click', () => {
       playClickSound();
-      const isActive = gridView.classList.toggle('active');
-      toggleGridBtn.textContent = isActive ? '▲ Collapse Grid View' : '▾ See All Projects (Grid)';
+      const isOpen = gridView.classList.toggle('work-grid-open');
+      toggleGridBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      if (toggleGridText) {
+        toggleGridText.textContent = isOpen ? 'HIDE ALL PROJECTS' : 'SEE ALL PROJECTS';
+      }
+      if (toggleGridArrow) {
+        toggleGridArrow.classList.toggle('is-open', isOpen);
+      }
     });
   }
 
@@ -802,11 +844,6 @@ function openProjectModal(project) {
     contributionEl.textContent = project.contribution;
   }
 
-  const liveBtn = document.getElementById('modalProjectLiveBtn');
-  if (liveBtn) {
-    liveBtn.setAttribute('href', project.liveUrl);
-  }
-
   modal.classList.add('active');
 }
 
@@ -819,31 +856,322 @@ window.openProjectModalByIndex = function(idx) {
 };
 
 /* ==========================================================================
+   5B. VERIFIED CREDENTIALS INDEX CONSOLE (Screenshot 2)
+   ========================================================================== */
+const certificationsData = [
+  {
+    id: 'aws-saa',
+    category: 'cloud',
+    cardNum: '001',
+    title: 'AWS SOLUTIONS ARCHITECT',
+    issuer: 'Amazon Web Services',
+    domain: 'Cloud Architecture',
+    level: 'Professional',
+    credentialId: 'AWS-SAA-PRO-2023',
+    issuedOn: '12 NOV 2023',
+    iconSvg: `<svg viewBox="0 0 90 50" class="w-18 h-12" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M22 30 C22 23 27 18 35 18 C38 13 46 12 52 16 C58 14 66 18 67 24 C72 26 73 33 68 37 C64 40 28 40 22 30 Z" stroke-width="2" />
+      <text x="35" y="28" font-family="monospace" font-size="11" font-weight="bold" fill="currentColor" stroke="none">AWS</text>
+      <path d="M33 33 Q45 38 57 33" stroke-width="2" stroke-linecap="round"/>
+      <path d="M55 31 L58 33 L55 35" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>`
+  },
+  {
+    id: 'fullstack-101',
+    category: 'cloud',
+    cardNum: '002',
+    title: 'FULL-STACK DEVELOPMENT 101',
+    issuer: 'Simplilearn SkillUp',
+    domain: 'Full-Stack Web Engineering & React',
+    level: 'Professional',
+    credentialId: '8681019',
+    issuedOn: 'JULY 2025',
+    iconSvg: `<svg viewBox="0 0 90 50" class="w-18 h-12" fill="none" stroke="currentColor" stroke-width="2">
+      <rect x="20" y="10" width="50" height="30" rx="3" stroke-width="2"/>
+      <path d="M28 25 L34 20 M28 25 L34 30 M42 25 L38 20 M42 25 L38 30" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="50" y1="28" x2="62" y2="28" stroke-linecap="round"/>
+    </svg>`
+  },
+  {
+    id: 'cyber-sim',
+    category: 'sap',
+    cardNum: '003',
+    title: 'CYBER JOB SIMULATION',
+    issuer: 'Deloitte (Forage)',
+    domain: 'Cyber Security & Threat Analysis',
+    level: 'Job Simulation',
+    credentialId: 'tnNM2ApNPMQL50fw',
+    issuedOn: 'AUGUST 2025',
+    iconSvg: `<svg viewBox="0 0 90 50" class="w-18 h-12" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M45 10 L68 18 C68 30 57 40 45 44 C33 40 22 30 22 18 Z" stroke-width="2"/>
+      <circle cx="45" cy="24" r="4"/>
+      <line x1="45" y1="28" x2="45" y2="34" stroke-width="2.2" stroke-linecap="round"/>
+    </svg>`
+  },
+  {
+    id: 'intro-web',
+    category: 'cloud',
+    cardNum: '004',
+    title: 'INTRODUCTION TO WEB DEV',
+    issuer: 'LearnTube',
+    domain: 'Frontend Engineering & Web Standards',
+    level: 'Foundational',
+    credentialId: 'INT-M-2-3705-1066795',
+    issuedOn: 'AUGUST 2025',
+    iconSvg: `<svg viewBox="0 0 90 50" class="w-18 h-12" fill="none" stroke="currentColor" stroke-width="2">
+      <rect x="18" y="12" width="54" height="28" rx="4" stroke-width="2"/>
+      <line x1="18" y1="20" x2="72" y2="20" stroke-width="1.5"/>
+      <circle cx="24" cy="16" r="1.5" fill="currentColor"/>
+      <circle cx="29" cy="16" r="1.5" fill="currentColor"/>
+      <circle cx="34" cy="16" r="1.5" fill="currentColor"/>
+    </svg>`
+  },
+  {
+    id: 'powerbi-workshop',
+    category: 'data',
+    cardNum: '005',
+    title: 'POWERBI WORKSHOP',
+    issuer: 'OfficeMaster',
+    domain: 'AI-Powered Dashboards & Business KPIs',
+    level: 'Applied Analytics & BI',
+    credentialId: 'OM-PBI-2025',
+    issuedOn: 'AUGUST 2025',
+    iconSvg: `<svg viewBox="0 0 90 50" class="w-18 h-12" fill="none" stroke="currentColor" stroke-width="2">
+      <rect x="22" y="24" width="8" height="16" rx="1"/>
+      <rect x="36" y="18" width="8" height="22" rx="1"/>
+      <rect x="50" y="12" width="8" height="28" rx="1"/>
+      <path d="M64 16 L64 40" stroke-width="2" stroke-linecap="round"/>
+    </svg>`
+  },
+  {
+    id: 'bigdata-infosys',
+    category: 'data',
+    cardNum: '006',
+    title: 'BIG DATA 101 & 301',
+    issuer: 'Infosys Springboard',
+    domain: 'Big Data Architecture & Processing',
+    level: 'Advanced (101 & 301)',
+    credentialId: 'INF-BD-101-301',
+    issuedOn: 'NOVEMBER 2025',
+    iconSvg: `<svg viewBox="0 0 90 50" class="w-18 h-12" fill="none" stroke="currentColor" stroke-width="2">
+      <ellipse cx="45" cy="15" rx="22" ry="7"/>
+      <path d="M23 15 v10 c0 3.8 9.8 7 22 7 s22 -3.2 22 -7 v-10"/>
+      <path d="M23 25 v10 c0 3.8 9.8 7 22 7 s22 -3.2 22 -7 v-10"/>
+    </svg>`
+  },
+  {
+    id: 'it-arch-bcg',
+    category: 'sap',
+    cardNum: '007',
+    title: 'IT ARCHITECTURE SIMULATION',
+    issuer: 'BCG Platinion (Forage)',
+    domain: 'Future-Ready Enterprise Systems',
+    level: 'Architecture Simulation',
+    credentialId: 'BCG-PLAT-2025',
+    issuedOn: 'DECEMBER 2025',
+    iconSvg: `<svg viewBox="0 0 90 50" class="w-18 h-12" fill="none" stroke="currentColor" stroke-width="2">
+      <rect x="18" y="10" width="18" height="14" rx="2"/>
+      <rect x="54" y="10" width="18" height="14" rx="2"/>
+      <rect x="36" y="30" width="18" height="14" rx="2"/>
+      <path d="M27 24 v6 h36 v-6 M45 30 v-6" stroke-width="1.8"/>
+    </svg>`
+  },
+  {
+    id: 'tech-sim-deloitte',
+    category: 'sap',
+    cardNum: '008',
+    title: 'TECHNOLOGY JOB SIMULATION',
+    issuer: 'Deloitte (Forage)',
+    domain: 'Coding & Enterprise Software',
+    level: 'Technology Simulation',
+    credentialId: 'DEL-TECH-2025',
+    issuedOn: 'DECEMBER 2025',
+    iconSvg: `<svg viewBox="0 0 90 50" class="w-18 h-12" fill="none" stroke="currentColor" stroke-width="2">
+      <polygon points="45,10 68,22 68,38 45,46 22,38 22,22"/>
+      <line x1="22" y1="22" x2="45" y2="34"/>
+      <line x1="68" y1="22" x2="45" y2="34"/>
+      <line x1="45" y1="34" x2="45" y2="46"/>
+    </svg>`
+  },
+  {
+    id: 'ms-sql-ai',
+    category: 'ai',
+    cardNum: '009',
+    title: 'MICROSOFT SQL AI DEVELOPER',
+    issuer: 'Microsoft',
+    domain: 'SQL AI Engineering & Vector DB',
+    level: 'Advanced',
+    credentialId: 'MS-SQL-AI-2025',
+    issuedOn: '02 FEB 2025',
+    iconSvg: `<svg viewBox="0 0 90 50" class="w-18 h-12" fill="none" stroke="currentColor" stroke-width="2">
+      <rect x="15" y="10" width="26" height="13"/>
+      <rect x="45" y="10" width="26" height="13"/>
+      <rect x="15" y="27" width="26" height="13"/>
+      <rect x="45" y="27" width="26" height="13"/>
+    </svg>`
+  },
+  {
+    id: 'anthropic-claude',
+    category: 'ai',
+    cardNum: '010',
+    title: 'ANTHROPIC CLAUDE ARCHITECT',
+    issuer: 'Anthropic',
+    domain: 'Prompt Engineering & Tool Calling',
+    level: 'Professional',
+    credentialId: 'ANT-CLAUDE-9842',
+    issuedOn: '15 JAN 2025',
+    iconSvg: `<svg viewBox="0 0 90 50" class="w-18 h-12" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="35" cy="25" r="14"/>
+      <circle cx="55" cy="25" r="14"/>
+      <line x1="35" y1="25" x2="55" y2="25"/>
+    </svg>`
+  },
+  {
+    id: 'openai-codex',
+    category: 'ai',
+    cardNum: '011',
+    title: 'OPENAI GENERATIVE AI SPECIALIST',
+    issuer: 'OpenAI / Codex Challenge',
+    domain: 'Autonomous Agents & LLM RAG',
+    level: 'Top 30% Finalist',
+    credentialId: 'OAI-CODEX-2024',
+    issuedOn: '12 NOV 2024',
+    iconSvg: `<svg viewBox="0 0 90 50" class="w-18 h-12" fill="none" stroke="currentColor" stroke-width="2">
+      <polygon points="45,10 65,22 65,40 45,48 25,40 25,22"/>
+      <circle cx="45" cy="28" r="6"/>
+    </svg>`
+  },
+  {
+    id: 'sap-bpa',
+    category: 'sap',
+    cardNum: '012',
+    title: 'SAP BUILD PROCESS AUTOMATION',
+    issuer: 'SAP SE',
+    domain: 'Enterprise BTP Workflows & RPA',
+    level: 'Associate Consultant',
+    credentialId: 'SAP-BPA-7721',
+    issuedOn: '20 OCT 2024',
+    iconSvg: `<svg viewBox="0 0 90 50" class="w-18 h-12" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M20 35 L45 15 L70 35 Z"/>
+      <circle cx="45" cy="28" r="4"/>
+    </svg>`
+  }
+];
+
+let activeCertCategory = 'all';
+let activeCertIndex = 0;
+
+function initCertificationsConsole() {
+  const tabs = document.querySelectorAll('.cert-tab-btn');
+  const prevBtn = document.getElementById('certPrevBtn');
+  const nextBtn = document.getElementById('certNextBtn');
+  const ticket = document.getElementById('certPunchcardTicket');
+  if (!ticket) return;
+
+  const getFilteredCerts = () => {
+    if (activeCertCategory === 'all') return certificationsData;
+    return certificationsData.filter(c => c.category === activeCertCategory);
+  };
+
+  const renderCertCard = (idx) => {
+    const list = getFilteredCerts();
+    if (!list.length) return;
+    const cert = list[idx % list.length];
+
+    const cardNumEl = document.getElementById('certCardNumber');
+    const titleEl = document.getElementById('certTicketTitle');
+    const issuerEl = document.getElementById('certIssuer');
+    const domainEl = document.getElementById('certDomain');
+    const levelEl = document.getElementById('certLevel');
+    const credIdEl = document.getElementById('certCredId');
+    const issuedOnEl = document.getElementById('certIssuedOn');
+    const domainIconEl = document.getElementById('certDomainIcon');
+    const activeIdxEl = document.getElementById('certActiveIndex');
+    const totalCountEl = document.getElementById('certTotalCount');
+
+    if (cardNumEl) cardNumEl.textContent = cert.cardNum;
+    if (titleEl) titleEl.textContent = cert.title;
+    if (issuerEl) issuerEl.textContent = `: ${cert.issuer}`;
+    if (domainEl) domainEl.textContent = `: ${cert.domain}`;
+    if (levelEl) levelEl.textContent = `: ${cert.level}`;
+    if (credIdEl) credIdEl.textContent = `: ${cert.credentialId}`;
+    if (issuedOnEl) issuedOnEl.textContent = `: ${cert.issuedOn}`;
+    if (domainIconEl && cert.iconSvg) domainIconEl.innerHTML = cert.iconSvg;
+
+    if (activeIdxEl) activeIdxEl.textContent = (idx % list.length) + 1;
+    if (totalCountEl) totalCountEl.textContent = list.length;
+  };
+
+  const cycleCert = (delta) => {
+    playRetroBeep(delta > 0 ? 560 : 420, 0.05);
+    const list = getFilteredCerts();
+    if (!list.length) return;
+    activeCertIndex = (activeCertIndex + delta + list.length) % list.length;
+    
+    // Quick paper cycle feedback
+    ticket.style.transform = 'translateY(-4px) scale(0.995)';
+    setTimeout(() => {
+      ticket.style.transform = '';
+      renderCertCard(activeCertIndex);
+    }, 90);
+  };
+
+  // Category Tabs (ALL, SAP, CLOUD, AI, DATA)
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      playClickSound();
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      activeCertCategory = tab.getAttribute('data-cert-cat') || 'all';
+      activeCertIndex = 0;
+      renderCertCard(0);
+    });
+  });
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => cycleCert(-1));
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => cycleCert(1));
+  }
+
+  ticket.addEventListener('click', () => cycleCert(1));
+
+  // Initialize with ALL category (matching uploaded screenshot: CARD 1 OF 12)
+  renderCertCard(0);
+}
+
+/* ==========================================================================
    6. SKILLS ROLODEX PUNCHED CARD
    ========================================================================== */
 const skillsData = {
   all: [
-    'HTML5 & Modern CSS3', 'JavaScript (ES6+)', 'TypeScript',
-    'React & Next.js', 'Node.js & Express', 'RESTful APIs',
-    'PostgreSQL & SQL', 'Supabase Database', 'Authentication (JWT)',
-    'Git & GitHub Workflow', 'Cloud Deployment & Linux', 'Agentic AI & LLMs'
+    'React.js', 'Python & Django',
+    'Node.js & Express', 'RESTful APIs',
+    'JavaScript (ES6+)', 'Firebase & GCP',
+    'MongoDB & SQL', 'HTML5 & Modern CSS3',
+    'Git & GitHub', 'PowerBI Dashboards'
   ],
   frontend: [
-    'HTML5 Semantic Markup', 'CSS3 Vanilla & Flex/Grid', 'JavaScript (ES6+)',
-    'TypeScript', 'React.js Components', 'Next.js App Router',
-    'Responsive Design', 'Micro-Animations & UI Craft'
+    'React.js', 'JavaScript (ES6+)',
+    'HTML5 & Modern CSS3', 'Responsive Design',
+    'UI/UX Design', 'DOM Manipulation'
   ],
   backend: [
-    'Node.js Runtime', 'Express.js Framework', 'RESTful API Architecture',
-    'User Auth (JWT/OAuth)', 'Database Controllers', 'Middleware Pipelines'
+    'Python & Django', 'Flask Framework',
+    'Node.js Runtime', 'Express.js Framework',
+    'RESTful APIs', 'Server-Side Logic'
   ],
   database: [
-    'PostgreSQL Relational DB', 'Supabase Cloud Backend', 'SQL Schema Design & Queries',
-    'Row Level Security (RLS)', 'Data Migrations', 'Connection Optimization'
+    'Firebase Firestore', 'Realtime Database',
+    'MongoDB (NoSQL)', 'PostgreSQL & SQL',
+    'MySQL Database', 'SQLite Storage'
   ],
   tools: [
-    'Git Version Control', 'GitHub Actions & Repos', 'Cloud Deployment Platforms',
-    'Postman API Testing', 'VS Code & Linux Environment', 'Intelligent AI Coding Workflows'
+    'Git & GitHub', 'Vercel & Render',
+    'Docker (Basics)', 'PowerBI Analytics',
+    'VS Code Environment', 'Agile & Scrum'
   ]
 };
 
@@ -883,154 +1211,274 @@ function initSkillsRolodex() {
    7. RETRO HANDHELD GAME CONSOLE & PLAYABLE ARCADE
    ========================================================================== */
 let gameInterval = null;
-let currentGameMode = 'memory'; // 'memory' or 'snake'
+let currentGameMode = 'snake'; // 'snake' (default first) or 'memory'
+let activeRomIdx = 0; // Default to Retro Snake Game (active first!)
 
-// Snake Game Variables
+// Snake Game State
 let snake = [];
 let food = { x: 5, y: 5 };
 let direction = { x: 1, y: 0 };
 let nextDirection = { x: 1, y: 0 };
 let snakeScore = 0;
+let snakeHiScore = 0;
 let isGameRunning = false;
 const GRID_SIZE = 14;
 let canvasCtx = null;
+let gameCanvas = null;
+
+const consoleRomCartridges = [
+  {
+    idx: 0,
+    type: 'snake',
+    romCode: 'RETRO SNAKE ARCADE.ROM',
+    subLabel: '• PLAYABLE ARCADE',
+    title: 'RETRO SNAKE ARCADE',
+    tagline: 'D-PAD / ARROWS TO SLITHER · [A] TO ADVANCE'
+  },
+  {
+    idx: 1,
+    type: 'memory',
+    romCode: 'BATTLESTATION RIG.ROM',
+    subLabel: '• DEV & GAMING RIG',
+    title: 'RGB BATTLESTATION SETUP',
+    tagline: 'DEV RIG · Custom Mechanical Keyboard & Performance Battlestation',
+    image: 'assets/images/memory-1-battlestation.jpg'
+  },
+  {
+    idx: 2,
+    type: 'memory',
+    romCode: 'MISTY MOUNTAIN TRAILS.ROM',
+    subLabel: '• MOUNTAIN ODYSSEY',
+    title: 'MISTY MOUNTAIN TRAILS',
+    tagline: 'WESTERN GHATS · Road Trips, Mountain Passes & Weekend Rides',
+    image: 'assets/images/memory-2-mountain.png'
+  },
+  {
+    idx: 3,
+    type: 'memory',
+    romCode: 'GOLDEN SUNSET HORIZON.ROM',
+    subLabel: '• COASTAL HORIZONS',
+    title: 'GOLDEN SUNSET HORIZON',
+    tagline: 'COASTAL SERENITY · Evening Waves, Golden Hour & Life Reflections',
+    image: 'assets/images/memory-3-sunset-beach.png'
+  },
+  {
+    idx: 4,
+    type: 'memory',
+    romCode: 'FEATHERS NIGHT RETREAT.ROM',
+    subLabel: '• CHENNAI RETREAT',
+    title: 'FEATHERS LUXURY RETREAT',
+    tagline: 'RADHA HOTEL · Executive Celebrations & Modern Architectural Elegance',
+    image: 'assets/images/memory-4-feathers-hotel.png'
+  }
+];
 
 function initRetroConsole() {
-  const cartridges = document.querySelectorAll('.cartridge-item-card');
-  const canvas = document.getElementById('gameboyCanvas');
-  const bannerTitle = document.getElementById('lcdBannerTitle');
-  const bannerSub = document.getElementById('lcdBannerSub');
-  if (!canvas) return;
+  const cartridgeBtns = document.querySelectorAll('.rom-cartridge-btn');
+  const memoryImg = document.getElementById('consoleMemoryImg');
+  const captionTitle = document.getElementById('consoleCaptionTitle');
+  const captionTagline = document.getElementById('consoleCaptionTagline');
+  const screenDisplay = document.getElementById('consoleScreenDisplay');
+  gameCanvas = document.getElementById('retroGameCanvas');
 
-  canvasCtx = canvas.getContext('2d');
-  canvas.width = 280;
-  canvas.height = 230;
+  if (gameCanvas) {
+    canvasCtx = gameCanvas.getContext('2d');
+  }
 
-  // Render initial Cartridge 1: Code & Coffee memory
-  renderDevMemory();
-
-  cartridges.forEach(card => {
-    card.addEventListener('click', () => {
-      playRetroBeep(700, 0.08);
-      cartridges.forEach(c => c.classList.remove('active'));
-      card.classList.add('active');
-
-      const rom = card.getAttribute('data-rom');
-      if (rom === 'snake') {
-        currentGameMode = 'snake';
-        bannerTitle.textContent = 'ARCADE: RETRO SNAKE 🐍';
-        bannerSub.textContent = 'D-PAD / Arrow keys to move | Press A to Restart';
-        startSnakeGame();
-      } else {
-        currentGameMode = 'memory';
-        stopSnakeGame();
-        if (rom === 'code_coffee') {
-          bannerTitle.textContent = 'MEMORY: LATE NIGHT CODE';
-          bannerSub.textContent = 'Chennai · 01:47 AM · South Indian Filter Coffee';
-          renderDevMemory();
-        } else if (rom === 'veedu') {
-          bannerTitle.textContent = 'MEMORY: VEEDUVADAGAIKU';
-          bannerSub.textContent = 'Architecting Property Management & Subscriptions';
-          renderProjectMemory('assets/images/veedu_vadagaiku.jpg', 'VeeduVadagaiku Dev Build');
-        } else if (rom === 'aadhifs') {
-          bannerTitle.textContent = 'MEMORY: AADHIF\'S OILS';
-          bannerSub.textContent = 'Storefront & Payment Gateway Engineering';
-          renderProjectMemory('assets/images/aadhifs_oils.jpg', "Aadhif's Store Engine");
-        }
-      }
-    });
-  });
-
-  // Controls: D-Pad
+  // Buttons & D-Pad
+  const btnA = document.getElementById('gameboyBtnA');
+  const btnB = document.getElementById('gameboyBtnB');
+  const btnStart = document.getElementById('consoleBtnStart');
+  const btnSelect = document.getElementById('consoleBtnSelect');
   const dpadUp = document.getElementById('dpadUp');
   const dpadDown = document.getElementById('dpadDown');
   const dpadLeft = document.getElementById('dpadLeft');
   const dpadRight = document.getElementById('dpadRight');
-  const btnA = document.getElementById('gameboyBtnA');
-  const btnB = document.getElementById('gameboyBtnB');
 
-  if (dpadUp) dpadUp.addEventListener('click', () => handleDpadInput(0, -1));
-  if (dpadDown) dpadDown.addEventListener('click', () => handleDpadInput(0, 1));
-  if (dpadLeft) dpadLeft.addEventListener('click', () => handleDpadInput(-1, 0));
-  if (dpadRight) dpadRight.addEventListener('click', () => handleDpadInput(1, 0));
+  const renderCartridge = (idx) => {
+    const item = consoleRomCartridges[idx % consoleRomCartridges.length];
+    if (!item) return;
 
+    activeRomIdx = idx % consoleRomCartridges.length;
+
+    // Update active cartridge highlight (with green neon tabs)
+    cartridgeBtns.forEach(btn => {
+      const btnIdx = parseInt(btn.getAttribute('data-rom-idx'), 10);
+      if (btnIdx === activeRomIdx) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+
+    if (item.type === 'snake') {
+      currentGameMode = 'snake';
+      if (memoryImg) memoryImg.style.display = 'none';
+      if (gameCanvas) gameCanvas.style.display = 'block';
+
+      if (captionTitle) captionTitle.textContent = item.title;
+      if (captionTagline) captionTagline.textContent = `D-PAD / ARROWS TO SLITHER · [A] NEXT MEMORY`;
+
+      startSnakeGame();
+    } else {
+      currentGameMode = 'memory';
+      stopSnakeGame();
+
+      if (gameCanvas) gameCanvas.style.display = 'none';
+      if (memoryImg) {
+        memoryImg.style.display = 'block';
+        memoryImg.style.opacity = '0.3';
+        memoryImg.src = item.image;
+        memoryImg.alt = `${item.title} photograph`;
+        setTimeout(() => {
+          memoryImg.style.opacity = '1';
+        }, 80);
+      }
+
+      if (captionTitle) captionTitle.textContent = item.title;
+      if (captionTagline) captionTagline.textContent = item.tagline;
+    }
+  };
+
+  const cycleCartridge = (delta) => {
+    playRetroBeep(delta > 0 ? 760 : 480, 0.06);
+    const nextIdx = (activeRomIdx + delta + consoleRomCartridges.length) % consoleRomCartridges.length;
+    renderCartridge(nextIdx);
+  };
+
+  // Steer Snake if in snake mode, else switch cartridge
+  const handleDirection = (dx, dy) => {
+    playRetroBeep(520, 0.04);
+    if (currentGameMode === 'snake') {
+      if (!isGameRunning) {
+        startSnakeGame();
+        return;
+      }
+      if (dx !== 0 && direction.x === 0) nextDirection = { x: dx, y: 0 };
+      if (dy !== 0 && direction.y === 0) nextDirection = { x: 0, y: dy };
+    } else {
+      cycleCartridge(dy < 0 || dx > 0 ? 1 : -1);
+    }
+  };
+
+  // D-Pad Click Listeners
+  if (dpadUp) dpadUp.addEventListener('click', () => handleDirection(0, -1));
+  if (dpadDown) dpadDown.addEventListener('click', () => handleDirection(0, 1));
+  if (dpadLeft) dpadLeft.addEventListener('click', () => handleDirection(-1, 0));
+  if (dpadRight) dpadRight.addEventListener('click', () => handleDirection(1, 0));
+
+  // Physical Keyboard Listener (Arrow keys + WASD)
+  window.addEventListener('keydown', (e) => {
+    const arcadeSection = document.getElementById('arcade');
+    if (!arcadeSection) return;
+
+    // Check if arcade is roughly in view
+    const rect = arcadeSection.getBoundingClientRect();
+    const inView = rect.top < window.innerHeight && rect.bottom > 0;
+
+    if (inView) {
+      if (currentGameMode === 'snake') {
+        if (['ArrowUp', 'KeyW'].includes(e.code)) {
+          e.preventDefault();
+          handleDirection(0, -1);
+        } else if (['ArrowDown', 'KeyS'].includes(e.code)) {
+          e.preventDefault();
+          handleDirection(0, 1);
+        } else if (['ArrowLeft', 'KeyA'].includes(e.code)) {
+          e.preventDefault();
+          handleDirection(-1, 0);
+        } else if (['ArrowRight', 'KeyD'].includes(e.code)) {
+          e.preventDefault();
+          handleDirection(1, 0);
+        } else if (e.code === 'Space' || e.code === 'Enter') {
+          e.preventDefault();
+          if (!isGameRunning) startSnakeGame();
+        }
+      }
+    }
+  });
+
+  // Action Buttons A and B: [A] cycles next memory, [B] cycles prev memory
   if (btnA) {
     btnA.addEventListener('click', () => {
-      playRetroBeep(800, 0.06);
-      if (currentGameMode === 'snake') {
-        startSnakeGame();
-      } else {
-        // Toggle to next memory
-        const nextCart = document.querySelector('.cartridge-item-card.active')?.nextElementSibling || document.querySelector('.cartridge-item-card');
-        if (nextCart) nextCart.click();
-      }
+      playRetroBeep(880, 0.08);
+      // Pressing A moves from Snake Game -> Memory 1 -> Memory 2 -> Memory 3 -> Memory 4 -> Snake
+      cycleCartridge(1);
     });
   }
 
   if (btnB) {
     btnB.addEventListener('click', () => {
-      playRetroBeep(400, 0.06);
+      playRetroBeep(640, 0.08);
+      // Button B cycles backwards
+      cycleCartridge(-1);
+    });
+  }
+
+  // Start & Select buttons
+  if (btnStart) {
+    btnStart.addEventListener('click', () => {
+      playRetroBeep(920, 0.1);
+      const chassis = document.querySelector('.gameboy-console-chassis');
+      const pingDot = document.querySelector('.power-ping-dot');
+      if (chassis) chassis.classList.toggle('power-boost');
+      if (pingDot) pingDot.classList.toggle('power-boost');
+
       if (currentGameMode === 'snake') {
-        isGameRunning = !isGameRunning;
-      } else {
-        const prevCart = document.querySelector('.cartridge-item-card.active')?.previousElementSibling;
-        if (prevCart) prevCart.click();
+        if (!isGameRunning) {
+          startSnakeGame();
+        } else {
+          isGameRunning = !isGameRunning;
+          if (isGameRunning) {
+            if (gameInterval) clearInterval(gameInterval);
+            gameInterval = setInterval(gameLoop, 125);
+          } else {
+            drawPauseScreen();
+          }
+        }
       }
     });
   }
 
-  // Keyboard navigation for Snake
-  window.addEventListener('keydown', (e) => {
-    if (currentGameMode !== 'snake') return;
-    if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', ' '].includes(e.key)) {
-      e.preventDefault();
-    }
-    if (e.key === 'ArrowUp' && direction.y === 0) nextDirection = { x: 0, y: -1 };
-    if (e.key === 'ArrowDown' && direction.y === 0) nextDirection = { x: 0, y: 1 };
-    if (e.key === 'ArrowLeft' && direction.x === 0) nextDirection = { x: -1, y: 0 };
-    if (e.key === 'ArrowRight' && direction.x === 0) nextDirection = { x: 1, y: 0 };
+  if (btnSelect) {
+    btnSelect.addEventListener('click', () => {
+      playRetroBeep(640, 0.08);
+      cycleCartridge(1);
+    });
+  }
+
+  // Cartridge rack click handlers
+  cartridgeBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      playRetroBeep(720, 0.07);
+      const clickedIdx = parseInt(btn.getAttribute('data-rom-idx'), 10);
+      if (!isNaN(clickedIdx)) {
+        renderCartridge(clickedIdx);
+      }
+    });
   });
-}
 
-function handleDpadInput(dx, dy) {
-  playRetroBeep(520, 0.04);
-  if (currentGameMode === 'snake') {
-    if (dx !== 0 && direction.x === 0) nextDirection = { x: dx, y: 0 };
-    if (dy !== 0 && direction.y === 0) nextDirection = { x: 0, y: dy };
+  // Screen click
+  if (screenDisplay) {
+    screenDisplay.addEventListener('click', () => {
+      if (currentGameMode === 'snake') {
+        if (!isGameRunning) startSnakeGame();
+      } else {
+        cycleCartridge(1);
+      }
+    });
   }
+
+  // INITIALIZE WITH SNAKE GAME FIRST (ROM 0)
+  renderCartridge(0);
 }
 
-function renderDevMemory() {
-  if (!canvasCtx) return;
-  const img = new Image();
-  img.src = 'assets/images/retro_memory_dev.jpg';
-  img.onload = () => {
-    canvasCtx.drawImage(img, 0, 0, 280, 230);
-    applyScanlines();
-  };
-}
-
-function renderProjectMemory(imageSrc, label) {
-  if (!canvasCtx) return;
-  const img = new Image();
-  img.src = imageSrc;
-  img.onload = () => {
-    canvasCtx.drawImage(img, 0, 0, 280, 230);
-    applyScanlines();
-  };
-}
-
-function applyScanlines() {
-  if (!canvasCtx) return;
-  canvasCtx.fillStyle = 'rgba(0, 0, 0, 0.2)';
-  for (let i = 0; i < 230; i += 4) {
-    canvasCtx.fillRect(0, i, 280, 2);
-  }
-}
-
-/* Playable Snake Game */
+/* ==========================================================================
+   PLAYABLE RETRO SNAKE ARCADE GAME ENGINE
+   ========================================================================== */
 function startSnakeGame() {
   snake = [
+    { x: 8, y: 7 },
     { x: 7, y: 7 },
     { x: 6, y: 7 },
     { x: 5, y: 7 }
@@ -1042,7 +1490,8 @@ function startSnakeGame() {
   placeFood();
 
   if (gameInterval) clearInterval(gameInterval);
-  gameInterval = setInterval(gameLoop, 130);
+  gameInterval = setInterval(gameLoop, 125);
+  drawSnakeGame();
 }
 
 function stopSnakeGame() {
@@ -1051,10 +1500,18 @@ function stopSnakeGame() {
 }
 
 function placeFood() {
-  food = {
-    x: Math.floor(Math.random() * (280 / GRID_SIZE)),
-    y: Math.floor(Math.random() * (200 / GRID_SIZE))
-  };
+  const maxX = Math.floor(280 / GRID_SIZE);
+  const maxY = Math.floor(190 / GRID_SIZE);
+  let newFood;
+  while (true) {
+    newFood = {
+      x: Math.floor(Math.random() * maxX),
+      y: Math.floor(Math.random() * maxY)
+    };
+    const onSnake = snake.some(seg => seg.x === newFood.x && seg.y === newFood.y);
+    if (!onSnake) break;
+  }
+  food = newFood;
 }
 
 function gameLoop() {
@@ -1063,9 +1520,9 @@ function gameLoop() {
   direction = nextDirection;
   const head = { x: snake[0].x + direction.x, y: snake[0].y + direction.y };
 
-  // Wall collisions (wrap-around)
+  // Wall collisions (seamless wrap-around for smooth arcade fun)
   const maxX = Math.floor(280 / GRID_SIZE);
-  const maxY = Math.floor(200 / GRID_SIZE);
+  const maxY = Math.floor(190 / GRID_SIZE);
   if (head.x < 0) head.x = maxX - 1;
   if (head.x >= maxX) head.x = 0;
   if (head.y < 0) head.y = maxY - 1;
@@ -1074,8 +1531,9 @@ function gameLoop() {
   // Self collision
   for (let segment of snake) {
     if (segment.x === head.x && segment.y === head.y) {
-      playRetroBeep(200, 0.2);
+      playRetroBeep(220, 0.25);
       isGameRunning = false;
+      if (gameInterval) clearInterval(gameInterval);
       drawGameOver();
       return;
     }
@@ -1086,8 +1544,14 @@ function gameLoop() {
   // Eat Food
   if (head.x === food.x && head.y === food.y) {
     snakeScore += 10;
+    if (snakeScore > snakeHiScore) snakeHiScore = snakeScore;
     playRetroBeep(880, 0.08);
     placeFood();
+
+    const captionTagline = document.getElementById('consoleCaptionTagline');
+    if (captionTagline) {
+      captionTagline.textContent = `D-PAD / ARROWS TO SLITHER · SCORE: ${snakeScore}`;
+    }
   } else {
     snake.pop();
   }
@@ -1097,59 +1561,128 @@ function gameLoop() {
 
 function drawSnakeGame() {
   if (!canvasCtx) return;
-  // Clear screen to retro LCD olive green / dark
-  canvasCtx.fillStyle = '#111817';
-  canvasCtx.fillRect(0, 0, 280, 230);
 
-  // Draw Grid lines
-  canvasCtx.strokeStyle = '#182422';
+  // 1. Clear background to retro Game Boy dark olive / cyber teal
+  canvasCtx.fillStyle = '#0e1816';
+  canvasCtx.fillRect(0, 0, 280, 235);
+
+  // 2. Faint Grid Lines
+  canvasCtx.strokeStyle = 'rgba(0, 229, 201, 0.06)';
   canvasCtx.lineWidth = 1;
-  for (let x = 0; x < 280; x += GRID_SIZE) {
+  for (let x = 0; x <= 280; x += GRID_SIZE) {
     canvasCtx.beginPath();
     canvasCtx.moveTo(x, 0);
-    canvasCtx.lineTo(x, 200);
+    canvasCtx.lineTo(x, 196);
     canvasCtx.stroke();
   }
-  for (let y = 0; y < 200; y += GRID_SIZE) {
+  for (let y = 0; y <= 196; y += GRID_SIZE) {
     canvasCtx.beginPath();
     canvasCtx.moveTo(0, y);
     canvasCtx.lineTo(280, y);
     canvasCtx.stroke();
   }
 
-  // Draw Food
+  // 3. Draw Food (Glowing golden pixel fruit)
   canvasCtx.fillStyle = '#fde047';
+  canvasCtx.shadowColor = '#fde047';
+  canvasCtx.shadowBlur = 8;
   canvasCtx.fillRect(food.x * GRID_SIZE + 2, food.y * GRID_SIZE + 2, GRID_SIZE - 4, GRID_SIZE - 4);
+  // Red core accent
+  canvasCtx.fillStyle = '#ef4444';
+  canvasCtx.fillRect(food.x * GRID_SIZE + 5, food.y * GRID_SIZE + 5, GRID_SIZE - 10, GRID_SIZE - 10);
+  canvasCtx.shadowBlur = 0;
 
-  // Draw Snake
+  // 4. Draw Snake
   snake.forEach((seg, index) => {
-    canvasCtx.fillStyle = index === 0 ? '#00e5c9' : '#0d9488';
-    canvasCtx.fillRect(seg.x * GRID_SIZE + 1, seg.y * GRID_SIZE + 1, GRID_SIZE - 2, GRID_SIZE - 2);
+    if (index === 0) {
+      // Head: bright cyan with glowing eyes
+      canvasCtx.fillStyle = '#00ffcc';
+      canvasCtx.shadowColor = '#00e5c9';
+      canvasCtx.shadowBlur = 6;
+      canvasCtx.fillRect(seg.x * GRID_SIZE + 1, seg.y * GRID_SIZE + 1, GRID_SIZE - 2, GRID_SIZE - 2);
+      canvasCtx.shadowBlur = 0;
+
+      // Eye dots
+      canvasCtx.fillStyle = '#0e1816';
+      canvasCtx.fillRect(seg.x * GRID_SIZE + 3, seg.y * GRID_SIZE + 3, 2, 2);
+      canvasCtx.fillRect(seg.x * GRID_SIZE + 9, seg.y * GRID_SIZE + 3, 2, 2);
+    } else {
+      // Body: gradient cyber teal
+      canvasCtx.fillStyle = index % 2 === 0 ? '#00e5c9' : '#0d9488';
+      canvasCtx.fillRect(seg.x * GRID_SIZE + 1.5, seg.y * GRID_SIZE + 1.5, GRID_SIZE - 3, GRID_SIZE - 3);
+    }
   });
 
-  // Top score bar
-  canvasCtx.fillStyle = '#062420';
-  canvasCtx.fillRect(0, 200, 280, 30);
-  canvasCtx.fillStyle = '#1cf5d2';
-  canvasCtx.font = '10px Silkscreen, monospace';
-  canvasCtx.fillText(`SCORE: ${snakeScore}   [D-PAD OR ARROWS]`, 10, 218);
+  // 5. Bottom HUD Score Banner
+  canvasCtx.fillStyle = '#071210';
+  canvasCtx.fillRect(0, 196, 280, 39);
+  canvasCtx.strokeStyle = 'rgba(0, 229, 201, 0.25)';
+  canvasCtx.beginPath();
+  canvasCtx.moveTo(0, 196);
+  canvasCtx.lineTo(280, 196);
+  canvasCtx.stroke();
+
+  canvasCtx.fillStyle = '#00ffcc';
+  canvasCtx.font = '9px "Silkscreen", monospace';
+  canvasCtx.textAlign = 'left';
+  canvasCtx.fillText(`SCORE: ${String(snakeScore).padStart(3, '0')}`, 10, 218);
+
+  canvasCtx.fillStyle = '#fde047';
+  canvasCtx.fillText(`HI: ${String(snakeHiScore).padStart(3, '0')}`, 110, 218);
+
+  canvasCtx.fillStyle = 'rgba(255, 255, 255, 0.7)';
+  canvasCtx.font = '8px "Space Mono", monospace';
+  canvasCtx.textAlign = 'right';
+  canvasCtx.fillText(`[D-PAD] SLITHER`, 270, 218);
 
   applyScanlines();
 }
 
-function drawGameOver() {
+function drawPauseScreen() {
+  if (!canvasCtx) return;
   canvasCtx.fillStyle = 'rgba(0, 0, 0, 0.75)';
-  canvasCtx.fillRect(0, 0, 280, 200);
-  canvasCtx.fillStyle = '#ef4444';
-  canvasCtx.font = '14px Silkscreen, monospace';
+  canvasCtx.fillRect(0, 0, 280, 196);
+  canvasCtx.fillStyle = '#fde047';
+  canvasCtx.font = '12px "Silkscreen", monospace';
   canvasCtx.textAlign = 'center';
-  canvasCtx.fillText('GAME OVER!', 140, 90);
+  canvasCtx.fillText('GAME PAUSED', 140, 95);
   canvasCtx.fillStyle = '#ffffff';
-  canvasCtx.font = '10px Space Mono, monospace';
-  canvasCtx.fillText(`Final Score: ${snakeScore}`, 140, 115);
-  canvasCtx.fillStyle = '#00e5c9';
-  canvasCtx.fillText('Press [A] to Restart', 140, 140);
+  canvasCtx.font = '9px "Space Mono", monospace';
+  canvasCtx.fillText('Press START or [A] to Resume', 140, 120);
   canvasCtx.textAlign = 'start';
+}
+
+function drawGameOver() {
+  if (!canvasCtx) return;
+  canvasCtx.fillStyle = 'rgba(10, 2, 2, 0.82)';
+  canvasCtx.fillRect(0, 0, 280, 196);
+
+  canvasCtx.fillStyle = '#ef4444';
+  canvasCtx.font = '14px "Silkscreen", monospace';
+  canvasCtx.textAlign = 'center';
+  canvasCtx.fillText('GAME OVER!', 140, 80);
+
+  canvasCtx.fillStyle = '#ffffff';
+  canvasCtx.font = '10px "Space Mono", monospace';
+  canvasCtx.fillText(`Final Score: ${snakeScore}`, 140, 106);
+
+  canvasCtx.fillStyle = '#00ffcc';
+  canvasCtx.font = '9px "Silkscreen", monospace';
+  canvasCtx.fillText('PRESS [A] TO PLAY AGAIN', 140, 134);
+  canvasCtx.textAlign = 'start';
+
+  const captionTagline = document.getElementById('consoleCaptionTagline');
+  if (captionTagline) {
+    captionTagline.textContent = `GAME OVER! FINAL SCORE: ${snakeScore} · PRESS [A] TO RESTART`;
+  }
+}
+
+function applyScanlines() {
+  if (!canvasCtx) return;
+  canvasCtx.fillStyle = 'rgba(0, 0, 0, 0.15)';
+  for (let i = 0; i < 235; i += 4) {
+    canvasCtx.fillRect(0, i, 280, 2);
+  }
 }
 
 /* ==========================================================================
@@ -1214,10 +1747,10 @@ function openResumeModal() {
    9. TALK TO SYED MECHA HELMET ASSISTANT
    ========================================================================== */
 const faqAnswers = {
-  stack: "Syed's primary stack includes TypeScript, React, Next.js, Node.js, PostgreSQL, and Supabase. He specializes in full-stack architecture, API engineering, and AI agent integration.",
-  projects: "Featured highlights include VeeduVadagaiku (property rental & subscription platform) and Aadhif's Wood Pressed Oils (e-commerce storefront with checkout & analytics).",
-  education: "Syed is a final-year B.E. Computer Science and Engineering student based in Chennai, India (graduating 2026), with high passion for building scalable software systems.",
-  contact: "You can reach Syed directly at azharhussain@example.com or connect via LinkedIn and GitHub!"
+  stack: "Syed's primary technical stack includes React.js, Node.js, Python, Django, Flask, Express.js, REST APIs, and Firebase, along with databases like MySQL, PostgreSQL, and MongoDB.",
+  projects: "Featured highlights include his full-stack E-Commerce Web Application (React, Node, Python, MongoDB), Interactive Puzzle Game, Dynamic Event Platform, and production client platforms like Veedu Vadagaikku and JP Holidays.",
+  education: "Syed is pursuing a Bachelor of Engineering (B.E.) in Computer Science and Engineering at The Meenakshi College of Engineering, Chennai (2023 – 2027).",
+  contact: "You can reach Syed directly via email at azhar12082006@gmail.com or connect via LinkedIn and GitHub!"
 };
 
 function initMechaAssistant() {
@@ -1225,13 +1758,41 @@ function initMechaAssistant() {
   const modal = document.getElementById('assistantModal');
   const answerBox = document.getElementById('assistantAnswerBox');
   const promptButtons = document.querySelectorAll('.assistant-prompt-btn');
+  const closeBtn = document.getElementById('closeChatBtn');
+  const gotItBtn = document.getElementById('chatGotItBtn');
 
   if (avatarBtn && modal) {
-    avatarBtn.addEventListener('click', () => {
+    avatarBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
       playRetroBeep(680, 0.08);
-      modal.classList.add('active');
+      modal.classList.toggle('active');
     });
   }
+
+  if (closeBtn && modal) {
+    closeBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      playClickSound();
+      modal.classList.remove('active');
+    });
+  }
+
+  if (gotItBtn && modal) {
+    gotItBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      playClickSound();
+      modal.classList.remove('active');
+    });
+  }
+
+  // Close when clicking outside
+  document.addEventListener('click', (e) => {
+    if (modal && modal.classList.contains('active')) {
+      if (!modal.contains(e.target) && e.target !== avatarBtn && !avatarBtn?.contains(e.target)) {
+        modal.classList.remove('active');
+      }
+    }
+  });
 
   promptButtons.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -1285,3 +1846,349 @@ function initStampInteractions() {
     });
   });
 }
+
+/* ==========================================================================
+   ⚡ THOR AI CHAT WIDGET
+   Portfolio-aware assistant with redesigned Thor avatar & verified resume data
+   ========================================================================== */
+function initThorChat() {
+  const toggleBtn  = document.getElementById('thorChatToggle');
+  const closeBtn   = document.getElementById('thorChatClose');
+  const chatWindow = document.getElementById('thorChatWindow');
+  const feed       = document.getElementById('thorMessagesFeed');
+  const input      = document.getElementById('thorChatInput');
+  const sendBtn    = document.getElementById('thorChatSend');
+  const chips      = document.querySelectorAll('.thor-chip');
+
+  if (!toggleBtn || !chatWindow || !feed) return;
+
+  let isOpen    = false;
+  let hasGreeted = false;
+
+  /* -------- INTELLIGENT KNOWLEDGE & QUESTION MATCHING ENGINE -------- */
+  function getBotReply(rawText) {
+    const query = (rawText || '').trim();
+    if (!query) return `⚡ What knowledge of Azhar's realm do you seek, warrior? Ask about his projects, skills, internships, education, or certifications!`;
+
+    const lower = query.toLowerCase();
+    const clean = lower.replace(/[?!.,;:'"()&#*\/\\_+\-=@~<>]/g, ' ');
+    const tokens = clean.split(/\s+/).filter(Boolean);
+    const tokenSet = new Set(tokens);
+
+    const has = (...words) => words.some(w => tokenSet.has(w));
+    const phrase = (str) => lower.includes(str);
+
+    // 1. PHONE / MOBILE / CALL / WHATSAPP (Respect privacy - mobile number removed)
+    if (has('phone', 'mobile', 'call', 'telephone', 'cell', 'whatsapp', 'sms') || phrase('phone number') || phrase('mobile number') || phrase('contact number')) {
+      return `⚡ Azhar's personal mobile number is not publicly listed on this portfolio to respect privacy.\n\nYou can reach him directly through his verified channels:\n📧 <strong>Email:</strong> azhar12082006@gmail.com\n💼 <strong>LinkedIn:</strong> <a href="https://linkedin.com/in/syed-azhar-hussain-a-a721b535a" target="_blank" rel="noopener" style="color: #4dff9a; text-decoration: underline;">linkedin.com/in/syed-azhar-hussain-a-a721b535a</a>\n🐙 <strong>GitHub:</strong> <a href="https://github.com/azhar2006-collab" target="_blank" rel="noopener" style="color: #4dff9a; text-decoration: underline;">github.com/azhar2006-collab</a>\n\nOr dispatch a note through the contact form at the bottom of the page — he responds promptly! ⚡`;
+    }
+
+    // 2. RESUME / CV / PDF DOWNLOAD
+    if (has('resume', 'cv', 'pdf') || phrase('download resume') || phrase('view resume') || phrase('get resume')) {
+      return `📄 Azhar's official resume is available directly on this portfolio!\n\nYou can view and download his verified resume PDF (<strong>Syed_Azhar_Hussain_Resume.pdf</strong>) by clicking the <strong>"Download Resume 📄"</strong> button in the hero card or the contact checklist.\n\nIt contains his verified academic record (B.E. CSE 2023–2027), internships at Trios Technologies & Cognifyz, verified credentials, and complete technical competencies! ⚡`;
+    }
+
+    // 3. EDUCATION / COLLEGE / DEGREE / UNIVERSITY / CGPA
+    if (has('education', 'college', 'degree', 'university', 'study', 'studying', 'studied', 'academic', 'academics', 'school', 'meenakshi', 'gpa', 'cgpa', 'graduating', 'graduation', 'bachelor', 'engineering') || phrase('what did he study') || phrase('where did he study')) {
+      return `🎓 <strong>Academic Background (from official resume):</strong>\n\n📜 <strong>Degree:</strong> Bachelor of Engineering (B.E.) in Computer Science and Engineering\n🏛️ <strong>Institution:</strong> The Meenakshi College of Engineering, Chennai, India\n🗓️ <strong>Duration:</strong> 2023 – 2027\n\nAzhar maintains a strong focus on software engineering, data structures, full-stack web applications, and database architecture! ✈️`;
+    }
+
+    // 4. SPECIFIC INTERNSHIPS
+    // 4a. Trios Technologies
+    if (has('trios')) {
+      return `🏢 <strong>Full Stack Developer Intern (Python) | Trios Technologies</strong>\n📍 <em>Chennai, India · 2026 – Present (Current Internship)</em>\n\n• Contributing to 2+ production-grade full-stack web applications using Python, Django/Flask, and React.js, serving real end users.\n• Designed and integrated 5+ RESTful APIs connecting React.js front-end with back-end databases and third-party services.\n• Improved data retrieval efficiency by optimizing SQL and MongoDB queries, reducing average query response time.\n• Managed CI/CD deployment pipelines using Git and cloud hosting platforms including Vercel and Render. ⚡`;
+    }
+
+    // 4b. Cognifyz IT Solutions
+    if (has('cognifyz')) {
+      return `🏢 <strong>Full Stack Developer Intern | Cognifyz IT Solutions Pvt. Ltd.</strong>\n📍 <em>Chennai, India · June 2026 – July 2026 (Completed Internship)</em>\n\n• Developed and delivered 3+ full-stack web application features using React.js and RESTful APIs, reducing manual data handling time by ~25%.\n• Built 10+ dynamic, reusable UI components integrated with back-end APIs, improving overall performance and user experience.\n• Collaborated with a team of 5 developers following Agile practices, completing sprint tasks consistently on schedule.\n• Maintained 100% code documentation standards through peer code reviews.\n• Resolved 15+ bugs and performance issues across front-end and back-end modules. 🛡️`;
+    }
+
+    // 4c. General Experience / Internships / Work History
+    if (has('experience', 'internship', 'internships', 'intern', 'jobs', 'workplace', 'company', 'companies') || phrase('where did he work') || phrase('where has he worked') || phrase('work history') || phrase('professional experience')) {
+      return `🏢 <strong>Professional Experience (from official resume):</strong>\n\n1️⃣ <strong>Trios Technologies</strong> (Chennai, India | 2026 – Present)\n<em>Full Stack Developer Intern (Python)</em>\n• Contributing to 2+ production web apps using Python, Django/Flask, and React.js.\n• Architected 5+ RESTful APIs, optimized SQL/MongoDB queries, and deployed via Vercel and Render.\n\n2️⃣ <strong>Cognifyz IT Solutions Pvt. Ltd.</strong> (Chennai, India | June 2026 – July 2026)\n<em>Full Stack Developer Intern</em>\n• Delivered 3+ full-stack web app features using React.js and RESTful APIs (~25% data handling time reduction).\n• Built 10+ reusable UI components, resolved 15+ bugs, and collaborated in a 5-developer Agile sprint team.\n\nFlip the 3D luggage tag in the <strong>"Where I've Worked"</strong> section for interactive details! 🃏`;
+    }
+
+    // 5. CERTIFICATIONS & JOB SIMULATIONS
+    if (has('certification', 'certifications', 'cert', 'certs', 'certificate', 'certificates', 'certified', 'deloitte', 'forage', 'simplilearn', 'learntube', 'officemaster', 'infosys', 'springboard', 'platinion', 'simulation', 'simulations') || phrase('what certifications')) {
+      return `🏆 <strong>Verified Certifications & Credentials (from official resume):</strong>\n\n1. 📜 <strong>Full-Stack Development 101</strong> — Simplilearn SkillUp (July 2025 | ID: 8681019)\n2. 🛡️ <strong>Cyber Job Simulation</strong> — Deloitte / Forage (August 2025 | ID: tnNM2ApNPMQL50fw)\n3. 🌐 <strong>Introduction to Web Development</strong> — LearnTube (August 2025 | ID: INT-M-2-3705-1066795)\n4. 📊 <strong>PowerBI Workshop</strong> — OfficeMaster (August 2025 | AI-powered dashboards)\n5. 💾 <strong>Big Data 101 & Big Data 301</strong> — Infosys Springboard (November 2025)\n6. 🏛️ <strong>IT Architecture Job Simulation</strong> — BCG Platinion / Forage (December 2025 | Enterprise solution architecture)\n7. 💻 <strong>Technology Job Simulation</strong> — Deloitte / Forage (December 2025 | Coding & Development)\n\nInspect the <strong>"Certifications Console"</strong> on this portfolio for verification details! 🎖️`;
+    }
+
+    // 6. SPECIFIC TECHNOLOGIES
+    // 6a. Python / Django / Flask
+    if (has('python', 'django', 'flask')) {
+      return `🐍 <strong>Python & Backend Engineering:</strong>\n\nAzhar actively wields <strong>Python</strong>, <strong>Django</strong>, and <strong>Flask</strong> for backend development and API architecture:\n• At <strong>Trios Technologies</strong>, he is contributing to 2+ production-grade web applications using Python, Django/Flask, and React.js.\n• Developed and integrated 5+ RESTful APIs connecting front-end interfaces to SQL and MongoDB.\n• Built the backend logic for his full-stack <strong>E-Commerce Web Application</strong> using Python and Node.js! ⚡`;
+    }
+
+    // 6b. React / React.js
+    if (has('react', 'reactjs') || phrase('react.js')) {
+      return `⚛️ <strong>React.js Experience:</strong>\n\nReact is one of Azhar's primary front-end frameworks:\n• <strong>Cognifyz IT Solutions:</strong> Built 10+ dynamic, reusable React components and delivered 3+ production features.\n• <strong>Trios Technologies:</strong> Engineered responsive front-ends connected via REST APIs.\n• <strong>E-Commerce Web Application:</strong> Complete customer-facing storefront with cart and payments.\n• <strong>Veedu Vadagaikku Chennai:</strong> Client rental platform built using React (Vite) and TanStack Query! ⚡`;
+    }
+
+    // 6c. Node.js / Express
+    if (has('node', 'nodejs', 'express', 'expressjs') || phrase('node.js')) {
+      return `🟢 <strong>Node.js & Express.js:</strong>\n\nAzhar leverages Node.js and Express.js for scalable server-side development:\n• Built RESTful APIs connecting clients with PostgreSQL and MongoDB.\n• Implemented secure payment processing and inventory management in his E-Commerce platform.\n• Powered backend routing and persistent storage for his Dynamic Event Platform! ⚡`;
+    }
+
+    // 6d. Databases
+    if (has('database', 'databases', 'sql', 'mongodb', 'postgresql', 'postgres', 'mysql', 'sqlite', 'firestore')) {
+      return `🗄️ <strong>Databases & Data Management:</strong>\n\nFrom his verified resume, Azhar has hands-on proficiency in:\n• <strong>Relational:</strong> MySQL, PostgreSQL, SQLite\n• <strong>NoSQL & Cloud:</strong> MongoDB, Firebase Firestore, Realtime Database\n\nAt Trios Technologies, he optimized SQL and MongoDB queries to reduce query latency and improve server efficiency! ⚡`;
+    }
+
+    // 6e. Firebase / Cloud / DevOps
+    if (has('firebase', 'cloud', 'gcp', 'render', 'vercel', 'netlify', 'serverless')) {
+      return `☁️ <strong>Cloud & Serverless Technologies:</strong>\n\n• <strong>Firebase:</strong> Authentication, Firestore, Realtime Database, Cloud Functions, and Firebase Hosting.\n• <strong>Google Cloud Platform (GCP):</strong> Fundamental cloud services.\n• <strong>Deployments & CI/CD:</strong> Git-driven automated pipelines across Vercel and Render. 🚀`;
+    }
+
+    // 6f. PowerBI / Analytics
+    if (has('powerbi', 'analytics', 'bi') || phrase('power bi') || phrase('data analysis')) {
+      return `📊 <strong>PowerBI & Business Intelligence:</strong>\n\n• Certified in <strong>PowerBI Workshop</strong> (OfficeMaster) and <strong>Big Data</strong> (Infosys Springboard).\n• Built 3 AI-powered interactive PowerBI dashboards visualizing 10+ business KPIs for stakeholders.\n• Streamlined executive reporting workflows and slashed reporting turnaround time by 40%! 📈`;
+    }
+
+    // 6g. Developer Tools & Platforms
+    if (has('docker', 'git', 'github', 'vscode', 'tools', 'platform', 'platforms')) {
+      return `🛠️ <strong>Tools & Development Environment:</strong>\n\n• <strong>Version Control:</strong> Git, GitHub\n• <strong>Hosting Platforms:</strong> Vercel, Netlify, Render\n• <strong>Containerization:</strong> Docker (Basics)\n• <strong>Workflow & IDE:</strong> VS Code, Agile, Scrum, and peer code review standards! ⚙️`;
+    }
+
+    // 6h. Frontend & UI
+    if (has('frontend', 'html', 'css', 'javascript', 'js', 'ui', 'ux', 'responsive') && !has('skills', 'skill', 'stack')) {
+      return `🎨 <strong>Front-End Web Development:</strong>\n\nAzhar specializes in HTML5, CSS3, modern JavaScript (ES6+), React.js, responsive web design, UI/UX design, and DOM manipulation. He develops responsive layouts with zero layout shifts, fluid animations, and cross-browser reliability! 🖥️`;
+    }
+
+    // 6i. All Technical Skills Summary
+    if (has('skills', 'skill', 'stack', 'technologies', 'technology', 'tech', 'languages', 'language')) {
+      return `🔧 <strong>Azhar's Technical Skills (from official resume):</strong>\n\n• <strong>Front-End:</strong> HTML5, CSS3, JavaScript (ES6+), React.js, Responsive Web Design, UI/UX Design, DOM Manipulation\n• <strong>Back-End:</strong> Python, Node.js, Django, Flask, Express.js, REST API Development, Server-Side Rendering\n• <strong>Databases:</strong> MySQL, PostgreSQL, MongoDB, SQLite, Firebase Firestore, Realtime Database\n• <strong>Cloud & Serverless:</strong> Firebase (Auth, Functions, Hosting), GCP, Vercel, Netlify, Render, Docker (Basics)\n• <strong>Tools & Methods:</strong> Git, GitHub, VS Code, PowerBI, Agile, Scrum\n\nA comprehensive full-stack toolkit! ⚡`;
+    }
+
+    // 7. SPECIFIC PROJECTS
+    // 7a. E-Commerce
+    if (has('ecommerce', 'store', 'cart', 'shop', 'shopping') || phrase('e-commerce')) {
+      return `🛒 <strong>E-Commerce Web Application (Resume Project):</strong>\n\n• <strong>Stack:</strong> React.js, Node.js, Python, REST API, MongoDB\n• <strong>Overview:</strong> Designed and developed a fully responsive full-stack platform with 5+ core modules including product catalog, shopping cart persistence, secure payment gateway integration, and back-end inventory management.\n• <strong>Impact:</strong> Integrated 4 REST APIs for seamless client-server communication, reducing page load times by 30%! ⚡`;
+    }
+
+    // 7b. Puzzle / Game
+    if (has('puzzle', 'game', 'snake', 'arcade')) {
+      return `🧩 <strong>Interactive Puzzle Game (Resume Project):</strong>\n\n• <strong>Stack:</strong> Vanilla JavaScript, HTML5, CSS3\n• <strong>Overview:</strong> Browser-based puzzle game featuring 3 difficulty tiers, real-time score calculation, and dynamic game state management using vanilla JavaScript and advanced DOM manipulation.\n\n🎮 <em>Tip: You can also play the Retro Snake Arcade in the 'Arcade' section of this portfolio!</em>`;
+    }
+
+    // 7c. Dynamic Event Platform
+    if (has('event', 'events', 'registration', 'registrations')) {
+      return `📅 <strong>Dynamic Event Platform (Resume Project):</strong>\n\n• <strong>Stack:</strong> React.js, Node.js, SQL, REST API\n• <strong>Overview:</strong> Multi-page web application supporting 100+ event registrations with interactive schedule management, dynamic UI components, and a database backend for persistent data management. ⚡`;
+    }
+
+    // 7d. PowerBI Project
+    if (phrase('powerbi dashboard') || phrase('power bi dashboard') || phrase('analytics dashboard')) {
+      return `📊 <strong>PowerBI Analytics Dashboard (Resume Project):</strong>\n\n• <strong>Stack:</strong> PowerBI, Data Analysis, AI Integration\n• <strong>Overview:</strong> Built 3 AI-powered interactive dashboards visualizing 10+ business KPIs for stakeholders.\n• <strong>Impact:</strong> Accelerated decision-making and decreased reporting turnaround time by 40%! 📈`;
+    }
+
+    // 7e. Veedu Vadagaikku
+    if (has('veedu', 'vadagaikku', 'rental')) {
+      return `🏠 <strong>Veedu Vadagaikku Chennai (Client Project):</strong>\n\n• <strong>Stack:</strong> React (Vite), TanStack Query, Firebase, Tailwind CSS, REST APIs\n• <strong>Overview:</strong> Zero-brokerage direct tenant-to-landlord rental marketplace for Chennai with bilingual Tamil/English UI, multi-category listings (houses, PGs, shops), and landlord listing packages! 🔑`;
+    }
+
+    // 7f. JP Holidays
+    if (has('jpholidays', 'holiday', 'holidays', 'travel', 'tour')) {
+      return `✈️ <strong>JP Holidays (Client Project):</strong>\n\n• <strong>Stack:</strong> JavaScript (ES6+), HTML5/CSS3, Schema.org JSON-LD, WhatsApp API\n• <strong>Overview:</strong> International and domestic travel agency web platform showcasing 3,000+ tour packages, custom itinerary search, and structured SEO! 🌍`;
+    }
+
+    // 7g. 77 Fitness
+    if (has('fitness', 'gym', 'workout') || phrase('77 fitness')) {
+      return `💪 <strong>77 Fitness Studio (Client Project):</strong>\n\n• <strong>Stack:</strong> Vanilla CSS3, Modern JavaScript (ES6+), Dark Mode System, Google Maps API\n• <strong>Overview:</strong> Editorial dark-mode gym and lifestyle website for 3 premier Chennai branches (Kodambakkam, Nungambakkam, Vadapalani). 🏋️`;
+    }
+
+    // 7h. Aadhif's Oils
+    if (has('aadhif', 'aadhifs', 'oil', 'oils', 'ghee')) {
+      return `🧴 <strong>Aadhif's Wood Pressed Oils (Client Project):</strong>\n\n• <strong>Stack:</strong> JavaScript (ES6+), Node.js & Express, PostgreSQL, Tailwind CSS\n• <strong>Overview:</strong> Artisanal cold-pressed oil store featuring live bottle size pricing configurators, cart calculations, and WhatsApp checkout integration! 🥥`;
+    }
+
+    // 7i. UniHut
+    if (has('unihut', 'tax', 'corpserv')) {
+      return `📊 <strong>UniHut Tax & Corpserv (Client Project):</strong>\n\n• <strong>Stack:</strong> Semantic HTML5/CSS3, JavaScript (ES6+), Cormorant Garamond typography\n• <strong>Overview:</strong> Corporate legal and taxation portal presenting private limited company formation, GST filing, and financial compliance! 📑`;
+    }
+
+    // 7j. Ktech Solutions
+    if (has('ktech')) {
+      return `🖥️ <strong>Ktech Solutions (Client Project):</strong>\n\n• <strong>Stack:</strong> Node.js, Express, PostgreSQL, Docker, RESTful APIs\n• <strong>Overview:</strong> Enterprise workflow automation & process orchestration system with real-time RESTful telemetry and microservices architecture! ⚙️`;
+    }
+
+    // 7k. General Projects
+    if (has('projects', 'project', 'built', 'build', 'apps', 'work') || phrase('what projects') || phrase('what did he build')) {
+      return `⚔️ <strong>Azhar's Featured Projects & Builds:</strong>\n\n📂 <strong>Resume Projects:</strong>\n1. 🛒 <strong>E-Commerce Web Application</strong> — React.js, Node.js, Python, MongoDB (5+ modules, 4 REST APIs, 30% speedup)\n2. 🧩 <strong>Interactive Puzzle Game</strong> — Vanilla JS, HTML5, CSS3 (3 difficulty tiers, score tracking)\n3. 📅 <strong>Dynamic Event Platform</strong> — React.js, Node.js, SQL (100+ attendee registrations)\n4. 📊 <strong>PowerBI Analytics Dashboard</strong> — 3 AI-powered KPI dashboards (40% faster reporting)\n\n🚀 <strong>Client Platforms:</strong>\n• 🏠 <strong>Veedu Vadagaikku:</strong> Zero-brokerage Chennai property rental platform\n• ✈️ <strong>JP Holidays:</strong> 3,000+ tour package travel portal\n• 💪 <strong>77 Fitness:</strong> Luxury dark-mode gym web platform\n• 🧴 <strong>Aadhif's Oils:</strong> E-commerce oil storefront\n\nCheck the <strong>"Selected Work"</strong> section on this site to see each project in action! 🛡️`;
+    }
+
+    // 8. CONTACT / REACH / HIRE / EMAIL / CONNECT
+    if (has('contact', 'reach', 'hire', 'email', 'connect', 'message', 'mail', 'write', 'talk', 'linkedin', 'github') || phrase('how can i contact') || phrase('get in touch') || phrase('reach out')) {
+      return `📡 <strong>Connect with Syed Azhar Hussain:</strong>\n\n📧 <strong>Email:</strong> azhar12082006@gmail.com\n💼 <strong>LinkedIn:</strong> <a href="https://linkedin.com/in/syed-azhar-hussain-a-a721b535a" target="_blank" rel="noopener" style="color: #4dff9a; text-decoration: underline;">linkedin.com/in/syed-azhar-hussain-a-a721b535a</a>\n🐙 <strong>GitHub:</strong> <a href="https://github.com/azhar2006-collab" target="_blank" rel="noopener" style="color: #4dff9a; text-decoration: underline;">github.com/azhar2006-collab</a>\n📍 <strong>Location:</strong> Chennai, Tamil Nadu, India\n\nYou can also dispatch a message directly via the contact letterhead form at the bottom of the page! ⚡`;
+    }
+
+    // 9. CORE COMPETENCIES / STRENGTHS
+    if (has('competencies', 'competency', 'strengths', 'strength', 'why') || phrase('why should we hire') || phrase('why hire') || phrase('what makes him good')) {
+      return `💪 <strong>Core Competencies (from official resume):</strong>\n\n✦ Full Stack Web Development (React.js, Node.js, Python, Django)\n✦ REST API Design, Integration & Optimization\n✦ Cloud & Firebase Serverless Architecture\n✦ Responsive UI/UX Development & DOM Manipulation\n✦ Database Design & Query Optimization (SQL & MongoDB)\n✦ Agile & Collaborative Sprint Execution (5-member teams)\n✦ Clean Code, Peer Code Reviews & Software Best Practices ⚡`;
+    }
+
+    // 10. ABOUT / WHO IS AZHAR / PROFILE SUMMARY
+    if (phrase('who is azhar') || phrase('who is syed') || phrase('about azhar') || phrase('tell me about yourself') || phrase('introduce yourself') || phrase('tell me about azhar') || phrase('tell me about syed') || (has('who', 'about', 'summary', 'profile', 'bio', 'intro', 'introduction') && has('azhar', 'syed', 'him', 'developer', 'candidate', 'author'))) {
+      return `⚡ <strong>Syed Azhar Hussain</strong> is a motivated Full Stack Developer based in Chennai, India!\n\n🎓 Pursuing his <strong>Bachelor of Engineering (B.E.) in Computer Science & Engineering (2023 – 2027)</strong> at The Meenakshi College of Engineering, Chennai.\n🏢 Currently interning at <strong>Trios Technologies</strong> as a Full Stack Developer (Python), with prior internship experience at <strong>Cognifyz IT Solutions</strong>.\n🔧 Skilled in <strong>React.js, Node.js, Python, Django, REST APIs, and Firebase</strong>, with proven hands-on experience delivering scalable, responsive web applications.\n\nAsk me about his skills, projects, internships, education, or certifications! 🔱`;
+    }
+
+    // 11. BOT IDENTITY / THOR PERSONA
+    if (phrase('who are you') || phrase('what are you') || phrase('your name') || phrase('what can you do') || (has('who') && has('you'))) {
+      return `⚡ I am <strong>THOR</strong>, the portfolio AI guardian for Syed Azhar Hussain!\n\nI am powered directly by Azhar's verified resume data. I can tell you about:\n• 💼 <strong>Projects & client builds</strong>\n• 🏢 <strong>Internships at Trios & Cognifyz</strong>\n• ⚙️ <strong>Technical stack (React, Python, Node, Firebase, SQL)</strong>\n• 🎓 <strong>Education & college details (B.E. CSE 2023–2027)</strong>\n• 🏆 <strong>7 verified certifications</strong>\n• 📩 <strong>How to contact or hire him</strong>\n\nWhat wisdom do you seek, warrior? ⚔️`;
+    }
+
+    // 12. GREETINGS
+    if (has('hello', 'hi', 'hey', 'howdy', 'greetings', 'sup', 'yo', 'vanakkam', 'namaste', 'hola') || phrase('good morning') || phrase('good afternoon') || phrase('good evening')) {
+      return `⚡ GREETINGS, visitor! I am <strong>THOR</strong>, guardian of Azhar's portfolio realm!\n\nI am armed with every detail from Azhar's verified resume. How can I assist your quest today?\n\n• Ask about his <strong>projects</strong> (E-Commerce, Puzzle Game, Veedu Vadagaikku)\n• Inquire about his <strong>skills</strong> (React, Python, Django, Node.js, Firebase)\n• Review his <strong>internships</strong> (Trios Technologies, Cognifyz)\n• Check his <strong>education & certifications</strong>\n\nWhat knowledge do you seek? ⚔️`;
+    }
+
+    // 13. THANKS / PRAISE
+    if (has('thanks', 'thank', 'awesome', 'great', 'cool', 'nice', 'good', 'super', 'wonderful', 'brilliant', 'perfect')) {
+      return `⚡ You are most welcome, noble friend! The All-Father smiles upon your quest for knowledge!\n\nIs there anything else you wish to know about Azhar's projects, skills, or credentials? I stand ready! 🔱`;
+    }
+
+    // 14. EXPLICIT UNAVAILABLE INFO CHECK & POLITE FALLBACK
+    return `⚡ That specific information is <strong>not mentioned in Azhar's official resume</strong>.\n\nAccording to his verified resume, Azhar is a Full Stack Developer (B.E. CSE, 2023–2027) skilled in React.js, Python, Node.js, Django, REST APIs, and Firebase.\n\nFeel free to ask about his <strong>skills</strong>, <strong>internships at Trios Technologies & Cognifyz</strong>, <strong>projects</strong>, <strong>education</strong>, or <strong>certifications</strong>! 🛡️`;
+  }
+
+  /* -------- HELPERS -------- */
+  function addMessage(text, role) {
+    const msg = document.createElement('div');
+    msg.classList.add('thor-msg', role);
+
+    if (role === 'bot') {
+      const avatar = document.createElement('img');
+      avatar.src = 'assets/images/thor-avatar.png';
+      avatar.alt = 'Thor';
+      avatar.classList.add('thor-msg-avatar');
+      msg.appendChild(avatar);
+    } else {
+      const initials = document.createElement('div');
+      initials.classList.add('thor-user-initials');
+      initials.textContent = 'YOU';
+      msg.appendChild(initials);
+    }
+
+    const bubble = document.createElement('div');
+    bubble.classList.add('thor-msg-bubble');
+    bubble.innerHTML = text.replace(/\n/g, '<br/>');
+    msg.appendChild(bubble);
+
+    feed.appendChild(msg);
+    feed.scrollTop = feed.scrollHeight;
+    return msg;
+  }
+
+  function showTyping() {
+    const row = document.createElement('div');
+    row.classList.add('thor-msg', 'bot');
+    row.id = 'thorTypingRow';
+
+    const avatar = document.createElement('img');
+    avatar.src = 'assets/images/thor-avatar.png';
+    avatar.alt = 'Thor';
+    avatar.classList.add('thor-msg-avatar');
+    row.appendChild(avatar);
+
+    const indicator = document.createElement('div');
+    indicator.classList.add('thor-typing-indicator');
+    indicator.innerHTML = '<span class="thor-typing-dot"></span><span class="thor-typing-dot"></span><span class="thor-typing-dot"></span>';
+    row.appendChild(indicator);
+
+    feed.appendChild(row);
+    feed.scrollTop = feed.scrollHeight;
+  }
+
+  function removeTyping() {
+    const row = document.getElementById('thorTypingRow');
+    if (row) row.remove();
+  }
+
+  function sendMessage(text) {
+    if (!text.trim()) return;
+    addMessage(text, 'user');
+    if (input) input.value = '';
+
+    showTyping();
+    const delay = 600 + Math.random() * 500;
+    setTimeout(() => {
+      removeTyping();
+      addMessage(getBotReply(text), 'bot');
+    }, delay);
+  }
+
+  /* -------- TOGGLE OPEN/CLOSE -------- */
+  function openChat() {
+    isOpen = true;
+    chatWindow.classList.add('open');
+    toggleBtn.setAttribute('aria-expanded', 'true');
+    // Remove notification badge if any
+    const badge = toggleBtn.querySelector('.thor-fab-badge');
+    if (badge) badge.remove();
+
+    // Greet on first open
+    if (!hasGreeted) {
+      hasGreeted = true;
+      setTimeout(() => {
+        showTyping();
+        setTimeout(() => {
+          removeTyping();
+          addMessage(`⚡ HAIL, visitor! I am <strong>THOR</strong>, guardian of Azhar's portfolio realm!\n\nI am armed with verified knowledge from his official resume — ask me about his <strong>projects</strong>, <strong>skills</strong>, <strong>internships</strong>, <strong>certifications</strong>, or <strong>education</strong>!\n\nWhat wisdom do you seek, mortal? ⚔️`, 'bot');
+        }, 800);
+      }, 200);
+    }
+
+    if (input) {
+      setTimeout(() => input.focus(), 350);
+    }
+  }
+
+  function closeChat() {
+    isOpen = false;
+    chatWindow.classList.remove('open');
+    toggleBtn.setAttribute('aria-expanded', 'false');
+  }
+
+  /* -------- EVENT LISTENERS -------- */
+  toggleBtn.addEventListener('click', () => {
+    if (isOpen) closeChat();
+    else openChat();
+  });
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => closeChat());
+  }
+
+  if (sendBtn) {
+    sendBtn.addEventListener('click', () => sendMessage(input.value));
+  }
+
+  if (input) {
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        sendMessage(input.value);
+      }
+    });
+  }
+
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      const query = chip.getAttribute('data-query');
+      if (query) sendMessage(query);
+    });
+  });
+
+  // Show a notification badge after 3s if not opened yet
+  setTimeout(() => {
+    if (!isOpen && !hasGreeted) {
+      const existingBadge = toggleBtn.querySelector('.thor-fab-badge');
+      if (!existingBadge) {
+        const badge = document.createElement('span');
+        badge.classList.add('thor-fab-badge');
+        badge.textContent = '1';
+        toggleBtn.appendChild(badge);
+      }
+    }
+  }, 3000);
+}
+
