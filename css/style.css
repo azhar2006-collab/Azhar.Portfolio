@@ -1390,6 +1390,27 @@ body {
     height: 35px;
   }
 }
+@media (max-width: 640px) {
+  .hero-name-row {
+    align-items: flex-end;
+    gap: 8px;
+  }
+  .hero-name-row .hero-name {
+    min-width: 0;
+    white-space: normal;
+    line-height: 0.98;
+    font-size: clamp(1.35rem, 5.2vw, 2.1rem) !important;
+  }
+  .hero-thor-chat-fab {
+    flex-basis: 38px;
+    width: 38px;
+    height: 38px;
+  }
+  .hero-thor-chat-fab .thor-fab-avatar {
+    width: 33px;
+    height: 33px;
+  }
+}
 
 .hero-role-badge {
   display: inline-block;
