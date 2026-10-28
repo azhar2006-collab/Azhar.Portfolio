@@ -67,6 +67,256 @@ body {
   background-size: 100% 100%, 100% 100%, 32px 32px, 32px 32px;
 }
 
+/* ==========================================================================
+   FULL-SCREEN ANIMATED PRELOADER — "Portfolio Passport"
+   ========================================================================== */
+
+/* Preloader: full viewport cover */
+.portfolio-preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--bg-dark);
+  /* exit: slide upward */
+  transition: transform 0.9s cubic-bezier(0.76, 0, 0.24, 1), opacity 0.5s ease 0.55s;
+}
+
+/* When JS adds .preloader-exit: slide the whole layer upward & fade */
+.portfolio-preloader.preloader-exit {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Reduced-motion: just fade instead of slide */
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-preloader {
+    transition: opacity 0.5s ease;
+  }
+  .portfolio-preloader.preloader-exit {
+    transform: none;
+  }
+}
+
+/* Animated gradient layer (moves bottom-to-top via background-position) */
+.preloader-bg-gradient {
+  position: absolute;
+  inset: -20%;
+  background: linear-gradient(
+    0deg,
+    #071616 0%,
+    #0a1f1e 15%,
+    rgba(0, 229, 201, 0.08) 35%,
+    #071f1c 55%,
+    #050e0e 80%,
+    #071616 100%
+  );
+  background-size: 100% 200%;
+  background-position: 0% 100%;
+  animation: preloaderGradientRise 2.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  pointer-events: none;
+}
+@keyframes preloaderGradientRise {
+  0%   { background-position: 0% 100%; }
+  100% { background-position: 0%   0%; }
+}
+
+/* Faint scanline mesh overlay */
+.preloader-scanline-mesh {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* Radial teal glow orb behind the text */
+.preloader-radial-orb {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 600px;
+  height: 600px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 229, 201, 0.10) 0%, transparent 70%);
+  pointer-events: none;
+  animation: preloaderOrbPulse 2.4s ease-in-out infinite alternate;
+}
+@keyframes preloaderOrbPulse {
+  from { opacity: 0.5; transform: translate(-50%, -50%) scale(0.95); }
+  to   { opacity: 1;   transform: translate(-50%, -50%) scale(1.05); }
+}
+
+/* Content container */
+.preloader-container {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 18px;
+  padding: 0 24px;
+  animation: preloaderContentIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+}
+@keyframes preloaderContentIn {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* Passport Crest / Monogram */
+.preloader-crest {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(0, 229, 201, 0.08);
+  border: 1px solid rgba(0, 229, 201, 0.25);
+  border-radius: 999px;
+  padding: 5px 16px 5px 10px;
+  animation: preloaderCrestIn 0.7s ease 0.45s both;
+}
+@keyframes preloaderCrestIn {
+  from { opacity: 0; transform: scale(0.88); }
+  to   { opacity: 1; transform: scale(1);    }
+}
+.preloader-crest-code {
+  font-family: var(--font-pixel);
+  font-size: 0.68rem;
+  color: var(--primary);
+  letter-spacing: 0.12em;
+  opacity: 0.8;
+}
+.preloader-crest-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--primary);
+  box-shadow: 0 0 8px var(--primary);
+  flex-shrink: 0;
+}
+.preloader-crest-stamp {
+  font-family: var(--font-pixel);
+  font-size: 0.68rem;
+  color: var(--primary);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* Main Welcome Heading */
+.preloader-welcome-title {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(2rem, 6vw, 4.2rem);
+  font-weight: 400;
+  color: var(--chalk);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  text-shadow: 0 0 40px rgba(0, 229, 201, 0.2);
+  animation: preloaderTitleIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.55s both;
+}
+.preloader-welcome-title strong {
+  color: var(--primary);
+  font-style: normal;
+}
+@keyframes preloaderTitleIn {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* Dev name subtitle */
+.preloader-dev-name {
+  font-family: var(--font-mono);
+  font-size: clamp(0.78rem, 2vw, 1rem);
+  color: var(--chalk-dim);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  animation: preloaderTitleIn 0.8s ease 0.75s both;
+}
+
+/* Progress bar wrapper */
+.preloader-loader-wrap {
+  width: min(320px, 70vw);
+  height: 2px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  overflow: hidden;
+  animation: preloaderTitleIn 0.6s ease 0.9s both;
+}
+.preloader-loader-bar {
+  height: 100%;
+  width: 0%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #00e5c9, #0d9488, #00e5c9);
+  background-size: 200% 100%;
+  animation:
+    preloaderBarFill 2.5s cubic-bezier(0.4, 0, 0.2, 1) 0.4s forwards,
+    preloaderBarShimmer 1.8s linear 0.4s infinite;
+}
+@keyframes preloaderBarFill {
+  from { width: 0%; }
+  to   { width: 100%; }
+}
+@keyframes preloaderBarShimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Telemetry status line */
+.preloader-telemetry {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  animation: preloaderTitleIn 0.7s ease 1s both;
+}
+.preloader-telemetry-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--primary);
+  box-shadow: 0 0 8px var(--primary);
+  flex-shrink: 0;
+  animation: preloaderDotBlink 1s ease-in-out infinite;
+}
+@keyframes preloaderDotBlink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}
+.preloader-telemetry-text {
+  font-family: var(--font-pixel);
+  font-size: 0.58rem;
+  color: rgba(0, 229, 201, 0.55);
+  letter-spacing: 0.18em;
+}
+
+/* Mobile responsive preloader */
+@media (max-width: 480px) {
+  .preloader-container {
+    gap: 14px;
+  }
+  .preloader-welcome-title {
+    font-size: 1.9rem;
+  }
+  .preloader-crest {
+    padding: 4px 12px 4px 8px;
+  }
+  .preloader-crest-code,
+  .preloader-crest-stamp {
+    font-size: 0.58rem;
+  }
+  .preloader-radial-orb {
+    width: 340px;
+    height: 340px;
+  }
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
@@ -275,7 +525,12 @@ body {
   justify-content: space-between;
 }
 
-/* Mobile Brand Mark */
+/* Mobile Brand Group & Mobile Header Chatbot Button */
+.mobile-brand-group {
+  display: none;
+  align-items: center;
+  gap: 10px;
+}
 .mobile-brand-mark {
   display: none;
   align-items: center;
@@ -314,6 +569,74 @@ body {
   font-style: italic;
   font-weight: 400;
   color: var(--chalk);
+}
+.brand-name-hussain {
+  font-weight: 700;
+  color: #ffffff;
+}
+
+/* Chatbot Icon immediately beside 'Hussain' on Mobile */
+.mobile-header-chat-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: radial-gradient(135deg, #1a0a2e 0%, #0d1f1a 100%);
+  border: 1.5px solid rgba(77, 255, 154, 0.75);
+  box-shadow: 0 0 12px rgba(77, 255, 154, 0.35);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+}
+.mobile-header-chat-btn:hover, .mobile-header-chat-btn:active {
+  transform: scale(1.1);
+  box-shadow: 0 0 16px rgba(77, 255, 154, 0.6);
+}
+.mobile-chat-avatar-ring {
+  position: relative;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mobile-chat-avatar-img {
+  width: 24px;
+  height: 24px;
+  max-width: 24px;
+  max-height: 24px;
+  object-fit: contain;
+  border-radius: 50%;
+  display: block;
+}
+.mobile-chat-online-dot {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #4dff9a;
+  border: 1.5px solid #061a15;
+  animation: thorPingPulse 2s ease-in-out infinite;
+}
+.mobile-chat-ping {
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 1.5px solid #4dff9a;
+  opacity: 0;
+  pointer-events: none;
+  animation: mobileChatPing 2.5s infinite;
+}
+@keyframes mobileChatPing {
+  0% { transform: scale(0.9); opacity: 0.8; }
+  70% { transform: scale(1.4); opacity: 0; }
+  100% { transform: scale(1.4); opacity: 0; }
 }
 
 .top-nav-inner {
@@ -1568,252 +1891,493 @@ body {
   border-radius: 2px;
 }
 
-/* --- Selected Work: Retro Macintosh / CRT Monitor --- */
+/* --- Selected Work: Retro Macintosh / CRT Monitor & Blueprint Paper Grid --- */
+/* Inspired by maazprofile.tech + Advanced Interactive Terminal Engine */
+
 .projects-section {
   margin-bottom: 90px;
 }
 
-.crt-monitor-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/* 1. Blueprint Paper Grid Container (Matches maazprofile.tech .paper-grid) */
+.paper-grid {
+  background-color: rgba(11, 26, 26, 0.45);
+  background-image: 
+    linear-gradient(rgba(20, 184, 166, 0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(20, 184, 166, 0.09) 1px, transparent 1px);
+  background-size: 42px 42px;
+  border: 1px solid rgba(20, 184, 166, 0.22);
+  border-radius: 34px;
+  padding: 32px 18px;
   position: relative;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.7);
+}
+@media (min-width: 768px) {
+  .paper-grid {
+    padding: 48px 40px;
+  }
 }
 
-.crt-monitor-chassis {
+/* 2. CRT Monitor Stage & Rise Animation */
+@keyframes crt-rise {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.crt-stage {
+  opacity: 0;
+  animation: 0.7s cubic-bezier(0.2, 0.7, 0.3, 1) 0.1s forwards crt-rise;
+  transform: translateY(24px) scale(0.97);
   width: 100%;
-  max-width: 620px;
-  background: #e2dbcb;
-  border-radius: 40px;
-  border: 4px solid #beb5a1;
-  padding: 24px 24px 32px 24px;
+  max-width: 520px;
+  margin: 0 auto 36px auto;
+}
+
+/* 3. Molded Vintage Chassis (Paper Parchment / Macintosh Classic) */
+.crt-monitor {
+  background: linear-gradient(160deg, #f7f2e4, #dfd5c2);
+  border-radius: 34px;
+  padding: 16px 16px 0 16px;
   box-shadow: 
-    0 25px 70px rgba(0, 0, 0, 0.8),
-    inset 0 2px 6px rgba(255, 255, 255, 0.6),
-    inset 0 -4px 8px rgba(0, 0, 0, 0.3);
+    0 30px 60px -20px rgba(0, 0, 0, 0.75),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.1);
   position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
-.crt-screen-bezel {
-  background: #081211;
-  border-radius: 24px;
-  border: 8px solid #202626;
-  box-shadow: inset 0 8px 24px rgba(0, 0, 0, 0.95), 0 2px 4px rgba(255, 255, 255, 0.1);
-  padding: 20px;
+/* 4. CRT Bezel (Deep Charcoal with Cyan Reflection Glow) */
+.crt-bezel {
+  background: #101616;
+  border-radius: 22px;
+  padding: 18px;
   position: relative;
-  overflow: hidden;
-  min-height: 360px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
-
-/* CRT Scanlines & Glow */
-.crt-screen-bezel::before {
-  content: ' ';
-  display: block;
+.crt-bezel::before {
+  content: "";
   position: absolute;
-  top: 0; left: 0; bottom: 0; right: 0;
-  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.45) 50%),
-              linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
-  z-index: 5;
-  background-size: 100% 3px, 3px 100%;
+  inset: 0;
+  border-radius: 22px;
+  background: radial-gradient(120% 100% at 50% 45%, transparent 40%, rgba(0, 229, 201, 0.32) 100%);
   pointer-events: none;
 }
 
-.crt-screen-content {
+/* 5. Authentic CRT Screen Boot & Power-On Expansion Animation */
+@keyframes crt-power-on {
+  0% {
+    opacity: 0;
+    filter: brightness(4);
+    transform: scaleY(0.02) scaleX(0.92);
+  }
+  28% {
+    opacity: 1;
+    filter: brightness(5);
+    transform: scaleY(0.03) scaleX(1);
+  }
+  45% {
+    filter: brightness(2.2);
+    transform: scaleY(1) scaleX(1);
+  }
+  60% {
+    filter: brightness(0.6);
+  }
+  72% {
+    filter: brightness(1.7);
+  }
+  84% {
+    filter: brightness(0.85);
+  }
+  100% {
+    opacity: 1;
+    filter: brightness(1);
+    transform: scaleY(1) scaleX(1);
+  }
+}
+
+@keyframes crt-flicker {
+  0%, 93%, 96%, 100% { opacity: 0; }
+  94%, 95% { opacity: 0.9; }
+}
+
+@keyframes crt-glitch-flicker {
+  0%, 100% { opacity: 0; }
+  10%, 30%, 50%, 70%, 90% { opacity: 0.65; }
+  20%, 40%, 60%, 80% { opacity: 0; }
+}
+
+@keyframes crt-glitch-color {
+  0%, 100% { filter: none; }
+  20% { filter: hue-rotate(80deg) saturate(2.4); }
+  45% { filter: invert(0.18) saturate(1.8); }
+  70% { filter: hue-rotate(-50deg) contrast(1.4); }
+}
+
+@keyframes crt-jitter {
+  0%, 100% { transform: translate(0); }
+  10% { transform: translate(-5px, 2px) skew(1.5deg); }
+  25% { transform: translate(4px, -3px) skew(-2deg); }
+  40% { transform: translate(-3px, 1px); }
+  55% { transform: translate(5px, -1px) skew(1.5deg); }
+  70% { transform: translate(-2px, 2px); }
+  85% { transform: translate(2px, -1px); }
+}
+
+@keyframes crt-pulse-dot {
+  0%, 100% {
+    box-shadow: 0 0 6px 1px rgba(0, 229, 201, 0.45);
+  }
+  50% {
+    box-shadow: 0 0 14px 4px rgba(0, 229, 201, 0.95);
+  }
+}
+
+/* 6. The CRT Phosphor Screen */
+.crt-screen {
   position: relative;
-  z-index: 6;
-  color: #1cf5d2;
-  text-shadow: 0 0 8px rgba(28, 245, 210, 0.6);
-  height: 100%;
+  min-height: 290px;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  background: radial-gradient(120% 140% at 20% 10%, #00e5c9, #052623 75%);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.4), 0 0 40px 6px rgba(0, 229, 201, 0.28);
+  transform-origin: 50% 50%;
+  animation: 0.9s cubic-bezier(0.2, 0.9, 0.25, 1) 0.4s forwards crt-power-on;
+  transform: scaleY(0.02);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  outline: none;
+}
+.crt-screen:focus-visible {
+  box-shadow: 0 0 0 2px #fff, 0 0 40px 10px rgba(0, 229, 201, 0.6);
+}
+.crt-screen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: rgba(255, 255, 255, 0.025);
+  animation: 5s step-end infinite crt-flicker;
+}
+.crt-screen.power-off {
+  transform: scaleY(0.005) scaleX(0.02) !important;
+  opacity: 0.1 !important;
+  filter: brightness(0.2) !important;
+  transition: all 0.25s ease-in;
 }
 
+/* Glitch States */
+.crt-screen.is-glitching {
+  animation: 0.4s steps(3, end) crt-glitch-color;
+}
+.crt-screen.is-glitching .crt-glitch {
+  animation: 0.4s steps(2, end) crt-glitch-flicker;
+}
+.crt-screen.is-glitching .crt-screen-content {
+  animation: 0.4s steps(6, end) crt-jitter;
+}
+
+/* Screen Interior Overlays */
+.crt-scanlines {
+  position: absolute;
+  inset: 0;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  background: repeating-linear-gradient(transparent 0 2px, rgba(0, 0, 0, 0.14) 3px);
+  z-index: 3;
+}
+.crt-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 55px 12px rgba(0, 0, 0, 0.48);
+  z-index: 4;
+}
+.crt-glitch {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  background: repeating-linear-gradient(to bottom, rgba(240, 240, 240, 0.6) 0px, rgba(0, 229, 201, 0.6) 2px, transparent 4px, transparent 8px);
+  z-index: 5;
+}
+
+/* 7. Screen Content Layout (Split Screen Left/Right) */
+.crt-screen-content {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  padding: 24px 20px 60px 20px;
+  color: #071917;
+}
+.crt-screen-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+@media (min-width: 600px) {
+  .crt-screen-layout {
+    flex-direction: row;
+    gap: 16px;
+  }
+  .crt-col-meta {
+    width: 38%;
+  }
+  .crt-col-bullets {
+    flex: 1;
+  }
+}
 .crt-project-title {
-  font-family: var(--font-pixel);
-  font-size: 1.55rem;
-  letter-spacing: 0.05em;
-  color: #ffffff;
-  margin-bottom: 4px;
+  font-family: var(--font-pixel), var(--font-sans);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #04211e;
+  line-height: 1.15;
+  margin-bottom: 6px;
 }
-
 .crt-project-category {
   font-family: var(--font-mono);
-  font-size: 0.78rem;
-  letter-spacing: 0.1em;
-  color: var(--primary);
+  font-size: 0.68rem;
   text-transform: uppercase;
-  margin-bottom: 16px;
-}
-
-.crt-project-bullets {
-  font-family: var(--font-mono);
-  font-size: 0.9rem;
-  line-height: 1.6;
-  margin-bottom: 20px;
-}
-.crt-project-bullets p {
-  margin-bottom: 8px;
-}
-
-.crt-screen-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 14px;
-  padding-top: 12px;
-  border-top: 1px dashed rgba(28, 245, 210, 0.3);
-}
-
-.crt-btn-modal {
-  background: rgba(0, 229, 201, 0.12);
-  color: var(--primary);
-  border: 1.5px solid rgba(0, 229, 201, 0.5);
-  font-family: var(--font-pixel);
-  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  color: rgba(4, 33, 30, 0.75);
   font-weight: 700;
-  letter-spacing: 0.05em;
-  padding: 8px 18px;
-  border-radius: 9999px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
 }
-.crt-btn-modal:hover {
-  background: var(--primary);
-  color: #062420;
-  transform: translateY(-1px);
-  box-shadow: 0 0 15px rgba(0, 229, 201, 0.4);
+.crt-col-bullets {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: #04211e;
 }
-
-.crt-counter {
-  font-family: var(--font-pixel);
-  font-size: 0.85rem;
-  color: var(--chalk-dim);
-  letter-spacing: 2px;
+.crt-col-bullets p {
+  margin-bottom: 5px;
+}
+.crt-typing-cursor {
+  color: rgba(4, 33, 30, 0.65);
+  font-weight: bold;
+  animation: blinkCursor 1s step-end infinite;
+}
+@keyframes blinkCursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
-/* CRT Screen Glitch & In-Screen Next Button */
-.crt-next-btn {
+/* 8. Auto-Appearing Hint Tooltip ("click next to browse →") */
+@keyframes crt-hint-in {
+  0% { opacity: 0; transform: translateY(6px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.crt-hint {
   position: absolute;
-  bottom: 16px;
-  right: 16px;
+  bottom: 18px;
+  right: 76px;
+  z-index: 5;
+  background: #faf7ee;
+  color: #121818;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 6px 12px;
+  border-radius: 6px;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.45);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.crt-hint.show {
+  opacity: 1;
+  animation: 0.25s ease-out both crt-hint-in;
+}
+
+/* 9. Authentic 8-Bit Pixel Retro Next Button (Exact Maaz Polygon) */
+.crt-next {
+  position: absolute;
+  bottom: 14px;
+  right: 14px;
+  z-index: 5;
   width: 44px;
   height: 44px;
-  background: rgba(28, 245, 210, 0.15);
-  border: 1.5px solid rgba(28, 245, 210, 0.45);
-  border-radius: 12px;
-  color: #1cf5d2;
+  background: #101616;
+  border: 3px solid #faf7ee;
+  border-radius: 0;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s ease;
-  z-index: 10;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.5);
+  transition: transform 80ms step-end, box-shadow 80ms step-end, background 0.15s;
 }
-.crt-next-btn:hover {
-  background: #1cf5d2;
-  color: #062420;
-  transform: scale(1.08);
-  box-shadow: 0 0 18px rgba(28, 245, 210, 0.6);
+.crt-next:hover {
+  background: #182222;
 }
-.crt-screen-content.is-glitching {
-  animation: crtGlitchAnim 0.26s ease-in-out;
+.crt-next:active {
+  transform: translate(3px, 3px);
+  box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
 }
-@keyframes crtGlitchAnim {
-  0% { transform: translate(0, 0); opacity: 1; filter: contrast(1); }
-  25% { transform: translate(-3px, 2px); opacity: 0.8; filter: hue-rotate(90deg) contrast(1.5); }
-  50% { transform: translate(3px, -2px); opacity: 0.9; filter: hue-rotate(180deg) invert(0.2); }
-  75% { transform: translate(-2px, -1px); opacity: 0.85; }
-  100% { transform: translate(0, 0); opacity: 1; filter: contrast(1); }
+.crt-arrow {
+  background: #faf7ee;
+  clip-path: polygon(0% 0%, 40% 0%, 40% 20%, 60% 20%, 60% 40%, 80% 40%, 80% 60%, 60% 60%, 60% 80%, 40% 80%, 40% 100%, 0% 100%);
+  width: 16px;
+  height: 16px;
+  display: inline-block;
 }
 
-/* CRT Chassis Details (Floppy slot, Power led, ventilation) */
-.crt-chassis-bottom {
-  margin-top: 18px;
+/* 10. Below Screen Status Bar (Visit ↗ / Specs & Arch / 01 / 06) */
+.crt-screen-subbar {
+  position: relative;
+  z-index: 2;
+  margin: 12px 4px 0 4px;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
+  gap: 8px;
 }
-.crt-floppy-slot {
-  width: 140px;
-  height: 6px;
-  background: #2b2824;
-  border-radius: 3px;
-  box-shadow: inset 0 2px 4px rgba(0,0,0,0.8);
-}
-.crt-speaker-holes {
-  display: flex;
-  gap: 5px;
-}
-.crt-hole {
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: #8e8574;
-}
-.crt-power-indicator {
+.crt-screen-actions {
   display: flex;
   align-items: center;
   gap: 8px;
 }
-.power-led-green {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #10b981;
-  box-shadow: 0 0 10px #10b981;
-  animation: ledPulse 2s infinite ease-in-out;
+.crt-visit-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: #faf7ee;
+  color: #121818;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 8px 18px;
+  text-decoration: none;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-@keyframes ledPulse {
-  0%, 100% { opacity: 0.7; }
-  50% { opacity: 1; }
+.crt-visit-pill:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.4);
+}
+.crt-specs-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: rgba(250, 247, 238, 0.15);
+  border: 1px solid rgba(250, 247, 238, 0.3);
+  color: #faf7ee;
+  font-family: var(--font-pixel);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 7px 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.crt-specs-pill:hover {
+  background: rgba(0, 229, 201, 0.25);
+  border-color: var(--primary);
+  color: #fff;
+  transform: translateY(-1px);
+}
+.crt-counter {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 2px;
+  color: rgba(250, 247, 238, 0.75);
 }
 
-/* Toggle Pill Button ("SEE ALL PROJECTS" / "HIDE ALL PROJECTS" - Screenshot 1) */
+/* 11. Lower Molded Chassis Details */
+.crt-lower {
+  margin-top: 14px;
+  border-bottom-left-radius: 22px;
+  border-bottom-right-radius: 22px;
+  padding: 16px 20px 20px 20px;
+  background-color: #dfd5c2;
+  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.2) 1.2px, transparent 1.4px);
+  background-size: 13px 13px;
+}
+.crt-lower-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.crt-power-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.crt-power-dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #fff, #00e5c9);
+  animation: 2.4s ease-in-out infinite crt-pulse-dot;
+  transition: filter 0.2s ease;
+}
+.crt-badge-pill {
+  display: inline-block;
+  height: 12px;
+  width: 28px;
+  border-radius: 9999px;
+  background: rgba(18, 24, 24, 0.85);
+}
+.crt-slot-bar {
+  height: 7px;
+  width: 60%;
+  border-radius: 4px;
+  background: rgba(18, 24, 24, 0.85);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+/* 12. Toggle Pill Button ("SEE ALL PROJECTS" / "HIDE ALL PROJECTS" - Exact Maaz Arrow & Pill) */
 .work-toggle-container {
   display: flex;
   justify-content: center;
-  margin-top: 32px;
+  margin-top: 36px;
 }
 .work-toggle-pill {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: #f4ead6;
-  color: #1c1815;
-  border: 1.5px solid rgba(0, 229, 201, 0.5);
-  padding: 10px 22px;
+  background: #faf7ee;
+  color: #121818;
+  border: 1px solid rgba(0, 229, 201, 0.5);
+  padding: 10px 24px;
   border-radius: 9999px;
-  font-family: var(--font-pixel);
-  font-size: 0.78rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   cursor: pointer;
-  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.35);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 .work-toggle-pill:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.4);
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.35);
 }
 .work-toggle-arrow {
-  width: 14px;
-  height: 14px;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  width: 28px;
+  height: 18px;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .work-toggle-arrow.is-open {
   transform: rotate(180deg);
 }
 
-/* 6-Card Paper Project Grid (Screenshot 1) */
+/* 13. Expandable 6-Card Paper Project Grid */
 .work-grid-open {
   display: none;
   grid-template-columns: 1fr;
@@ -1836,59 +2400,156 @@ body {
   animation: fadeInGrid 0.4s ease-out;
 }
 @keyframes fadeInGrid {
-  from { opacity: 0; transform: translateY(14px); }
+  from { opacity: 0; transform: translateY(16px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* 14. Handcrafted Torn-Paper Cards with Organic Tilts */
 .work-card-paper {
-  background: #f4ead6;
-  color: #1c1815;
-  border-radius: 18px;
-  padding: 24px 22px;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.15);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  background: #faf6eb;
+  color: #121818;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  min-height: 180px;
-  cursor: pointer;
+  justify-content: space-between;
+  min-height: 230px;
   border: 1px solid rgba(0, 0, 0, 0.08);
   position: relative;
-  text-decoration: none;
+}
+.work-card-paper.card-tilt-neg {
+  transform: rotate(-1deg);
+}
+.work-card-paper.card-tilt-zero {
+  transform: rotate(0deg);
+}
+.work-card-paper.card-tilt-pos {
+  transform: rotate(1deg);
 }
 .work-card-paper:hover {
   transform: translateY(-6px) scale(1.02) !important;
-  box-shadow: 0 20px 42px rgba(0, 0, 0, 0.65), 0 0 20px rgba(0, 229, 201, 0.2);
+  box-shadow: 0 22px 45px rgba(0, 0, 0, 0.65), 0 0 20px rgba(0, 229, 201, 0.25);
+  z-index: 3;
+}
+.work-card-paper.is-active-project {
+  border: 2px solid var(--primary);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 229, 201, 0.4);
+}
+
+/* Card Header */
+.work-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+.work-card-idx {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: rgba(18, 24, 24, 0.5);
+  letter-spacing: 1px;
+}
+.work-card-tag {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: rgba(0, 229, 201, 0.15);
+  border: 1px solid rgba(0, 229, 201, 0.4);
+  color: #06453f;
+  padding: 3px 8px;
+  border-radius: 9999px;
+  font-weight: 700;
 }
 .work-card-paper-title {
   font-family: var(--font-sans);
-  font-size: 1.35rem;
+  font-size: 1.25rem;
   font-weight: 700;
-  color: #1a1818;
+  color: #121818;
   line-height: 1.25;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 .work-card-paper-desc {
   font-family: var(--font-hand);
-  font-size: 1.22rem;
-  line-height: 1.45;
-  color: rgba(26, 24, 24, 0.78);
-  margin: 0;
+  font-size: 1.15rem;
+  line-height: 1.4;
+  color: rgba(18, 24, 24, 0.8);
+  margin-bottom: 14px;
 }
 
-/* Handwritten Philosophy Quote (Screenshot 1) */
+/* Card Tech Stack Badges */
+.work-card-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 16px;
+}
+.work-card-tech span {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 2px 7px;
+  border-radius: 4px;
+  color: #2b3333;
+}
+
+/* Card Action Footer */
+.work-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding-top: 12px;
+  border-top: 1px dashed rgba(0, 0, 0, 0.15);
+}
+.work-card-btn-beam {
+  background: #121818;
+  color: #00e5c9;
+  border: none;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.work-card-btn-beam:hover {
+  background: #00e5c9;
+  color: #071917;
+  transform: translateY(-1px);
+}
+.work-card-btn-specs {
+  background: transparent;
+  color: #121818;
+  border: 1px solid rgba(18, 24, 24, 0.3);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 5px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.work-card-btn-specs:hover {
+  background: rgba(18, 24, 24, 0.08);
+  border-color: #121818;
+}
+
+/* 15. Handwritten Philosophy Quote */
 .work-quote-note {
   margin-top: 36px;
   text-align: right;
   font-family: var(--font-hand);
-  font-size: 1.75rem;
-  color: var(--chalk-dim);
+  font-size: 1.8rem;
+  color: var(--chalk);
   opacity: 0.85;
   user-select: none;
-}
-  background: rgba(0, 229, 201, 0.2);
-  border-color: var(--primary);
-  color: #fff;
 }
 
 /* --- Education Section: Boarding Pass Passport --- */
@@ -3177,7 +3838,17 @@ body {
   .top-nav-inner {
     display: none !important;
   }
+  /* Show mobile-brand-group (wraps brand mark + mobile chatbot) */
+  .mobile-brand-group {
+    display: flex !important;
+    align-items: center;
+    gap: 10px;
+  }
   .mobile-brand-mark {
+    display: flex !important;
+  }
+  /* Show mobile header chatbot button */
+  .mobile-header-chat-btn {
     display: flex !important;
   }
   .mobile-menu-btn {
@@ -3479,7 +4150,7 @@ body {
   background: linear-gradient(to bottom, #2b2723, #1f1c19, #141210);
   border: 4px solid #3a342e;
   border-radius: 20px;
-  padding: 24px;
+  padding: 18px;
   box-shadow: 0 30px 70px rgba(0, 0, 0, 0.85), inset 0 2px 4px rgba(255, 255, 255, 0.1);
   position: relative;
 }
@@ -3487,7 +4158,7 @@ body {
   background: #161412;
   border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 12px;
-  padding: 28px 24px 20px 24px;
+  padding: 20px 20px 14px 20px;
   box-shadow: inset 0 4px 14px rgba(0, 0, 0, 0.8);
   position: relative;
   overflow: hidden;
@@ -3503,7 +4174,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 16px 0;
+  padding: 10px 0;
 }
 .cert-stack-back1 {
   position: absolute;
@@ -3539,7 +4210,7 @@ body {
   background: linear-gradient(155deg, #f8f0de, #f4ead6 55%, #eae0c7);
   color: #201c16;
   border-radius: 8px;
-  padding: 24px 28px;
+  padding: 18px 22px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(0, 0, 0, 0.08);
   clip-path: polygon(16px 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%, 0 16px);
   background-image: repeating-linear-gradient(0deg, rgba(0,0,0,0.015) 0 1px, transparent 1px 3px), linear-gradient(155deg, #f8f0de, #f4ead6 55%, #eae0c7);
@@ -3564,11 +4235,11 @@ body {
 }
 .cert-ticket-title {
   font-family: var(--font-mono);
-  font-size: 1.45rem;
+  font-size: 1.35rem;
   font-weight: 700;
   letter-spacing: -0.02em;
   color: #201c16;
-  margin-bottom: 14px;
+  margin-bottom: 10px;
   line-height: 1.2;
 }
 .cert-ticket-body {
@@ -3646,8 +4317,8 @@ body {
   user-select: none;
 }
 .cert-punch-bottom {
-  margin-top: 18px;
-  padding-top: 10px;
+  margin-top: 12px;
+  padding-top: 8px;
   border-top: 1px solid rgba(32, 28, 22, 0.12);
   font-family: var(--font-mono);
   font-size: 0.62rem;
@@ -3701,9 +4372,9 @@ body {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  margin-top: 18px;
-  padding-top: 14px;
+  gap: 12px;
+  margin-top: 12px;
+  padding-top: 10px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 .cert-counter-display {
