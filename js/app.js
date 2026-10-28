@@ -4,8 +4,8 @@
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   PRELOADER — "Portfolio Passport"
-   Runs immediately before DOMContentLoaded; dismissed after ~3 s
+   PRELOADER — "Portfolio Passport Door"
+   Opens only when the visitor selects ENTER.
    -------------------------------------------------------------------------- */
 (function initPreloader() {
   const preloader = document.getElementById('portfolioPreloader');
@@ -20,34 +20,22 @@
   // Lock scroll while preloader is visible
   document.documentElement.style.overflow = 'hidden';
 
-  // Dismiss after 3.2 s (allows all animations to play fully)
-  const PRELOADER_DURATION = 3200;
+  let dismissed = false;
 
   function dismissPreloader() {
+    if (dismissed) return;
+    dismissed = true;
     preloader.classList.add('preloader-exit');
     sessionStorage.setItem('portfolioVisited', '1');
-    // Restore scroll and remove DOM node after transition ends
+    // Restore scroll after the door leaves finish swinging open.
     setTimeout(() => {
       document.documentElement.style.overflow = '';
       preloader.style.display = 'none';
-    }, 950); // matches CSS transition duration
+    }, 1250);
   }
 
-  // Dismiss on timer
-  const timer = setTimeout(dismissPreloader, PRELOADER_DURATION);
-
-  // Safety fallback: if anything blocks, dismiss after 6 s maximum
-  const safetyTimer = setTimeout(() => {
-    clearTimeout(timer);
-    dismissPreloader();
-  }, 6000);
-
-  // Allow impatient clicks on preloader to dismiss early
-  preloader.addEventListener('click', () => {
-    clearTimeout(timer);
-    clearTimeout(safetyTimer);
-    dismissPreloader();
-  }, { once: true });
+  const enterButton = document.getElementById('preloaderEnterBtn');
+  if (enterButton) enterButton.addEventListener('click', dismissPreloader);
 })();
 
 document.addEventListener('DOMContentLoaded', () => {

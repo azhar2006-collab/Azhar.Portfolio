@@ -21,7 +21,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Gloria+Hallelujah&family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Silkscreen:wght@400;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="css/style.css?v=2.2">
+  <link rel="stylesheet" href="css/style.css?v=2.3">
 
   <!-- Structured Data JSON-LD -->
   <script type="application/ld+json">
@@ -71,34 +71,21 @@
   <!-- ========================================================================
        FULL-SCREEN ANIMATED PRELOADER ("PORTFOLIO PASSPORT")
        ======================================================================== -->
-  <div id="portfolioPreloader" class="portfolio-preloader" aria-live="polite" aria-label="Welcome to Portfolio Passport">
+  <div id="portfolioPreloader" class="portfolio-preloader" aria-label="Portfolio entrance">
     <div class="preloader-bg-gradient" aria-hidden="true"></div>
     <div class="preloader-scanline-mesh" aria-hidden="true"></div>
     <div class="preloader-radial-orb" aria-hidden="true"></div>
+    <div class="preloader-door" aria-hidden="true">
+      <span class="preloader-door-seam"></span>
+      <span class="preloader-door-handle preloader-door-handle-left"></span>
+      <span class="preloader-door-handle preloader-door-handle-right"></span>
+    </div>
 
     <div class="preloader-container">
-      <!-- Monogram Passport Crest -->
-      <div class="preloader-crest">
-        <span class="preloader-crest-code">SAH // 2026</span>
-        <span class="preloader-crest-dot"></span>
-        <span class="preloader-crest-stamp">PORTFOLIO PASSPORT</span>
-      </div>
-
-      <!-- Welcome Message Headline -->
-      <h1 class="preloader-welcome-title">Welcome to Portfolio Passport</h1>
-
-      <!-- Developer Identity Subtitle -->
-      <p class="preloader-dev-name">Syed Azhar Hussain &bull; Full Stack Developer</p>
-
-      <!-- Smooth Progress Indicator -->
-      <div class="preloader-loader-wrap">
-        <div class="preloader-loader-bar"></div>
-      </div>
-
-      <!-- Live Telemetry Status -->
-      <div class="preloader-telemetry">
-        <span class="preloader-telemetry-dot"></span>
-        <span class="preloader-telemetry-text">INITIALIZING PASSPORT CREDENTIALS</span>
+      <div class="preloader-door-plaque">
+        <span class="preloader-plaque-name">Syed Azhar Hussain</span>
+        <span class="preloader-plaque-role">FULL STACK DEVELOPER</span>
+        <button type="button" class="preloader-enter-btn" id="preloaderEnterBtn">ENTER <span aria-hidden="true">↗</span></button>
       </div>
     </div>
   </div>
@@ -1833,6 +1820,6 @@
   <!-- END THOR CHAT WIDGET -->
 
   <!-- JavaScript Controller -->
-  <script src="js/app.js?v=2.2"></script>
+  <script src="js/app.js?v=2.3"></script>
 </body>
 </html>
