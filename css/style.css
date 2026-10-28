@@ -1760,6 +1760,23 @@ body {
   align-items: center;
   position: relative;
   perspective: 1200px;
+  width: min(100%, 440px);
+  margin-inline: auto;
+  transform-origin: top center;
+  animation: luggageTagSwing 1.8s ease-in-out infinite;
+}
+
+@keyframes luggageTagSwing {
+  0%, 100% { transform: rotate(-3.5deg); }
+  25% { transform: rotate(0deg); }
+  50% { transform: rotate(3.5deg); }
+  75% { transform: rotate(0deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .luggage-tag-container {
+    animation: none;
+  }
 }
 
 .hanging-string {
@@ -3212,6 +3229,9 @@ body {
   text-align: center;
   z-index: 10;
   animation: fadeInBanner 0.3s ease-out;
+}
+.console-screen-display.game-active .console-screen-caption {
+  display: none;
 }
 .console-caption-inner {
   background: rgba(0, 0, 0, 0.72);

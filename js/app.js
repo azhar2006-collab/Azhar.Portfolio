@@ -1610,6 +1610,17 @@ const GRID_SIZE = 14;
 let canvasCtx = null;
 let gameCanvas = null;
 
+// Traffic racer state (shared canvas and timer with the Snake cartridge)
+let trafficLane = 1;
+let trafficCars = [];
+let trafficScore = 0;
+let trafficBest = 0;
+let trafficSpeed = 4;
+let trafficSpeedControl = 0;
+let trafficSpawnTick = 0;
+let trafficRoadOffset = 0;
+let trafficGameOver = false;
+
 const consoleRomCartridges = [
   {
     idx: 0,
@@ -1621,6 +1632,14 @@ const consoleRomCartridges = [
   },
   {
     idx: 1,
+    type: 'traffic',
+    romCode: 'THOR TRAFFIC RUNNER.ROM',
+    subLabel: '• PLAYABLE ARCADE',
+    title: 'THOR TRAFFIC RUNNER',
+    tagline: '← → STEER · ↑ BOOST · ↓ BRAKE · [A] RETRY'
+  },
+  {
+    idx: 2,
     type: 'memory',
     romCode: 'BATTLESTATION RIG.ROM',
     subLabel: '• DEV & GAMING RIG',
@@ -1629,7 +1648,7 @@ const consoleRomCartridges = [
     image: 'assets/images/memory-1-battlestation.jpg'
   },
   {
-    idx: 2,
+    idx: 3,
     type: 'memory',
     romCode: 'MISTY MOUNTAIN TRAILS.ROM',
     subLabel: '• MOUNTAIN ODYSSEY',
@@ -1638,7 +1657,7 @@ const consoleRomCartridges = [
     image: 'assets/images/memory-2-mountain.png'
   },
   {
-    idx: 3,
+    idx: 4,
     type: 'memory',
     romCode: 'GOLDEN SUNSET HORIZON.ROM',
     subLabel: '• COASTAL HORIZONS',
@@ -1647,7 +1666,7 @@ const consoleRomCartridges = [
     image: 'assets/images/memory-3-sunset-beach.png'
   },
   {
-    idx: 4,
+    idx: 5,
     type: 'memory',
     romCode: 'FEATHERS NIGHT RETREAT.ROM',
     subLabel: '• CHENNAI RETREAT',
@@ -1678,12 +1697,23 @@ function initRetroConsole() {
   const dpadDown = document.getElementById('dpadDown');
   const dpadLeft = document.getElementById('dpadLeft');
   const dpadRight = document.getElementById('dpadRight');
+  const setPadLabels = (mode) => {
+    if (dpadLeft) dpadLeft.setAttribute('aria-label', mode === 'traffic' ? 'Steer car left' : 'Move left or previous memory');
+    if (dpadRight) dpadRight.setAttribute('aria-label', mode === 'traffic' ? 'Steer car right' : 'Move right or next memory');
+    if (dpadUp) dpadUp.setAttribute('aria-label', mode === 'traffic' ? 'Accelerate' : 'Move up or next memory');
+    if (dpadDown) dpadDown.setAttribute('aria-label', mode === 'traffic' ? 'Brake' : 'Move down or previous memory');
+  };
 
   const renderCartridge = (idx) => {
     const item = consoleRomCartridges[idx % consoleRomCartridges.length];
     if (!item) return;
 
     activeRomIdx = idx % consoleRomCartridges.length;
+
+    if (btnA) btnA.setAttribute('aria-label', item.type === 'traffic' ? 'Restart traffic racer (Button A)' : 'Next game or memory (Button A)');
+    if (screenDisplay) {
+      screenDisplay.classList.toggle('game-active', item.type === 'snake' || item.type === 'traffic');
+    }
 
     // Update active cartridge highlight (with green neon tabs)
     cartridgeBtns.forEach(btn => {
@@ -1697,6 +1727,7 @@ function initRetroConsole() {
 
     if (item.type === 'snake') {
       currentGameMode = 'snake';
+      setPadLabels('snake');
       if (memoryImg) memoryImg.style.display = 'none';
       if (gameCanvas) gameCanvas.style.display = 'block';
 
@@ -1704,8 +1735,18 @@ function initRetroConsole() {
       if (captionTagline) captionTagline.textContent = `D-PAD / ARROWS TO SLITHER · [A] NEXT MEMORY`;
 
       startSnakeGame();
+    } else if (item.type === 'traffic') {
+      stopSnakeGame();
+      currentGameMode = 'traffic';
+      setPadLabels('traffic');
+      if (memoryImg) memoryImg.style.display = 'none';
+      if (gameCanvas) gameCanvas.style.display = 'block';
+      if (captionTitle) captionTitle.textContent = item.title;
+      if (captionTagline) captionTagline.textContent = item.tagline;
+      startTrafficGame();
     } else {
       currentGameMode = 'memory';
+      setPadLabels('memory');
       stopSnakeGame();
 
       if (gameCanvas) gameCanvas.style.display = 'none';
@@ -1730,7 +1771,7 @@ function initRetroConsole() {
     renderCartridge(nextIdx);
   };
 
-  // Steer Snake if in snake mode, else switch cartridge
+  // Steer the active arcade game or browse cartridges in memory mode.
   const handleDirection = (dx, dy) => {
     playRetroBeep(520, 0.04);
     if (currentGameMode === 'snake') {
@@ -1740,6 +1781,12 @@ function initRetroConsole() {
       }
       if (dx !== 0 && direction.x === 0) nextDirection = { x: dx, y: 0 };
       if (dy !== 0 && direction.y === 0) nextDirection = { x: 0, y: dy };
+    } else if (currentGameMode === 'traffic') {
+      if (!isGameRunning) return;
+      if (dx < 0) trafficLane = Math.max(0, trafficLane - 1);
+      if (dx > 0) trafficLane = Math.min(2, trafficLane + 1);
+      if (dy < 0) trafficSpeedControl = Math.min(1.2, trafficSpeedControl + 0.35);
+      if (dy > 0) trafficSpeedControl = Math.max(-1.4, trafficSpeedControl - 0.35);
     } else {
       cycleCartridge(dy < 0 || dx > 0 ? 1 : -1);
     }
@@ -1761,7 +1808,7 @@ function initRetroConsole() {
     const inView = rect.top < window.innerHeight && rect.bottom > 0;
 
     if (inView) {
-      if (currentGameMode === 'snake') {
+      if (currentGameMode === 'snake' || currentGameMode === 'traffic') {
         if (['ArrowUp', 'KeyW'].includes(e.code)) {
           e.preventDefault();
           handleDirection(0, -1);
@@ -1776,17 +1823,24 @@ function initRetroConsole() {
           handleDirection(1, 0);
         } else if (e.code === 'Space' || e.code === 'Enter') {
           e.preventDefault();
-          if (!isGameRunning) startSnakeGame();
+          if (!isGameRunning) {
+            if (currentGameMode === 'traffic') startTrafficGame();
+            else startSnakeGame();
+          }
         }
       }
     }
   });
 
-  // Action Buttons A and B: [A] cycles next memory, [B] cycles prev memory
+  // Button A restarts the racer; otherwise A and B browse the cartridge rack.
   if (btnA) {
     btnA.addEventListener('click', () => {
       playRetroBeep(880, 0.08);
-      // Pressing A moves from Snake Game -> Memory 1 -> Memory 2 -> Memory 3 -> Memory 4 -> Snake
+      if (currentGameMode === 'traffic') {
+        startTrafficGame();
+        return;
+      }
+      // Cycle through the games and memory cartridges.
       cycleCartridge(1);
     });
   }
@@ -1812,13 +1866,20 @@ function initRetroConsole() {
         if (!isGameRunning) {
           startSnakeGame();
         } else {
-          isGameRunning = !isGameRunning;
-          if (isGameRunning) {
-            if (gameInterval) clearInterval(gameInterval);
-            gameInterval = setInterval(gameLoop, 125);
-          } else {
-            drawPauseScreen();
-          }
+          isGameRunning = false;
+          if (gameInterval) clearInterval(gameInterval);
+          drawPauseScreen();
+        }
+      } else if (currentGameMode === 'traffic') {
+        if (trafficGameOver) {
+          startTrafficGame();
+        } else if (!isGameRunning) {
+          isGameRunning = true;
+          gameInterval = setInterval(trafficGameLoop, 50);
+        } else {
+          isGameRunning = false;
+          if (gameInterval) clearInterval(gameInterval);
+          drawTrafficPause();
         }
       }
     });
@@ -1847,6 +1908,14 @@ function initRetroConsole() {
     screenDisplay.addEventListener('click', () => {
       if (currentGameMode === 'snake') {
         if (!isGameRunning) startSnakeGame();
+      } else if (currentGameMode === 'traffic') {
+        if (!isGameRunning) {
+          if (trafficGameOver) startTrafficGame();
+          else {
+            isGameRunning = true;
+            gameInterval = setInterval(trafficGameLoop, 50);
+          }
+        }
       } else {
         cycleCartridge(1);
       }
@@ -1881,6 +1950,249 @@ function startSnakeGame() {
 function stopSnakeGame() {
   isGameRunning = false;
   if (gameInterval) clearInterval(gameInterval);
+}
+
+function startTrafficGame() {
+  trafficLane = 1;
+  trafficCars = [];
+  trafficScore = 0;
+  trafficSpeed = 4;
+  trafficSpeedControl = 0;
+  trafficSpawnTick = 0;
+  trafficRoadOffset = 0;
+  trafficGameOver = false;
+  isGameRunning = true;
+  if (gameInterval) clearInterval(gameInterval);
+  gameInterval = setInterval(trafficGameLoop, 50);
+  drawTrafficGame();
+}
+
+function trafficGameLoop() {
+  if (!isGameRunning || !canvasCtx) return;
+
+  trafficSpeed = Math.min(7.2, Math.max(2.6, 4 + Math.floor(trafficScore / 45) * 0.25 + trafficSpeedControl));
+  trafficRoadOffset = (trafficRoadOffset + trafficSpeed) % 40;
+  trafficScore += trafficSpeed / 20;
+  trafficSpawnTick += 1;
+
+  const spawnEvery = Math.max(17, 31 - Math.floor(trafficScore / 45));
+  if (trafficSpawnTick >= spawnEvery) {
+    trafficSpawnTick = 0;
+    const lastLane = trafficCars.length ? trafficCars[trafficCars.length - 1].lane : -1;
+    const availableLanes = [0, 1, 2].filter(lane => lane !== lastLane);
+    trafficCars.push({
+      lane: availableLanes[Math.floor(Math.random() * availableLanes.length)],
+      y: -42,
+      color: ['#ef476f', '#ffd166', '#8b8cff', '#f4f1de'][Math.floor(Math.random() * 4)]
+    });
+  }
+
+  trafficCars.forEach(car => { car.y += trafficSpeed; });
+  trafficCars = trafficCars.filter(car => car.y < 205);
+
+  const playerY = 146;
+  const hit = trafficCars.some(car => car.lane === trafficLane && car.y < playerY + 44 && car.y + 36 > playerY);
+  if (hit) {
+    isGameRunning = false;
+    trafficGameOver = true;
+    if (gameInterval) clearInterval(gameInterval);
+    trafficBest = Math.max(trafficBest, Math.floor(trafficScore));
+    playRetroBeep(180, 0.28);
+    drawTrafficGameOver();
+    return;
+  }
+
+  drawTrafficGame();
+}
+
+function drawTrafficCar(centerX, y, color, isPlayer = false) {
+  if (isPlayer) {
+    drawF1Player(centerX, y);
+    return;
+  }
+
+  const left = centerX - 12;
+  canvasCtx.fillStyle = '#071210';
+  canvasCtx.fillRect(left - 3, y + 7, 5, 13);
+  canvasCtx.fillRect(left + 22, y + 7, 5, 13);
+  canvasCtx.fillRect(left - 3, y + 25, 5, 11);
+  canvasCtx.fillRect(left + 22, y + 25, 5, 11);
+  canvasCtx.fillStyle = color;
+  canvasCtx.fillRect(left, y + 2, 24, 34);
+  canvasCtx.fillRect(left + 3, y, 18, 7);
+  canvasCtx.fillStyle = '#d9f3f0';
+  canvasCtx.fillRect(left + 4, y + 8, 16, 8);
+  canvasCtx.fillStyle = '#102322';
+  canvasCtx.fillRect(left + 5, y + 18, 14, 7);
+  canvasCtx.fillStyle = '#fff0b3';
+  canvasCtx.fillRect(left + 2, y + 30, 5, 3);
+  canvasCtx.fillRect(left + 17, y + 30, 5, 3);
+}
+
+function drawF1Player(centerX, y) {
+  const ctx = canvasCtx;
+  const x = centerX;
+
+  // A compact top-down formula-car silhouette: wings, slicks, sidepods, and halo.
+  ctx.fillStyle = 'rgba(0, 0, 0, 0.45)';
+  ctx.fillRect(x - 19, y + 5, 38, 40);
+
+  // Carbon wings and red end plates.
+  ctx.fillStyle = '#101a19';
+  ctx.fillRect(x - 21, y + 11, 42, 4);
+  ctx.fillRect(x - 18, y + 38, 36, 5);
+  ctx.fillRect(x - 21, y + 8, 3, 8);
+  ctx.fillRect(x + 18, y + 8, 3, 8);
+  ctx.fillRect(x - 19, y + 37, 3, 8);
+  ctx.fillRect(x + 16, y + 37, 3, 8);
+  ctx.fillStyle = '#ff3347';
+  ctx.fillRect(x - 20, y + 12, 3, 2);
+  ctx.fillRect(x + 17, y + 12, 3, 2);
+
+  // Four exposed slick tyres with sidewall highlights.
+  ctx.fillStyle = '#090d0d';
+  ctx.fillRect(x - 16, y + 10, 7, 13);
+  ctx.fillRect(x + 9, y + 10, 7, 13);
+  ctx.fillRect(x - 17, y + 30, 8, 14);
+  ctx.fillRect(x + 9, y + 30, 8, 14);
+  ctx.fillStyle = '#66716d';
+  ctx.fillRect(x - 15, y + 12, 1, 8);
+  ctx.fillRect(x + 14, y + 12, 1, 8);
+  ctx.fillRect(x - 16, y + 33, 1, 8);
+  ctx.fillRect(x + 15, y + 33, 1, 8);
+
+  // Sculpted scarlet monocoque narrowing from engine cover to the pointed nose.
+  const bodyGradient = ctx.createLinearGradient(x - 10, 0, x + 10, 0);
+  bodyGradient.addColorStop(0, '#a20f23');
+  bodyGradient.addColorStop(0.48, '#ff4052');
+  bodyGradient.addColorStop(1, '#a20f23');
+  ctx.fillStyle = bodyGradient;
+  ctx.beginPath();
+  ctx.moveTo(x, y + 1);
+  ctx.lineTo(x + 3, y + 8);
+  ctx.lineTo(x + 5, y + 16);
+  ctx.lineTo(x + 9, y + 21);
+  ctx.lineTo(x + 8, y + 31);
+  ctx.lineTo(x + 5, y + 38);
+  ctx.lineTo(x - 5, y + 38);
+  ctx.lineTo(x - 8, y + 31);
+  ctx.lineTo(x - 9, y + 21);
+  ctx.lineTo(x - 5, y + 16);
+  ctx.lineTo(x - 3, y + 8);
+  ctx.closePath();
+  ctx.fill();
+
+  // Sidepods, floor accents, and cockpit halo.
+  ctx.fillStyle = '#b5162a';
+  ctx.fillRect(x - 11, y + 22, 4, 10);
+  ctx.fillRect(x + 7, y + 22, 4, 10);
+  ctx.fillStyle = '#ffd5d8';
+  ctx.fillRect(x - 10, y + 24, 2, 1);
+  ctx.fillRect(x + 8, y + 24, 2, 1);
+  ctx.fillStyle = '#071817';
+  ctx.beginPath();
+  ctx.ellipse(x, y + 20, 4.2, 6.2, 0, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.strokeStyle = '#d7fff8';
+  ctx.lineWidth = 1.2;
+  ctx.beginPath();
+  ctx.ellipse(x, y + 20, 5.2, 7.2, 0, 0, Math.PI * 2);
+  ctx.stroke();
+  ctx.fillStyle = '#fde047';
+  ctx.beginPath();
+  ctx.arc(x, y + 19, 2.5, 0, Math.PI * 2);
+  ctx.fill();
+
+  // Nose stripe and racing number.
+  ctx.fillStyle = '#fde047';
+  ctx.fillRect(x - 1, y + 3, 2, 7);
+  ctx.fillStyle = '#f4fffc';
+  ctx.font = 'bold 5px "Space Mono", monospace';
+  ctx.textAlign = 'center';
+  ctx.fillText('07', x, y + 34);
+  ctx.textAlign = 'start';
+}
+
+function drawTrafficGame() {
+  if (!canvasCtx) return;
+  const ctx = canvasCtx;
+  const laneCenters = [72, 140, 208];
+
+  ctx.fillStyle = '#0e1816';
+  ctx.fillRect(0, 0, 280, 235);
+  ctx.fillStyle = '#12443c';
+  ctx.fillRect(0, 0, 34, 196);
+  ctx.fillRect(246, 0, 34, 196);
+  ctx.fillStyle = '#26302c';
+  ctx.fillRect(34, 0, 212, 196);
+  ctx.fillStyle = 'rgba(0, 229, 201, 0.35)';
+  ctx.fillRect(34, 0, 2, 196);
+  ctx.fillRect(244, 0, 2, 196);
+
+  // Animated dashed lane markings and roadside reflectors.
+  ctx.fillStyle = 'rgba(244, 241, 222, 0.78)';
+  [106, 174].forEach(x => {
+    for (let y = -40 + trafficRoadOffset; y < 196; y += 40) ctx.fillRect(x - 1, y, 2, 20);
+  });
+  ctx.fillStyle = '#fde047';
+  for (let y = -18 + ((trafficRoadOffset * 1.5) % 36); y < 196; y += 36) {
+    ctx.fillRect(18, y, 4, 12);
+    ctx.fillRect(258, y, 4, 12);
+  }
+
+  trafficCars.forEach(car => drawTrafficCar(laneCenters[car.lane], car.y, car.color));
+  drawTrafficCar(laneCenters[trafficLane], 146, '#00e5c9', true);
+
+  ctx.fillStyle = '#071210';
+  ctx.fillRect(0, 196, 280, 39);
+  ctx.strokeStyle = 'rgba(0, 229, 201, 0.35)';
+  ctx.beginPath();
+  ctx.moveTo(0, 196);
+  ctx.lineTo(280, 196);
+  ctx.stroke();
+  ctx.fillStyle = '#00ffcc';
+  ctx.font = '9px "Silkscreen", monospace';
+  ctx.textAlign = 'left';
+  ctx.fillText(`DIST: ${String(Math.floor(trafficScore)).padStart(3, '0')}`, 9, 218);
+  ctx.fillStyle = '#fde047';
+  ctx.fillText(`BEST: ${String(trafficBest).padStart(3, '0')}`, 116, 218);
+  ctx.fillStyle = 'rgba(255,255,255,0.75)';
+  ctx.font = '7px "Space Mono", monospace';
+  ctx.textAlign = 'right';
+  ctx.fillText('STEER / DODGE', 270, 231);
+  ctx.textAlign = 'start';
+  applyScanlines();
+}
+
+function drawTrafficPause() {
+  drawTrafficGame();
+  canvasCtx.fillStyle = 'rgba(0, 0, 0, 0.72)';
+  canvasCtx.fillRect(0, 0, 280, 196);
+  canvasCtx.fillStyle = '#fde047';
+  canvasCtx.font = '12px "Silkscreen", monospace';
+  canvasCtx.textAlign = 'center';
+  canvasCtx.fillText('RACE PAUSED', 140, 91);
+  canvasCtx.font = '8px "Space Mono", monospace';
+  canvasCtx.fillStyle = '#ffffff';
+  canvasCtx.fillText('PRESS START TO RESUME', 140, 116);
+  canvasCtx.textAlign = 'start';
+}
+
+function drawTrafficGameOver() {
+  drawTrafficGame();
+  canvasCtx.fillStyle = 'rgba(8, 12, 12, 0.82)';
+  canvasCtx.fillRect(0, 0, 280, 196);
+  canvasCtx.textAlign = 'center';
+  canvasCtx.fillStyle = '#ef476f';
+  canvasCtx.font = '13px "Silkscreen", monospace';
+  canvasCtx.fillText('CRASH!', 140, 77);
+  canvasCtx.fillStyle = '#ffffff';
+  canvasCtx.font = '9px "Space Mono", monospace';
+  canvasCtx.fillText(`DISTANCE: ${Math.floor(trafficScore)}`, 140, 101);
+  canvasCtx.fillStyle = '#00ffcc';
+  canvasCtx.font = '8px "Silkscreen", monospace';
+  canvasCtx.fillText('PRESS [A] TO RACE AGAIN', 140, 128);
+  canvasCtx.textAlign = 'start';
 }
 
 function placeFood() {

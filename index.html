@@ -368,7 +368,7 @@
     </div>
 
     <div class="chat-dialog-body">
-      Welcome to the interactive studio. You can explore the project cards, flip through verified credentials, or play retro snake and memories in the console!
+      Welcome to the interactive studio. You can explore the project cards, flip through verified credentials, or play Snake, Thor Traffic Runner, and memories in the console!
     </div>
 
     <div class="chat-dialog-note">
@@ -1267,14 +1267,14 @@
               <!-- Glossy Red A/B Action Buttons (Screenshot 3) -->
               <div class="ab-cluster">
                 <div class="ab-btn-col">
-                  <button type="button" id="gameboyBtnB" class="action-glossy-btn" aria-label="Previous memory (Button B)">
+                  <button type="button" id="gameboyBtnB" class="action-glossy-btn" aria-label="Previous game or memory (Button B)">
                     <span class="btn-specular-arc"></span>
                     <span>B</span>
                   </button>
                   <span class="btn-sub-label">B</span>
                 </div>
                 <div class="ab-btn-col">
-                  <button type="button" id="gameboyBtnA" class="action-glossy-btn" aria-label="Next memory (Button A)">
+                  <button type="button" id="gameboyBtnA" class="action-glossy-btn" aria-label="Next game or memory (Button A)">
                     <span class="btn-specular-arc"></span>
                     <span>A</span>
                   </button>
@@ -1310,7 +1310,7 @@
           <!-- Pinned Sticky Note Below Console (Screenshot 3) -->
           <div class="console-pinned-postit">
             <span class="postit-red-pin"></span>
-            <p class="postit-note-text">Use [D-PAD] or Arrows to play Snake! [A] [B] swap ROMs!</p>
+            <p class="postit-note-text">Pick a game ROM. Steer with [D-PAD] or arrow keys. [A] restart · [START] pause.</p>
           </div>
         </div>
 
@@ -1318,10 +1318,10 @@
         <div class="cartridge-rack-col">
           <!-- Top Sticky Note -->
           <div class="cartridge-top-note">
-            <p>Choose your memory cartridge ⤵</p>
+            <p>Choose a game or memory ⤵</p>
           </div>
 
-          <!-- Memory Cartridges Stack (Snake is ROM 0, followed by User's 4 Memories) -->
+          <!-- Arcade and memory cartridges -->
           <div class="cartridges-stack">
             <!-- ROM 0: Retro Snake Arcade (FIRST & ACTIVE) -->
             <button type="button" class="rom-cartridge-btn active" data-rom-idx="0">
@@ -1343,8 +1343,24 @@
               </div>
             </button>
 
-            <!-- ROM 1: Battlestation Rig -->
+            <!-- ROM 1: Thor Traffic Runner -->
             <button type="button" class="rom-cartridge-btn" data-rom-idx="1">
+              <div class="cartridge-glow-tab-left"></div>
+              <div class="cartridge-glow-tab-right"></div>
+              <div class="cartridge-side-grips left">
+                <span class="grip-slit"></span><span class="grip-slit"></span><span class="grip-slit"></span>
+              </div>
+              <div class="cartridge-side-grips right">
+                <span class="grip-slit"></span><span class="grip-slit"></span><span class="grip-slit"></span>
+              </div>
+              <div class="rom-label-recess">
+                <div class="rom-label-code">THOR TRAFFIC RUNNER.ROM</div>
+                <div class="rom-label-sub">• PLAYABLE ARCADE</div>
+              </div>
+            </button>
+
+            <!-- ROM 2: Battlestation Rig -->
+            <button type="button" class="rom-cartridge-btn" data-rom-idx="2">
               <div class="cartridge-glow-tab-left"></div>
               <div class="cartridge-glow-tab-right"></div>
               <div class="cartridge-side-grips left">
@@ -1363,8 +1379,8 @@
               </div>
             </button>
 
-            <!-- ROM 2: Misty Mountain Trails -->
-            <button type="button" class="rom-cartridge-btn" data-rom-idx="2">
+            <!-- ROM 3: Misty Mountain Trails -->
+            <button type="button" class="rom-cartridge-btn" data-rom-idx="3">
               <div class="cartridge-glow-tab-left"></div>
               <div class="cartridge-glow-tab-right"></div>
               <div class="cartridge-side-grips left">
@@ -1383,8 +1399,8 @@
               </div>
             </button>
 
-            <!-- ROM 3: Golden Sunset Horizon -->
-            <button type="button" class="rom-cartridge-btn" data-rom-idx="3">
+            <!-- ROM 4: Golden Sunset Horizon -->
+            <button type="button" class="rom-cartridge-btn" data-rom-idx="4">
               <div class="cartridge-glow-tab-left"></div>
               <div class="cartridge-glow-tab-right"></div>
               <div class="cartridge-side-grips left">
@@ -1403,8 +1419,8 @@
               </div>
             </button>
 
-            <!-- ROM 4: Feathers Night Retreat -->
-            <button type="button" class="rom-cartridge-btn" data-rom-idx="4">
+            <!-- ROM 5: Feathers Night Retreat -->
+            <button type="button" class="rom-cartridge-btn" data-rom-idx="5">
               <div class="cartridge-glow-tab-left"></div>
               <div class="cartridge-glow-tab-right"></div>
               <div class="cartridge-side-grips left">
@@ -1426,7 +1442,7 @@
 
           <!-- Bottom Sticky Note (Screenshot 3) -->
           <div class="cartridge-bottom-note">
-            <p>Press [A] in console to cycle memories →</p>
+            <p>Press [A] / [B] to cycle games &amp; memories →</p>
           </div>
         </div>
       </div>
