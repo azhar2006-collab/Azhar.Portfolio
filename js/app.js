@@ -249,6 +249,10 @@ function initHeroCanvas() {
   let imagesLoaded = false;
   let isFullyPainted = false;
   let isHovering = false;
+  let isTouchScratching = false;
+  let touchStart = null;
+  let suppressNextClick = false;
+  let suppressClickTimer = null;
   let animFrame = null;
   let expandStartTime = null;
 
@@ -451,7 +455,7 @@ function initHeroCanvas() {
       targetRadius = 0;
       currentAlpha = 0;
       targetAlpha = 0;
-      tag.textContent = '✨ click or tap to paint completely';
+      tag.textContent = '✨ hover or drag to reveal · tap to fill';
       tag.classList.add('animate-bounce');
       render();
       return;
@@ -476,6 +480,12 @@ function initHeroCanvas() {
 
   // Event Listeners
   container.addEventListener('click', (e) => {
+    // A drag paints under the finger; it should not also trigger the tap-to-fill action.
+    if (suppressNextClick) {
+      suppressNextClick = false;
+      clearTimeout(suppressClickTimer);
+      return;
+    }
     handleFullPaint(e.clientX, e.clientY);
   });
 
@@ -494,6 +504,17 @@ function initHeroCanvas() {
 
   container.addEventListener('pointermove', (e) => {
     if (isFullyPainted) return;
+    if (e.pointerType === 'touch' && isTouchScratching) {
+      if (touchStart) {
+        const movedX = e.clientX - touchStart.x;
+        const movedY = e.clientY - touchStart.y;
+        if ((movedX * movedX) + (movedY * movedY) > 64) suppressNextClick = true;
+      }
+      isHovering = true;
+      targetRadius = 240;
+      targetAlpha = 1;
+    }
+    if (e.pointerType === 'touch' && !isTouchScratching) return;
     const coords = getCanvasCoords(e.clientX, e.clientY);
     targetPos.x = coords.x;
     targetPos.y = coords.y;
@@ -504,6 +525,35 @@ function initHeroCanvas() {
     }
     scheduleAnimation();
   });
+
+  // Touch screens have no hover event, so paint while a finger is dragged across the art.
+  container.addEventListener('pointerdown', (e) => {
+    if (e.pointerType !== 'touch' || isFullyPainted) return;
+    isTouchScratching = true;
+    touchStart = { x: e.clientX, y: e.clientY };
+    isHovering = true;
+    targetRadius = 240;
+    targetAlpha = 1;
+    const coords = getCanvasCoords(e.clientX, e.clientY);
+    targetPos.x = coords.x;
+    targetPos.y = coords.y;
+    if (container.setPointerCapture) container.setPointerCapture(e.pointerId);
+    scheduleAnimation();
+  });
+
+  const stopTouchScratch = (e) => {
+    if (e.pointerType !== 'touch' || !isTouchScratching) return;
+    isTouchScratching = false;
+    touchStart = null;
+    clearTimeout(suppressClickTimer);
+    suppressClickTimer = setTimeout(() => { suppressNextClick = false; }, 500);
+    isHovering = false;
+    targetRadius = 0;
+    targetAlpha = 0;
+    scheduleAnimation();
+  };
+  container.addEventListener('pointerup', stopTouchScratch);
+  container.addEventListener('pointercancel', stopTouchScratch);
 
   container.addEventListener('pointerleave', (e) => {
     if (isFullyPainted) return;
