@@ -25,30 +25,20 @@
   function dismissPreloader() {
     if (dismissed) return;
     dismissed = true;
-    const openDelay = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 420;
-    preloader.classList.add('preloader-opening');
+    preloader.classList.add('preloader-exit');
     sessionStorage.setItem('portfolioVisited', '1');
-    // Let the click ripple travel outward before the doors swing open.
     setTimeout(() => {
-      preloader.classList.add('preloader-exit');
-      setTimeout(() => {
-        document.documentElement.style.overflow = '';
-        preloader.style.display = 'none';
-      }, 1250);
-    }, openDelay);
+      document.documentElement.style.overflow = '';
+      preloader.style.display = 'none';
+    }, 1250);
   }
 
   const enterButton = document.getElementById('preloaderEnterBtn');
-  if (enterButton) enterButton.addEventListener('click', () => {
-    enterButton.disabled = true;
-    enterButton.classList.add('is-opening');
-    dismissPreloader();
-  });
+  if (enterButton) enterButton.addEventListener('click', dismissPreloader);
 })();
 
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize all interactive modules
-  initSiteClickFeedback();
   initAudioSystem();
   initMobileNav();
   initNavScroll();
@@ -64,26 +54,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initThorChat();
   initMobileHeaderChat();
 });
-
-function initSiteClickFeedback() {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const selector = 'button, a[href], [role="button"], input[type="submit"], .work-card-paper, .sticky-note-card, .rom-cartridge-btn';
-
-  document.addEventListener('click', (event) => {
-    const target = event.target instanceof Element ? event.target.closest(selector) : null;
-    if (!target || target.matches(':disabled') || target.closest('#portfolioPreloader')) return;
-
-    const bounds = target.getBoundingClientRect();
-    const spark = document.createElement('span');
-    spark.className = 'site-click-spark';
-    spark.setAttribute('aria-hidden', 'true');
-    spark.textContent = '✦';
-    spark.style.left = `${event.clientX || bounds.left + bounds.width / 2}px`;
-    spark.style.top = `${event.clientY || bounds.top + bounds.height / 2}px`;
-    document.body.appendChild(spark);
-    spark.addEventListener('animationend', () => spark.remove(), { once: true });
-  }, true);
-}
 
 /* ==========================================================================
    1. SOUND SYNTHESIZER (Web Audio API)
