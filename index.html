@@ -262,9 +262,6 @@
           <span class="brand-title"><span class="brand-title-prefix">Syed Azhar </span><span class="brand-name-hussain"></span></span>
         </a>
 
-        <!-- Mobile Header Chatbot Trigger (Beside 'Hussain') -->
-          </span>
-        </button>
       </div>
 
       <!-- Desktop Navigation Links -->
@@ -409,7 +406,13 @@
         <div class="hero-grid">
           <!-- Left: Identity & Headlines -->
           <div class="hero-text-col">
-            <h1 class="hero-name">Syed Azhar Hussain</h1>
+            <div class="hero-name-row">
+              <h1 class="hero-name">Syed Azhar Hussain</h1>
+              <button type="button" id="thorChatToggle" class="thor-chat-fab hero-thor-chat-fab" aria-label="Chat with Thor AI Assistant" title="Ask Thor anything about Azhar!">
+                <img src="assets/images/thor-avatar.png" alt="Thor AI Avatar" class="thor-fab-avatar" />
+                <span class="thor-fab-ping"></span>
+              </button>
+            </div>
             <div class="hero-role-badge">Full Stack Developer · Python · React.js · Firebase</div>
 
             <h2 class="hero-headline">
@@ -1762,12 +1765,6 @@
 
   <!-- ⚡ THOR AI CHAT WIDGET -->
   <div class="thor-chat-wrapper" id="thorChatWrapper" aria-live="polite">
-    <!-- Chat FAB Toggle Button -->
-    <button type="button" id="thorChatToggle" class="thor-chat-fab" aria-label="Chat with Thor AI Assistant" title="Ask Thor anything about Azhar!">
-      <img src="assets/images/thor-avatar.png" alt="Thor AI Avatar" class="thor-fab-avatar" />
-      <span class="thor-fab-ping"></span>
-    </button>
-
     <!-- Chat Window -->
     <div class="thor-chat-window" id="thorChatWindow" role="dialog" aria-modal="false" aria-label="Thor AI Chat">
       <!-- Header -->

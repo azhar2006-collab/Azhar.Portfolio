@@ -1351,6 +1351,46 @@ body {
   }
 }
 
+.hero-name-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.hero-name-row .hero-name {
+  flex: 0 1 auto;
+  margin: 0;
+  white-space: nowrap;
+  font-size: clamp(1.4rem, 4.8vw, 4rem) !important;
+}
+.hero-thor-chat-fab {
+  flex: 0 0 46px;
+  width: 46px;
+  height: 46px;
+}
+.hero-thor-chat-fab .thor-fab-avatar {
+  width: 40px;
+  height: 40px;
+}
+.hero-thor-chat-fab .thor-fab-ping {
+  top: 1px;
+  right: 1px;
+  width: 11px;
+  height: 11px;
+}
+@media (max-width: 480px) {
+  .hero-name-row { gap: 8px; }
+  .hero-thor-chat-fab {
+    flex-basis: 40px;
+    width: 40px;
+    height: 40px;
+  }
+  .hero-thor-chat-fab .thor-fab-avatar {
+    width: 35px;
+    height: 35px;
+  }
+}
+
 .hero-role-badge {
   display: inline-block;
   font-family: var(--font-mono);
