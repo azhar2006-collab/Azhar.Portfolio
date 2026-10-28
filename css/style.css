@@ -1462,6 +1462,42 @@ body {
   justify-content: center;
 }
 
+.hero-thor-note {
+  position: absolute;
+  z-index: 2;
+  top: 7%;
+  left: max(-30px, calc((100% - 380px) / 2 - 20px));
+  width: 154px;
+  padding: 18px 12px 12px;
+  transform: rotate(-5deg);
+  background: #fff1ad;
+  color: #33413d;
+  border: 1px solid rgba(116, 91, 28, 0.2);
+  box-shadow: 2px 7px 14px rgba(0, 0, 0, 0.2);
+  font-family: var(--font-hand);
+  font-size: 1rem;
+  line-height: 1.15;
+  text-align: center;
+  pointer-events: none;
+}
+.hero-thor-note strong {
+  display: block;
+  margin-top: 3px;
+  color: #0b7065;
+  font-size: 1.45rem;
+}
+.hero-thor-note-pin {
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: #ef5b55;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
 .hero-doodle-container {
   position: relative;
   margin: 0 auto;
@@ -4044,6 +4080,13 @@ body {
   .hero-doodle-container {
     max-width: 310px !important;
     margin: 0 auto !important;
+  }
+  .hero-thor-note {
+    top: -14px;
+    left: 2px;
+    width: 138px;
+    padding: 17px 9px 10px;
+    font-size: 0.92rem;
   }
 
   /* Beliefs Board */
