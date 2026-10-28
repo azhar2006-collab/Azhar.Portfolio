@@ -3,6 +3,53 @@
    Crafted for Syed Azhar Hussain A
    ========================================================================== */
 
+/* --------------------------------------------------------------------------
+   PRELOADER — "Portfolio Passport"
+   Runs immediately before DOMContentLoaded; dismissed after ~3 s
+   -------------------------------------------------------------------------- */
+(function initPreloader() {
+  const preloader = document.getElementById('portfolioPreloader');
+  if (!preloader) return;
+
+  // Session-level guard: skip preloader on in-page navigation / back-forward
+  if (sessionStorage.getItem('portfolioVisited')) {
+    preloader.style.display = 'none';
+    return;
+  }
+
+  // Lock scroll while preloader is visible
+  document.documentElement.style.overflow = 'hidden';
+
+  // Dismiss after 3.2 s (allows all animations to play fully)
+  const PRELOADER_DURATION = 3200;
+
+  function dismissPreloader() {
+    preloader.classList.add('preloader-exit');
+    sessionStorage.setItem('portfolioVisited', '1');
+    // Restore scroll and remove DOM node after transition ends
+    setTimeout(() => {
+      document.documentElement.style.overflow = '';
+      preloader.style.display = 'none';
+    }, 950); // matches CSS transition duration
+  }
+
+  // Dismiss on timer
+  const timer = setTimeout(dismissPreloader, PRELOADER_DURATION);
+
+  // Safety fallback: if anything blocks, dismiss after 6 s maximum
+  const safetyTimer = setTimeout(() => {
+    clearTimeout(timer);
+    dismissPreloader();
+  }, 6000);
+
+  // Allow impatient clicks on preloader to dismiss early
+  preloader.addEventListener('click', () => {
+    clearTimeout(timer);
+    clearTimeout(safetyTimer);
+    dismissPreloader();
+  }, { once: true });
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize all interactive modules
   initAudioSystem();
@@ -18,6 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initMechaAssistant();
   initStampInteractions();
   initThorChat();
+  initMobileHeaderChat();
 });
 
 /* ==========================================================================
@@ -580,35 +628,41 @@ function updateLuggageTagContent(data) {
 
 /* ==========================================================================
    5. SELECTED WORK: RETRO CRT MONITOR & TERMINAL (6 Client Projects)
+   Faithfully matching maazprofile.tech + Advanced Interactive Enhancements
    ========================================================================== */
 const projectsData = [
   {
     id: 'veedu',
-    title: 'Veedu Vadagaikku Chennai',
-    category: 'PROPERTY RENTAL & REAL ESTATE PLATFORM',
+    title: 'VeeduVadagaikku',
+    category: 'PROPERTY RENTAL & LISTING PLATFORM',
+    tag: 'rental platform / full stack',
+    href: 'https://github.com/azhar2006-collab',
     bullets: [
-      '> Zero brokerage direct tenant-to-landlord rental marketplace',
-      '> Multi-category listings: Houses, Hostels/PG, Shops & Commercial',
-      '> Tamil & English bilingual portal tailored for Chennai localities',
-      '> Powered by React (Vite), TanStack Query, Firebase & REST APIs'
+      '> Property listing platform for owners to publish & manage properties',
+      '> Owner dashboard with listing plans, validity & payment gateway',
+      '> Property browsing with filters, detailed view & enquiry system',
+      '> React (Vite) + Node.js + PostgreSQL + Razorpay + Cloudinary'
     ],
     image: 'assets/images/veedu_vadagaikku_live.png',
-    techStack: ['React (Vite)', 'TanStack Query', 'Firebase', 'Tailwind CSS', 'Swiper 11', 'REST APIs'],
-    shortDesc: "Chennai's dedicated property rental platform connecting tenants directly with verified landlords with zero brokerage, bilingual Tamil/English UI, and localized search across all Chennai zones.",
-    fullDesc: "Veedu Vadagaikku Chennai (வீடு வாடகைக்கு சென்னை) is a high-performance rental marketplace connecting tenants directly with property owners without intermediaries. The platform serves all major Chennai localities (Anna Nagar, T. Nagar, Velachery, OMR, Porur, etc.) with comprehensive listings across residential houses, PG accommodations, commercial buildings, marriage halls, and home services.",
+    techStack: ['React (Vite)', 'Node.js & Express', 'PostgreSQL', 'Razorpay', 'Firebase Auth', 'Cloudinary', 'TypeScript'],
+    shortDesc: "A full-stack property rental and listing platform where property owners can publish, manage and promote listings with subscription plans, validity controls, and integrated payment gateway.",
+    fullDesc: "VeeduVadagaikku is a full-stack property rental and listing web application connecting property owners with prospective tenants across Chennai. Owners can register, create property listings with photos, and select subscription-based publishing plans with validity controls. The platform includes a dedicated owner dashboard for managing active listings, tracking expiry, and upgrading plans via an integrated Razorpay payment gateway. Tenants can browse available properties with filters, view detailed property pages, and contact owners directly.",
     keyFeatures: [
-      'Zero-Brokerage Direct Connect: Inquiring tenants directly initiate phone calls or WhatsApp chats with verified property owners.',
-      'Multi-Category Property System: Support for residential houses, single rooms, hostels/PGs, commercial spaces, and marriage halls.',
-      'Bilingual Architecture: Complete bilingual UI in English and Tamil with localized search terms for Chennai districts.',
-      'Owner Listing Packages: Self-service listing creation with photo galleries, amenities checklists, and promotional Deepavali/Festive discount tiers.',
-      'Client-Side Query Performance: Built on React (Vite) with TanStack Query caching for instant search and fluid filter responsiveness.'
+      'Property Publishing System: Owners create and publish listings with photos, amenities, and property details via a structured form.',
+      'Subscription Plans & Validity: Tiered listing plans with expiry management and renewal flows powered by Razorpay payment integration.',
+      'Owner Dashboard: Full management interface for active listings, plan status, photo uploads via Cloudinary, and enquiry tracking.',
+      'Property Browsing & Filters: Tenants browse properties with category, location, and price filters with detailed property view pages.',
+      'Firebase Authentication: Secure user authentication with Firebase Auth for both property owners and tenant accounts.',
+      'TypeScript + REST API Backend: Strongly-typed Express.js REST API with PostgreSQL via Prisma ORM for data integrity.'
     ],
-    contribution: 'Frontend architecture, React UI components, TanStack Query integration, multilingual locale toggles, and responsive mobile-first views.'
+    contribution: 'Full-stack development — React frontend, Express/TypeScript backend, Razorpay payment integration, Cloudinary photo management, Prisma ORM schema design, and Firebase Auth.'
   },
   {
     id: 'jpholidays',
     title: 'JP Holidays',
-    category: 'GLOBAL TRAVEL & HOLIDAY TOUR OPERATOR',
+    category: 'GLOBAL TRAVEL / PRODUCTION SEO',
+    tag: 'travel portal / production seo',
+    href: 'https://github.com/azhar2006-collab',
     bullets: [
       '> International & domestic tour portal offering 3,000+ destinations',
       '> Interactive search engine for honeymoon, luxury & group escapes',
@@ -631,7 +685,9 @@ const projectsData = [
   {
     id: '77fitness',
     title: '77 Fitness Studio',
-    category: 'PREMIUM FITNESS DESTINATION & LIFESTYLE',
+    category: 'PREMIUM FITNESS / LUXURY DARK',
+    tag: 'dark editorial / luxury fitness',
+    href: 'https://github.com/azhar2006-collab',
     bullets: [
       '> Modern fitness studio portal across Kodambakkam, Nungambakkam & Vadapalani',
       '> Editorial dark-mode aesthetic with luxury gym experience branding',
@@ -653,31 +709,36 @@ const projectsData = [
   },
   {
     id: 'aadhifs',
-    title: "Aadhif's Wood Pressed Oils",
-    category: 'ARTISANAL ORGANIC E-COMMERCE STOREFRONT',
+    title: "Aadhif's Homemade",
+    category: 'HOMEMADE PRODUCTS / E-COMMERCE',
+    tag: 'e-commerce / payment gateway',
+    href: 'https://github.com/azhar2006-collab',
     bullets: [
-      '> Traditional chekku cold-pressed oil catalog from Coimbatore',
-      '> Dynamic bottle size selector (250ml, 500ml, 1L) with live price updates',
-      '> Direct WhatsApp order routing & free shipping threshold notifications',
-      '> Admin dashboard integration with FSSAI & MSME compliance badges'
+      '> Homemade products e-commerce store with product browsing & cart',
+      '> Integrated UPI & online payment gateway for seamless checkout',
+      '> Dynamic product catalog: images, descriptions & live pricing',
+      '> Admin panel for order management, stock & delivery tracking'
     ],
     image: 'assets/images/aadhifs_live.png',
-    techStack: ['JavaScript (ES6+)', 'Node.js & Express', 'PostgreSQL Backend', 'Tailwind CSS', 'Admin Dashboard'],
-    shortDesc: "A complete artisanal food e-commerce platform for wood-pressed oils and ghee, featuring dynamic price calculations, WhatsApp checkout, and admin order controls.",
-    fullDesc: "Aadhif's Homemade specializes in 100% pure, slow-pressed wooden chekku oils (Groundnut, Sesame/Gingelly, Coconut) and Pure Desi Ghee crafted in Coimbatore. The web platform delivers a trusted direct-to-consumer shopping experience with wholesale inquiry support and doorstep delivery across Tamil Nadu.",
+    techStack: ['JavaScript (ES6+)', 'Node.js & Express', 'UPI Payment Gateway', 'REST APIs', 'Admin Dashboard'],
+    shortDesc: "A full-stack e-commerce platform for homemade products featuring product browsing, shopping cart, integrated payment gateway, and an admin panel for order and delivery management.",
+    fullDesc: "Aadhif's Homemade is a dedicated e-commerce web application built to sell handcrafted homemade products directly to customers. The platform showcases a curated product catalog with images, descriptions, and pricing. Customers can browse products, add items to cart, and complete purchases via an integrated UPI-based payment gateway. A dedicated admin panel allows the store owner to manage orders, update stock levels, track payment status, and monitor delivery workflows — all from a single interface.",
     keyFeatures: [
-      'Interactive Product Configurator: Smooth bottle size selection (250ml, 500ml, 1 Litre) with instant pricing calculation and volume discounts.',
-      'WhatsApp URI Scheme Checkout: Generates pre-formatted order messages directly inside WhatsApp, eliminating checkout friction for Indian buyers.',
-      'Free Shipping Calculator: Real-time cart calculation alerting customers when their cart qualifies for free shipping (₹499+ across TN).',
-      'Regulatory Trust Badges: Verified FSSAI manufacturing license and Govt. of India MSME registration displays.',
-      'Admin Management Portal: Dedicated /admin portal for stock level updates, wholesale quotation tracking, and delivery logistics.'
+      'Product Catalog & Browsing: Rich product pages with images, descriptions, and dynamic pricing across product categories.',
+      'Shopping Cart & Checkout: Customer cart management with seamless checkout flow and order confirmation.',
+      'Integrated Payment Gateway: UPI-based online payment integration enabling secure digital transactions at checkout.',
+      'Order Management Admin Panel: Backend admin dashboard for tracking incoming orders, payment verification, and delivery status.',
+      'Order History & Status: Customers can track their order status post-purchase through the platform.',
+      'REST API Backend: Node.js & Express REST API with structured routes for orders, admin operations, and payment handling.'
     ],
-    contribution: 'Full-stack store implementation, product pricing matrix, WhatsApp messaging protocol, and backend order management routes.'
+    contribution: 'Full-stack development — product frontend, shopping cart, UPI payment integration, admin panel, and order management REST API backend.'
   },
   {
     id: 'unihut',
     title: 'UniHut Tax & Corpserv',
-    category: 'CORPORATE LEGAL & TAX COMPLIANCE PORTAL',
+    category: 'CORPORATE LEGAL / TAX PORTAL',
+    tag: 'corporate legal / advisory portal',
+    href: 'https://github.com/azhar2006-collab',
     bullets: [
       '> Corporate legal & taxation advisory portal ("All under One Hut")',
       '> Multi-service catalog: Incorporation, GST, ITR, Trademark & Payroll',
@@ -700,7 +761,9 @@ const projectsData = [
   {
     id: 'ktech',
     title: 'Ktech Solutions',
-    category: 'ENTERPRISE SOFTWARE & PIPELINE AUTOMATION',
+    category: 'ENTERPRISE / PIPELINE TELEMETRY',
+    tag: 'enterprise / microservices telemetry',
+    href: 'https://github.com/azhar2006-collab',
     bullets: [
       '> Enterprise workflow automation & process orchestration system',
       '> RESTful API telemetry & distributed microservices architecture',
@@ -718,26 +781,179 @@ const projectsData = [
       'High-Availability Architecture: Designed for low latency and continuous uptime across multi-tenant deployments.'
     ],
     contribution: 'Backend service architecture, database design, API telemetry pipelines, and performance profiling.'
+  },
+  {
+    id: 'webspide',
+    title: 'Webspide Technologies',
+    category: 'TECHNOLOGY BLOG / DIGITAL AGENCY',
+    tag: 'tech blog / digital agency',
+    href: 'https://github.com/azhar2006-collab',
+    bullets: [
+      '> Technology-focused blog & digital agency website',
+      '> Articles, tutorials, industry updates & service pages',
+      '> Blog admin panel with content management & publishing',
+      '> Modern responsive UI with multi-page service architecture'
+    ],
+    image: 'assets/images/webspide_live.jpg',
+    techStack: ['HTML5 / Semantic CSS3', 'JavaScript (ES6+)', 'Blog CMS', 'Node.js', 'Responsive Design'],
+    shortDesc: "A professional technology blog and digital agency website showcasing services, publishing technology articles, programming tutorials, and industry updates for tech enthusiasts.",
+    fullDesc: "Webspide Technologies is a full-featured digital agency and technology blog website. The platform serves a dual purpose — presenting the agency's service offerings (web development, app development, digital marketing, SEO, and UI/UX design) alongside a robust blog section for technology articles, programming tutorials, and industry insights. The site includes a blog admin panel with content management, a structured multi-page service architecture, and a modern responsive design for a professional digital presence.",
+    keyFeatures: [
+      'Technology Blog Platform: Fully functional blog section with articles, programming tutorials, and tech industry updates for tech audiences.',
+      'Blog Admin Panel: Dedicated admin interface for publishing, editing, and managing blog content without requiring technical knowledge.',
+      'Service Pages Architecture: Comprehensive service detail pages for web development, mobile apps, digital marketing, SEO, and UI/UX.',
+      'Multi-Page Responsive Design: Clean, modern layout optimized across desktop, tablet, and mobile with semantic HTML5 structure.',
+      'Content Discovery: Blog listing, search, and category navigation enabling readers to explore technology content efficiently.',
+      'Agency Contact & Inquiry: Lead generation forms and contact sections connecting potential clients with the agency team.'
+    ],
+    contribution: 'Full frontend development, blog CMS integration, multi-page service architecture, admin panel, and responsive design implementation.'
+  },
+  {
+    id: 'mithas',
+    title: 'Mithas Ice Cream',
+    category: 'ICE CREAM BRAND / PRODUCT SHOWCASE',
+    tag: 'brand website / product showcase',
+    href: 'https://github.com/azhar2006-collab',
+    bullets: [
+      '> Brand website for Mithas — an ice cream company',
+      '> Showcase ice cream flavours, products & brand story',
+      '> Franchise & retail kiosk information pages',
+      '> Colourful, visually engaging mobile-responsive design'
+    ],
+    image: 'assets/images/mithas_live.png',
+    techStack: ['HTML5 / CSS3', 'JavaScript (ES6+)', 'Responsive Design', 'WhatsApp Enquiry'],
+    shortDesc: "A vibrant, mobile-responsive brand website for Mithas Ice Cream showcasing flavours, product images, retail kiosk details, and franchise information in an engaging visual design.",
+    fullDesc: "Mithas Ice Cream (operating under Thirupura Krishnah Dairy Pvt Ltd) is an ice cream brand with a retail presence across Chennai and Tamil Nadu. The brand website serves as the digital face of the company — showcasing the ice cream product range, flavours, and high-quality product photography. The site presents information on retail kiosks, outdoor carts, indoor parlour setups, and franchise opportunities for prospective partners, all wrapped in a colourful, food-brand aesthetic with a fully responsive layout.",
+    keyFeatures: [
+      'Product & Flavour Showcase: Visually rich product gallery highlighting the ice cream range with professional product photography.',
+      'Brand Story & Identity: Dedicated sections presenting the brand heritage, manufacturing quality, and dairy credentials.',
+      'Retail & Kiosk Information: Pages covering indoor parlours, outdoor carts, AC kiosks, and franchise setup options.',
+      'Franchise Enquiry Section: Information page for prospective franchise partners with WhatsApp-based enquiry routing.',
+      'Mobile-Responsive Layout: Fully optimized across all device sizes ensuring a smooth experience for mobile users.',
+      'Colourful Brand Design: Vibrant colour palette and food photography-driven visual design reflecting the ice cream brand identity.'
+    ],
+    contribution: 'Frontend design and development, brand visual implementation, responsive layout, product gallery, and franchise information pages.'
+  },
+  {
+    id: 'crazeespot',
+    title: 'Crazeespot',
+    category: 'GIFTS & COLLECTIBLES / E-COMMERCE',
+    tag: 'gifting e-commerce / miniatures',
+    href: 'https://github.com/azhar2006-collab',
+    bullets: [
+      '> Online store for personalised gifts, miniatures & collectibles',
+      '> Product catalog: frames, keychains, caricatures & resin art',
+      '> E-commerce with payment gateway & product browsing',
+      '> Pan-India delivery with order & enquiry management'
+    ],
+    image: 'assets/images/crazeespot_live.png',
+    techStack: ['HTML5 / CSS3', 'JavaScript (ES6+)', 'Payment Gateway', 'Product Catalog', 'Responsive Design'],
+    shortDesc: "An online gifting and miniature collectibles store for Crazeespot (Coimbatore), featuring a personalised product catalog, payment gateway, and pan-India delivery for custom gift items.",
+    fullDesc: "Crazeespot is a gifting brand based in Coimbatore, Tamil Nadu, specialising in handcrafted personalised gifts and miniature collectibles. The e-commerce website showcases a wide product range including custom photo frames, polaroids, magic frames, personalised wallets, hand-drawn caricatures, keychains, nameboards, resin art, wood engravings, birthday hampers, baby frames, and corporate gifting items. The platform enables customers to browse products, place orders with a payment gateway, and receive pan-India delivery for all custom merchandise.",
+    keyFeatures: [
+      'Personalised Product Catalog: Extensive gallery covering photo frames, caricatures, resin art, keychains, and corporate gifting items.',
+      'E-Commerce with Payment Gateway: Integrated payment gateway for secure online transactions and order placement.',
+      'Product Detail Pages: Individual product pages with images, descriptions, customisation notes, and pricing information.',
+      'Pan-India Delivery: Order management supporting nationwide shipping for all personalised and standard gift products.',
+      'Corporate Gifting Section: Dedicated section for corporate gift enquiries including standees, trophies, and branded merchandise.',
+      'Mobile-Responsive Storefront: Fully responsive layout optimized for browsing and ordering on all devices.'
+    ],
+    contribution: 'E-commerce frontend development, product catalog pages, payment gateway integration, order enquiry system, and responsive design.'
+  },
+  {
+    id: 'deliheaven',
+    title: 'Deliheaven',
+    category: 'HOMEMADE PRODUCTS / ONLINE STORE',
+    tag: 'homemade products / online store',
+    href: 'https://github.com/azhar2006-collab',
+    bullets: [
+      '> Online platform for showcasing & selling homemade products',
+      '> Product catalog with images, descriptions & live pricing',
+      '> Online ordering with payment integration at checkout',
+      '> Clean, mobile-responsive design with easy navigation'
+    ],
+    image: 'assets/images/aadhifs_oils.jpg',
+    techStack: ['HTML5 / CSS3', 'JavaScript (ES6+)', 'Payment Integration', 'Responsive Design'],
+    shortDesc: "A clean, mobile-responsive e-commerce website for Deliheaven showcasing homemade products with a curated catalog, online ordering, and integrated payment functionality.",
+    fullDesc: "Deliheaven is an online platform designed for showcasing and selling homemade products directly to customers. The website presents a structured product catalogue featuring product images, descriptions, and pricing in a clean and attractive layout. Customers can browse available products, add items, and proceed to checkout with integrated payment functionality. The site is built with a mobile-first responsive design, ensuring a smooth and pleasant shopping experience across all devices.",
+    keyFeatures: [
+      'Homemade Product Catalog: Structured product listing with images, names, descriptions, and pricing for all available products.',
+      'Online Ordering & Checkout: Customer-facing order flow with a clear checkout process and payment integration.',
+      'Payment Integration: Integrated payment gateway enabling secure online transactions at the checkout stage.',
+      'Clean & Attractive UI: Minimal, food-brand-friendly design with clear navigation for an enjoyable browsing experience.',
+      'Mobile-Responsive Layout: Fully responsive design ensuring the store works seamlessly on smartphones, tablets, and desktops.',
+      'Product Detail View: Individual product pages with detailed descriptions and imagery to support purchasing decisions.'
+    ],
+    contribution: 'Frontend design and development, product catalog, checkout flow, payment integration, and responsive mobile-first layout.'
+  },
+  {
+    id: 'splashcomputer',
+    title: 'Splash Computer',
+    category: 'COMPUTER SERVICES / BUSINESS WEBSITE',
+    tag: 'business website / services',
+    href: 'https://github.com/azhar2006-collab',
+    bullets: [
+      '> Professional website for a computer services business in Chennai',
+      '> Services: hardware repair, custom PC builds & performance upgrades',
+      '> Service descriptions, business info & contact/enquiry section',
+      '> Clean, responsive design to attract & convert customers'
+    ],
+    image: 'assets/images/ktech.webp',
+    techStack: ['HTML5 / Semantic CSS3', 'JavaScript (ES6+)', 'Responsive Design', 'WhatsApp Enquiry'],
+    shortDesc: "A professional, responsive business website for Splash Computer (T. Nagar, Chennai) showcasing computer services including hardware repair, custom PC builds, and performance upgrades with a customer enquiry system.",
+    fullDesc: "Splash Computer is a computer services business located in T. Nagar, Chennai, specialising in hardware repair, chip-level troubleshooting, custom PC builds, and performance upgrades for gaming, editing, and professional workloads. The business website serves as a professional digital presence to attract and convert customers — presenting detailed service descriptions, business contact information, and an enquiry system for direct customer-to-business communication.",
+    keyFeatures: [
+      'Service Catalog Presentation: Detailed service pages covering hardware repair, custom PC builds, and performance upgrade offerings.',
+      'Business Information Display: Business location (T. Nagar, Chennai), contact numbers, and email prominently presented.',
+      'Customer Enquiry System: Contact and enquiry functionality enabling customers to reach the business directly for service requests.',
+      'Professional UI Design: Clean, trustworthy design appropriate for a technical services business targeting local and online customers.',
+      'Mobile-Responsive Layout: Fully responsive design ensuring accessibility across mobile, tablet, and desktop for all visitors.',
+      'WhatsApp Integration: Direct WhatsApp enquiry routing for quick customer-to-business communication on service requests.'
+    ],
+    contribution: 'Frontend development, service page design, business information layout, enquiry system, and mobile-responsive implementation.'
   }
 ];
 
 let currentProjectIndex = 0;
 
+/* Synthesize authentic CRT cathode beam switch sound */
+function playCrtSwitchSound() {
+  try {
+    const ctx = getAudioContext();
+    if (!ctx || ctx.state === 'suspended') return;
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'sawtooth';
+    osc.frequency.setValueAtTime(750, ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(140, ctx.currentTime + 0.1);
+    gain.gain.setValueAtTime(0.05, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.1);
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start();
+    osc.stop(ctx.currentTime + 0.1);
+  } catch (e) {
+    // audio fallback
+  }
+}
+
 function initCrtTerminal() {
-  const prevBtn = document.getElementById('crtPrevBtn');
-  const nextBtn = document.getElementById('crtNextBtn');
+  const crtScreen = document.getElementById('crtScreen');
+  const screenContent = document.getElementById('crtScreenContent');
   const screenNextBtn = document.getElementById('crtScreenNextBtn');
+  const visitLink = document.getElementById('crtVisitLink');
+  const detailsBtn = document.getElementById('crtDetailsBtn');
+  const crtHint = document.getElementById('crtHint');
+  const powerBtn = document.getElementById('crtPowerBtn');
   const toggleGridBtn = document.getElementById('toggleGridBtn');
   const toggleGridText = document.getElementById('toggleGridText');
   const toggleGridArrow = document.getElementById('toggleGridArrow');
   const gridView = document.getElementById('projectsGridView');
-  const detailsBtn = document.getElementById('crtDetailsBtn');
-  const screenContent = document.getElementById('crtScreenContent');
 
   const renderProject = (idx) => {
     const proj = projectsData[idx];
     if (!proj) return;
-    
+
     const titleEl = document.getElementById('crtProjectTitle');
     const catEl = document.getElementById('crtProjectCategory');
     const counterEl = document.getElementById('crtCounter');
@@ -745,47 +961,139 @@ function initCrtTerminal() {
 
     if (titleEl) titleEl.textContent = proj.title;
     if (catEl) catEl.textContent = proj.category;
-    if (counterEl) counterEl.textContent = `0${idx + 1} / 0${projectsData.length}`;
+    if (counterEl) counterEl.textContent = `${String(idx + 1).padStart(2,'0')} / ${String(projectsData.length).padStart(2,'0')}`;
 
     if (bulletsContainer) {
-      bulletsContainer.innerHTML = proj.bullets.map(b => `<p>${b}</p>`).join('');
+      bulletsContainer.innerHTML = proj.bullets.map(b => `<p>${b}</p>`).join('') +
+        '<p class="crt-typing-cursor">&gt; _</p>';
+    }
+
+    if (visitLink) {
+      if (proj.href) {
+        visitLink.href = proj.href;
+        visitLink.style.display = 'inline-flex';
+        visitLink.textContent = 'Visit ↗';
+      } else {
+        visitLink.style.display = 'none';
+      }
+    }
+
+    // Highlight active card in grid below
+    if (gridView) {
+      const cards = gridView.querySelectorAll('.work-card-paper');
+      cards.forEach((card, i) => {
+        card.classList.toggle('is-active-project', i === idx);
+      });
     }
   };
 
   const changeProject = (delta) => {
-    playRetroBeep(delta > 0 ? 650 : 450, 0.08);
-    if (screenContent) {
-      screenContent.classList.add('is-glitching');
+    playCrtSwitchSound();
+    if (crtHint) crtHint.classList.remove('show');
+
+    if (crtScreen) {
+      crtScreen.classList.add('is-glitching');
       setTimeout(() => {
         currentProjectIndex = (currentProjectIndex + delta + projectsData.length) % projectsData.length;
         renderProject(currentProjectIndex);
-        screenContent.classList.remove('is-glitching');
-      }, 120);
+        crtScreen.classList.remove('is-glitching');
+      }, 140);
     } else {
       currentProjectIndex = (currentProjectIndex + delta + projectsData.length) % projectsData.length;
       renderProject(currentProjectIndex);
     }
   };
 
+  // Initial render
   renderProject(0);
 
-  if (prevBtn) {
-    prevBtn.addEventListener('click', () => changeProject(-1));
+  // Auto-appearing tooltip hint ("click next to browse →" matching Maaz)
+  if (crtHint) {
+    const hintTimer = setTimeout(() => {
+      crtHint.classList.add('show');
+    }, 1600);
+    const hideTimer = setTimeout(() => {
+      crtHint.classList.remove('show');
+    }, 4600);
   }
 
-  if (nextBtn) {
-    nextBtn.addEventListener('click', () => changeProject(1));
-  }
-
+  // Next Arrow Button
   if (screenNextBtn) {
-    screenNextBtn.addEventListener('click', () => changeProject(1));
+    screenNextBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      changeProject(1);
+    });
   }
 
-  // Toggle Grid View Pill Button (Screenshot 1)
+  // Clicking CRT Screen itself opens deep technical modal inspector
+  if (crtScreen) {
+    crtScreen.addEventListener('click', (e) => {
+      // Don't trigger if clicked next button
+      if (e.target.closest('#crtScreenNextBtn')) return;
+      playClickSound();
+      openProjectModal(projectsData[currentProjectIndex]);
+    });
+  }
+
+  // Below screen "SPECS & ARCH" button
+  if (detailsBtn) {
+    detailsBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      playClickSound();
+      openProjectModal(projectsData[currentProjectIndex]);
+    });
+  }
+
+  // CRT Power toggle switch (Advanced feature)
+  if (powerBtn && crtScreen) {
+    powerBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      playRetroBeep(320, 0.08);
+      const isOff = crtScreen.classList.toggle('power-off');
+      powerBtn.setAttribute('title', isOff ? 'Terminal STANDBY — Click to power on' : 'Terminal ONLINE — Click to toggle CRT power');
+    });
+  }
+
+  // Keyboard navigation when browsing work section
+  window.addEventListener('keydown', (e) => {
+    const projectsSec = document.getElementById('projects');
+    if (!projectsSec) return;
+    const rect = projectsSec.getBoundingClientRect();
+    const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+    if (isVisible) {
+      if (e.key === 'ArrowRight') {
+        changeProject(1);
+      } else if (e.key === 'ArrowLeft') {
+        changeProject(-1);
+      }
+    }
+  });
+
+  // Mobile Touch Swipe detection on CRT screen
+  if (crtScreen) {
+    let touchStartX = 0;
+    let touchEndX = 0;
+    crtScreen.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    crtScreen.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      const swipeDiff = touchEndX - touchStartX;
+      if (Math.abs(swipeDiff) > 45) {
+        if (swipeDiff < 0) {
+          changeProject(1); // Swipe left -> Next
+        } else {
+          changeProject(-1); // Swipe right -> Prev
+        }
+      }
+    }, { passive: true });
+  }
+
+  // Toggle Grid View Pill Button ("SEE ALL PROJECTS" / "HIDE ALL PROJECTS")
   if (toggleGridBtn && gridView) {
     toggleGridBtn.addEventListener('click', () => {
       playClickSound();
-      const isOpen = gridView.classList.toggle('work-grid-open');
+      const isOpen = gridView.classList.toggle('active');
       toggleGridBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
       if (toggleGridText) {
         toggleGridText.textContent = isOpen ? 'HIDE ALL PROJECTS' : 'SEE ALL PROJECTS';
@@ -795,15 +1103,53 @@ function initCrtTerminal() {
       }
     });
   }
-
-  // Project Details Modal from CRT Terminal
-  if (detailsBtn) {
-    detailsBtn.addEventListener('click', () => {
-      playClickSound();
-      openProjectModal(projectsData[currentProjectIndex]);
-    });
-  }
 }
+
+// Advanced Feature: Beam project directly to CRT monitor above
+window.beamProjectToCrt = function(idx) {
+  if (idx < 0 || idx >= projectsData.length) return;
+  playCrtSwitchSound();
+  currentProjectIndex = idx;
+  const crtScreen = document.getElementById('crtScreen');
+  if (crtScreen) {
+    crtScreen.classList.add('is-glitching');
+    setTimeout(() => {
+      const titleEl = document.getElementById('crtProjectTitle');
+      const catEl = document.getElementById('crtProjectCategory');
+      const counterEl = document.getElementById('crtCounter');
+      const bulletsContainer = document.getElementById('crtProjectBullets');
+      const visitLink = document.getElementById('crtVisitLink');
+      const proj = projectsData[idx];
+
+      if (titleEl) titleEl.textContent = proj.title;
+      if (catEl) catEl.textContent = proj.category;
+      if (counterEl) counterEl.textContent = `${String(idx + 1).padStart(2,'0')} / ${String(projectsData.length).padStart(2,'0')}`;
+      if (bulletsContainer) {
+        bulletsContainer.innerHTML = proj.bullets.map(b => `<p>${b}</p>`).join('') +
+          '<p class="crt-typing-cursor">&gt; _</p>';
+      }
+      if (visitLink) {
+        if (proj.href) {
+          visitLink.href = proj.href;
+          visitLink.style.display = 'inline-flex';
+        } else {
+          visitLink.style.display = 'none';
+        }
+      }
+      const gridView = document.getElementById('projectsGridView');
+      if (gridView) {
+        const cards = gridView.querySelectorAll('.work-card-paper');
+        cards.forEach((card, i) => {
+          card.classList.toggle('is-active-project', i === idx);
+        });
+      }
+      crtScreen.classList.remove('is-glitching');
+    }, 140);
+
+    // Smooth scroll back to monitor
+    crtScreen.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+};
 
 function openProjectModal(project) {
   const modal = document.getElementById('projectModal');
@@ -2224,5 +2570,25 @@ function initThorChat() {
       }
     }
   }, 3000);
+}
+
+/* ==========================================================================
+   MOBILE HEADER CHATBOT BUTTON (beside "Hussain" on mobile nav)
+   Taps into the same Thor chat window opened by the FAB
+   ========================================================================== */
+function initMobileHeaderChat() {
+  const mobileBtn = document.getElementById('mobileThorChatBtn');
+  if (!mobileBtn) return;
+
+  mobileBtn.addEventListener('click', () => {
+    // Use the global openThorChat helper exposed by initThorChat()
+    if (typeof window.openThorChat === 'function') {
+      window.openThorChat();
+    } else {
+      // Fallback: simulate a click on the main FAB toggle
+      const fab = document.getElementById('thorChatToggle');
+      if (fab) fab.click();
+    }
+  });
 }
 
