@@ -4810,30 +4810,6 @@ body {
   line-height: 1.55;
   word-break: break-word;
 }
-.thor-msg-bubble code {
-  padding: 1px 5px;
-  border-radius: 4px;
-  background: rgba(0, 0, 0, 0.28);
-  color: #9affc7;
-  font-family: var(--font-mono);
-  font-size: 0.9em;
-}
-.thor-msg-sources {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 10px;
-  padding-top: 8px;
-  border-top: 1px solid rgba(77, 255, 154, 0.15);
-}
-.thor-msg-sources a {
-  color: #9affc7;
-  font-size: 0.72rem;
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-.thor-msg-sources a:hover { color: #ffffff; }
-
 /* Bot (Thor) bubble */
 .thor-msg.bot .thor-msg-bubble {
   background: rgba(77, 255, 154, 0.08);
