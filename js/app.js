@@ -2223,6 +2223,8 @@ function initThorChat() {
   const input      = document.getElementById('thorChatInput');
   const sendBtn    = document.getElementById('thorChatSend');
   const chips      = document.querySelectorAll('.thor-chip');
+  const conversation = [];
+  let isReplying = false;
 
   if (!toggleBtn || !chatWindow || !feed) return;
 
@@ -2415,7 +2417,7 @@ function initThorChat() {
   }
 
   /* -------- HELPERS -------- */
-  function addMessage(text, role) {
+  function addMessage(text, role, sources = []) {
     const msg = document.createElement('div');
     msg.classList.add('thor-msg', role);
 
@@ -2434,8 +2436,35 @@ function initThorChat() {
 
     const bubble = document.createElement('div');
     bubble.classList.add('thor-msg-bubble');
-    bubble.innerHTML = text.replace(/\n/g, '<br/>');
+    const safeText = String(text).replace(/[&<>"']/g, (char) => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    })[char]);
+    bubble.innerHTML = safeText
+      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+      .replace(/`([^`]+)`/g, '<code>$1</code>')
+      .replace(/\n/g, '<br/>');
     msg.appendChild(bubble);
+
+    if (role === 'bot' && sources.length) {
+      const sourceList = document.createElement('div');
+      sourceList.className = 'thor-msg-sources';
+      sources.forEach((source) => {
+        if (!source || typeof source.url !== 'string') return;
+        try {
+          const url = new URL(source.url);
+          if (url.protocol !== 'https:') return;
+          const link = document.createElement('a');
+          link.href = url.href;
+          link.target = '_blank';
+          link.rel = 'noopener noreferrer';
+          link.textContent = source.title || url.hostname;
+          sourceList.appendChild(link);
+        } catch {
+          // Ignore malformed source URLs.
+        }
+      });
+      if (sourceList.childElementCount) bubble.appendChild(sourceList);
+    }
 
     feed.appendChild(msg);
     feed.scrollTop = feed.scrollHeight;
@@ -2467,17 +2496,41 @@ function initThorChat() {
     if (row) row.remove();
   }
 
-  function sendMessage(text) {
-    if (!text.trim()) return;
-    addMessage(text, 'user');
+  async function sendMessage(text) {
+    const question = String(text || '').trim();
+    if (!question || isReplying) return;
+    addMessage(question, 'user');
     if (input) input.value = '';
 
+    isReplying = true;
+    if (sendBtn) sendBtn.disabled = true;
+    if (input) input.disabled = true;
+    chips.forEach((chip) => { chip.disabled = true; });
+    conversation.push({ role: 'user', content: question });
     showTyping();
-    const delay = 600 + Math.random() * 500;
-    setTimeout(() => {
+    try {
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: conversation.slice(-10) }),
+      });
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(data.error || 'Thor could not answer right now. Please try again.');
+      const answer = String(data.reply || '').trim();
+      if (!answer) throw new Error('Thor could not form an answer this time. Please try again.');
+      conversation.push({ role: 'assistant', content: answer });
+      addMessage(answer, 'bot', Array.isArray(data.sources) ? data.sources : []);
+    } catch (error) {
+      conversation.pop();
+      addMessage(error.message || 'Thor could not connect right now. Please try again shortly.', 'bot');
+    } finally {
       removeTyping();
-      addMessage(getBotReply(text), 'bot');
-    }, delay);
+      isReplying = false;
+      if (sendBtn) sendBtn.disabled = false;
+      if (input) input.disabled = false;
+      chips.forEach((chip) => { chip.disabled = false; });
+      if (input && isOpen) input.focus();
+    }
   }
 
   /* -------- TOGGLE OPEN/CLOSE -------- */
@@ -2496,7 +2549,7 @@ function initThorChat() {
         showTyping();
         setTimeout(() => {
           removeTyping();
-          addMessage(`⚡ HAIL, visitor! I am <strong>THOR</strong>, guardian of Azhar's portfolio realm!\n\nI am armed with verified knowledge from his official resume — ask me about his <strong>projects</strong>, <strong>skills</strong>, <strong>internships</strong>, <strong>certifications</strong>, or <strong>education</strong>!\n\nWhat wisdom do you seek, mortal? ⚔️`, 'bot');
+          addMessage(`⚡ Hi! I'm **THOR**, Syed's AI portfolio assistant. Ask me about his work or ask me anything else. I'll do my best to help, and I can look up current information when needed.`, 'bot');
         }, 800);
       }, 200);
     }
