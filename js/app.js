@@ -25,21 +25,30 @@
   function dismissPreloader() {
     if (dismissed) return;
     dismissed = true;
-    preloader.classList.add('preloader-exit');
+    const openDelay = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 420;
+    preloader.classList.add('preloader-opening');
     sessionStorage.setItem('portfolioVisited', '1');
-    // Restore scrolling after the doors have finished opening.
+    // Let the click ripple travel outward before the doors swing open.
     setTimeout(() => {
-      document.documentElement.style.overflow = '';
-      preloader.style.display = 'none';
-    }, 1250);
+      preloader.classList.add('preloader-exit');
+      setTimeout(() => {
+        document.documentElement.style.overflow = '';
+        preloader.style.display = 'none';
+      }, 1250);
+    }, openDelay);
   }
 
   const enterButton = document.getElementById('preloaderEnterBtn');
-  if (enterButton) enterButton.addEventListener('click', dismissPreloader);
+  if (enterButton) enterButton.addEventListener('click', () => {
+    enterButton.disabled = true;
+    enterButton.classList.add('is-opening');
+    dismissPreloader();
+  });
 })();
 
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize all interactive modules
+  initSiteClickFeedback();
   initAudioSystem();
   initMobileNav();
   initNavScroll();
@@ -55,6 +64,26 @@ document.addEventListener('DOMContentLoaded', () => {
   initThorChat();
   initMobileHeaderChat();
 });
+
+function initSiteClickFeedback() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const selector = 'button, a[href], [role="button"], input[type="submit"], .work-card-paper, .sticky-note-card, .rom-cartridge-btn';
+
+  document.addEventListener('click', (event) => {
+    const target = event.target instanceof Element ? event.target.closest(selector) : null;
+    if (!target || target.matches(':disabled') || target.closest('#portfolioPreloader')) return;
+
+    const bounds = target.getBoundingClientRect();
+    const spark = document.createElement('span');
+    spark.className = 'site-click-spark';
+    spark.setAttribute('aria-hidden', 'true');
+    spark.textContent = '✦';
+    spark.style.left = `${event.clientX || bounds.left + bounds.width / 2}px`;
+    spark.style.top = `${event.clientY || bounds.top + bounds.height / 2}px`;
+    document.body.appendChild(spark);
+    spark.addEventListener('animationend', () => spark.remove(), { once: true });
+  }, true);
+}
 
 /* ==========================================================================
    1. SOUND SYNTHESIZER (Web Audio API)
@@ -979,7 +1008,6 @@ function initCrtTerminal() {
   const crtScreen = document.getElementById('crtScreen');
   const screenContent = document.getElementById('crtScreenContent');
   const screenNextBtn = document.getElementById('crtScreenNextBtn');
-  const visitLink = document.getElementById('crtVisitLink');
   const detailsBtn = document.getElementById('crtDetailsBtn');
   const crtHint = document.getElementById('crtHint');
   const powerBtn = document.getElementById('crtPowerBtn');
@@ -1004,16 +1032,6 @@ function initCrtTerminal() {
     if (bulletsContainer) {
       bulletsContainer.innerHTML = proj.bullets.map(b => `<p>${b}</p>`).join('') +
         '<p class="crt-typing-cursor">&gt; _</p>';
-    }
-
-    if (visitLink) {
-      if (proj.href) {
-        visitLink.href = proj.href;
-        visitLink.style.display = 'inline-flex';
-        visitLink.textContent = 'Visit ↗';
-      } else {
-        visitLink.style.display = 'none';
-      }
     }
 
     // Highlight active card in grid below
@@ -1156,7 +1174,6 @@ window.beamProjectToCrt = function(idx) {
       const catEl = document.getElementById('crtProjectCategory');
       const counterEl = document.getElementById('crtCounter');
       const bulletsContainer = document.getElementById('crtProjectBullets');
-      const visitLink = document.getElementById('crtVisitLink');
       const proj = projectsData[idx];
 
       if (titleEl) titleEl.textContent = proj.title;
@@ -1165,14 +1182,6 @@ window.beamProjectToCrt = function(idx) {
       if (bulletsContainer) {
         bulletsContainer.innerHTML = proj.bullets.map(b => `<p>${b}</p>`).join('') +
           '<p class="crt-typing-cursor">&gt; _</p>';
-      }
-      if (visitLink) {
-        if (proj.href) {
-          visitLink.href = proj.href;
-          visitLink.style.display = 'inline-flex';
-        } else {
-          visitLink.style.display = 'none';
-        }
       }
       const gridView = document.getElementById('projectsGridView');
       if (gridView) {

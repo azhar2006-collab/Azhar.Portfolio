@@ -3,6 +3,48 @@
    Inspired by maazprofile.tech — Curated for Syed Azhar Hussain A
    ========================================================================== */
 
+/* Brief passport-spark feedback for deliberate clicks and taps. */
+.site-click-spark {
+  position: fixed;
+  z-index: 100001;
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(0, 229, 201, 0.78);
+  border-radius: 50%;
+  color: #fde047;
+  font-size: 14px;
+  line-height: 1;
+  text-shadow: 0 0 10px rgba(253, 224, 71, 0.9);
+  box-shadow: 0 0 20px rgba(0, 229, 201, 0.42), inset 0 0 12px rgba(0, 229, 201, 0.2);
+  pointer-events: none;
+  animation: siteClickSpark 0.58s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.site-click-spark::before,
+.site-click-spark::after {
+  content: "";
+  position: absolute;
+  inset: -7px;
+  border: 1px solid rgba(0, 229, 201, 0.5);
+  border-radius: 50%;
+  animation: siteClickOrbit 0.58s ease-out forwards;
+}
+.site-click-spark::after {
+  inset: 5px;
+  border-color: rgba(253, 224, 71, 0.65);
+  animation-delay: 0.04s;
+}
+@keyframes siteClickSpark {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.25) rotate(-35deg); }
+  22% { opacity: 1; }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(1.45) rotate(35deg); }
+}
+@keyframes siteClickOrbit {
+  0% { opacity: 0.8; transform: scale(0.35); }
+  100% { opacity: 0; transform: scale(1.8); }
+}
+
 /* --- CSS Variables & Theme Tokens --- */
 :root {
   --bg-dark: #071616;
@@ -127,6 +169,12 @@ body {
   box-shadow: 0 0 18px rgba(0, 229, 201, 0.35);
   transition: opacity 0.2s ease;
 }
+.portfolio-preloader.preloader-opening .preloader-door-seam {
+  opacity: 1;
+  transform: scaleX(2.5);
+  box-shadow: 0 0 28px rgba(0, 229, 201, 0.75), 0 0 72px rgba(0, 229, 201, 0.38);
+  transition: transform 0.32s ease, box-shadow 0.32s ease;
+}
 .preloader-door-handle {
   position: absolute;
   z-index: 2;
@@ -146,6 +194,8 @@ body {
 .portfolio-preloader.preloader-exit .preloader-door-seam,
 .portfolio-preloader.preloader-exit .preloader-door-handle { opacity: 0; }
 .preloader-enter-btn {
+  position: relative;
+  isolation: isolate;
   margin-top: 8px;
   padding: 11px 18px;
   border: 1px solid rgba(0, 229, 201, 0.48);
@@ -157,6 +207,37 @@ body {
   cursor: pointer;
   box-shadow: 0 0 24px rgba(0, 229, 201, 0.10);
   transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+.preloader-enter-btn::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  width: 100vmax;
+  aspect-ratio: 1;
+  border: 1px solid rgba(0, 229, 201, 0.7);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 229, 201, 0.28), rgba(0, 229, 201, 0.08) 35%, transparent 70%);
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.01);
+  pointer-events: none;
+}
+.preloader-enter-btn.is-opening {
+  animation: preloaderButtonPress 0.42s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+.preloader-enter-btn.is-opening::after {
+  animation: preloaderClickBurst 0.66s cubic-bezier(0.12, 0.72, 0.22, 1) both;
+}
+@keyframes preloaderClickBurst {
+  0% { opacity: 0.9; transform: translate(-50%, -50%) scale(0.01); }
+  70% { opacity: 0.48; }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(1.15); }
+}
+@keyframes preloaderButtonPress {
+  0% { transform: scale(1); }
+  35% { transform: scale(0.92); }
+  100% { transform: scale(1.04); box-shadow: 0 0 36px rgba(0, 229, 201, 0.55); }
 }
 .preloader-enter-btn:hover,
 .preloader-enter-btn:focus-visible {
@@ -181,6 +262,14 @@ body {
   .portfolio-preloader.preloader-exit .preloader-door::before,
   .portfolio-preloader.preloader-exit .preloader-door::after {
     transform: none;
+  }
+  .preloader-enter-btn.is-opening,
+  .preloader-enter-btn.is-opening::after {
+    animation: none;
+  }
+  .portfolio-preloader.preloader-opening .preloader-door-seam {
+    transform: none;
+    transition-duration: 0.01ms;
   }
 }
 
@@ -2380,7 +2469,7 @@ body {
   display: inline-block;
 }
 
-/* 10. Below Screen Status Bar (Visit ↗ / Specs & Arch / 01 / 06) */
+/* 10. Below-screen status bar (Specs & Arch / project counter) */
 .crt-screen-subbar {
   position: relative;
   z-index: 2;
@@ -2395,27 +2484,6 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
-}
-.crt-visit-pill {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 9999px;
-  background: #faf7ee;
-  color: #121818;
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  padding: 8px 18px;
-  text-decoration: none;
-  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.35);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.crt-visit-pill:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.4);
 }
 .crt-specs-pill {
   display: inline-flex;
