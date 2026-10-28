@@ -27,7 +27,7 @@
     dismissed = true;
     preloader.classList.add('preloader-exit');
     sessionStorage.setItem('portfolioVisited', '1');
-    // Restore scroll after the door leaves finish swinging open.
+    // Restore scrolling after the doors have finished opening.
     setTimeout(() => {
       document.documentElement.style.overflow = '';
       preloader.style.display = 'none';
@@ -2586,6 +2586,15 @@ function initThorChat() {
   const sendBtn    = document.getElementById('thorChatSend');
   const chips      = document.querySelectorAll('.thor-chip');
   if (!toggleBtn || !chatWindow || !feed) return;
+
+  const heroSection = document.getElementById('hero');
+  const chatWrapper = document.getElementById('thorChatWrapper');
+  if (heroSection && chatWrapper && 'IntersectionObserver' in window) {
+    const heroObserver = new IntersectionObserver(([entry]) => {
+      chatWrapper.classList.toggle('hero-visible', entry.isIntersecting);
+    }, { threshold: 0.12 });
+    heroObserver.observe(heroSection);
+  }
 
   let isOpen    = false;
   let hasGreeted = false;
