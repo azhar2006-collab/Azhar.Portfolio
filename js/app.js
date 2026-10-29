@@ -265,7 +265,8 @@ function initHeroCanvas() {
   let targetAlpha = 0;
   let currentAlpha = 0;
 
-  // Load Thor images (pre-rendered teal ink sketch + full vibrant lightning artwork)
+  // Reveal Thor's teal ink sketch into the full-color illustration as visitors
+  // scratch across the canvas.
   const imgTeal = new Image();
   const imgColor = new Image();
   let tealLoaded = false;
@@ -323,7 +324,7 @@ function initHeroCanvas() {
   const render = () => {
     if (!ctx || !offCtx || !imagesLoaded) return;
 
-    // 1. Draw base teal sketch
+    // 1. Draw Thor's teal sketch as the base image.
     ctx.clearRect(0, 0, w, w);
     ctx.drawImage(imgTeal, 0, 0, w, w);
     // drawPlacardText(ctx, false);
@@ -2770,8 +2771,8 @@ function initThorChat() {
 
     if (role === 'bot') {
       const avatar = document.createElement('img');
-      avatar.src = 'assets/images/thor-avatar.png';
-      avatar.alt = 'Thor';
+      avatar.src = 'assets/images/thor-bot-avatar.png';
+      avatar.alt = 'Thor bot';
       avatar.classList.add('thor-msg-avatar');
       msg.appendChild(avatar);
     } else {
@@ -2798,8 +2799,8 @@ function initThorChat() {
     row.id = 'thorTypingRow';
 
     const avatar = document.createElement('img');
-    avatar.src = 'assets/images/thor-avatar.png';
-    avatar.alt = 'Thor';
+    avatar.src = 'assets/images/thor-bot-avatar.png';
+    avatar.alt = 'Thor bot';
     avatar.classList.add('thor-msg-avatar');
     row.appendChild(avatar);
 
