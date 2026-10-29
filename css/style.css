@@ -979,6 +979,7 @@ body {
 .thor-avatar-img {
   width: 44px;
   height: 44px;
+  border-radius: 50%;
   object-fit: contain;
   image-rendering: auto;
   filter: drop-shadow(0 4px 10px rgba(0, 229, 201, 0.45));
@@ -1129,6 +1130,7 @@ body {
 .chat-thor-emoji {
   width: 34px;
   height: 34px;
+  border-radius: 50%;
   object-fit: contain;
   image-rendering: auto;
   filter: drop-shadow(0 2px 6px rgba(0,0,0,0.3));
@@ -4730,10 +4732,10 @@ body {
 .thor-header-avatar {
   width: 54px;
   height: 54px;
-  border-radius: 0;
-  object-fit: contain;
+  border-radius: 50%;
+  object-fit: cover;
   object-position: center;
-  border: 0;
+  border: 1px solid #ffffff;
   box-shadow: none;
 }
 
@@ -4831,8 +4833,8 @@ body {
 .thor-msg-avatar {
   width: 36px;
   height: 36px;
-  border-radius: 0;
-  object-fit: contain;
+  border-radius: 50%;
+  object-fit: cover;
   object-position: center;
   flex-shrink: 0;
   border: 0;
